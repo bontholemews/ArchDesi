@@ -248,7 +248,7 @@ HL7 FHIR Resource - Person v4.0.1: R4 [Internet]. Health Level Seven Internation
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"10166B307F40817B5B3E2D3720F6AC03">
+		["MD5-CAM-1.0.1"] = <"d5b0a9a305cfac4b2385bc0ebaea1d08">
 		["build_uid"] = <"2141be0e-4975-4e33-8d15-0cd1086f2280">
 		["revision"] = <"1.0.3">
 	>
@@ -294,10 +294,6 @@ definition
 					archetype_id/value matches {/openEHR-EHR-CLUSTER\.organisation(-[a-zA-Z0-9_]+)*\.v1/}
 			}
 			allow_archetype CLUSTER[at0008] occurrences matches {0..*} matches {    -- Additional details
-			}
-			allow_archetype CLUSTER[at0009] occurrences matches {0..*} matches {    -- Photo
-				include
-					archetype_id/value matches {/openEHR-EHR-CLUSTER\.media_file(-[a-zA-Z0-9_]+)*\.v1/}
 			}
 			ELEMENT[at0010] occurrences matches {0..1} matches {    -- Comment
 				value matches {
@@ -356,10 +352,6 @@ ontology
 					text = <"Electronic communication">
 					description = <"Details about one or more types of electronic communication for the individual.">
 				>
-				["at0009"] = <
-					text = <"Photo">
-					description = <"Photograph of the individual.">
-				>
 				["at0011"] = <
 					text = <"Label">
 					description = <"A label for the individual.">
@@ -409,10 +401,6 @@ ontology
 				["at0008"] = <
 					text = <"Ytterligere detaljer">
 					description = <"Ytterligere detaljer om personen.">
-				>
-				["at0009"] = <
-					text = <"Bilde">
-					description = <"Bilde av personen.">
 				>
 				["at0010"] = <
 					text = <"Kommentar">
@@ -469,10 +457,6 @@ ontology
 				["at0008"] = <
 					text = <"Zusätzliche Angaben">
 					description = <"Weitere Angaben zur Person.">
-				>
-				["at0009"] = <
-					text = <"Foto">
-					description = <"Foto der Person.">
 				>
 				["at0010"] = <
 					text = <"Kommentar">
@@ -532,10 +516,6 @@ ontology
 					text = <"*Electronic communication (en)">
 					description = <"*Details about one or more types of electronic communication for the individual. (en)">
 				>
-				["at0009"] = <
-					text = <"*Photo (en)">
-					description = <"*Photograph of the individual. (en)">
-				>
 				["at0011"] = <
 					text = <"*Label (en)">
 					description = <"*A label for the individual. (en)">
@@ -589,10 +569,6 @@ Om individen som beskrivs med denna arketyp är den som själva journalen gälle
 				["at0008"] = <
 					text = <"Ytterligare detaljer">
 					description = <"Ytterligare information om personen.">
-				>
-				["at0009"] = <
-					text = <"Foto">
-					description = <"Fotografi på individen.">
 				>
 				["at0010"] = <
 					text = <"Kommentar">
@@ -648,10 +624,6 @@ Om individen som beskrivs med denna arketyp är den som själva journalen gälle
 					text = <"Detalles adicionales">
 					description = <"Detalles adicionales sobre el individuo.">
 				>
-				["at0009"] = <
-					text = <"Foto">
-					description = <"Fotografía del individuo">
-				>
 				["at0010"] = <
 					text = <"Comentario">
 					description = <"Información narrativa adicional sobre el individuo no capturada en otros campos.">
@@ -705,10 +677,6 @@ Om individen som beskrivs med denna arketyp är den som själva journalen gälle
 				["at0008"] = <
 					text = <"Detalhes adicionais">
 					description = <"Detalhes adicionais sobre o indivíduo">
-				>
-				["at0009"] = <
-					text = <"Fotografia">
-					description = <"Fotografia do indivíduo">
 				>
 				["at0010"] = <
 					text = <"Comentário">
