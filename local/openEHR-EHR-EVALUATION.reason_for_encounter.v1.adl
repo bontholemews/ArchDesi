@@ -142,7 +142,7 @@ No debe ser utilizado para registrar diagnósticos. Para eso utilizar el arqueti
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"8F5F414D89192FFF36DB35A41CBCB740">
+		["MD5-CAM-1.0.1"] = <"43bb07054fdd8f694f16bd4d2bce07a5">
 		["build_uid"] = <"7b026d2d-41e6-4911-a964-11a9ce4fba26">
 		["revision"] = <"1.0.2">
 	>
@@ -152,7 +152,7 @@ definition
 		data matches {
 			ITEM_TREE[at0001] matches {    -- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..*} matches {    -- Contact type
+					ELEMENT[at0002] occurrences matches {0..*} matches {    -- Reason for Seeking Therapy
 						value matches {
 							DV_TEXT matches {*}
 						}
@@ -162,8 +162,23 @@ definition
 							DV_TEXT matches {*}
 						}
 					}
+					ELEMENT[at0008] occurrences matches {0..1} matches {    -- Self Reported Severity
+						value matches {
+							1|[local::at0009],
+							2|[local::at0010],
+							3|[local::at0011]
+						}
+					}
+					ELEMENT[at0012] occurrences matches {0..1} matches {    -- Impact on daily functioning
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
 				}
 			}
+		}
+		protocol matches {
+			ITEM_TREE[at0005] matches {*}    -- Item tree
 		}
 	}
 
@@ -180,7 +195,7 @@ ontology
 					description = <"@ internal @">
 				>
 				["at0002"] = <
-					text = <"Contact type">
+					text = <"Reason for Seeking Therapy">
 					description = <"Identification of the type, or administrative category, of healthcare sought or required by the subject of care.">
 					comment = <"Coding of the 'Contact type' with a terminology is desirable, where possible. Examples include: pre-employment medical, routine antenatal visit, women's health check, pre-operative assessment, or annual medical check-up.
 ">
@@ -190,6 +205,30 @@ ontology
 					description = <"Identification of the clinical or social problem motivating the subject of care to seeking healthcare.">
 					comment = <"Coding of the 'Presenting problem' with a terminology is desirable, where possible. Clinical or social reasons for seeking healthcare can include health issues, symptoms or physical signs. Examples: health issues - desire to quit smoking, domestic violence; symptoms - abdominal pain, shortness of breath; physical signs - an altered conscious state. 'Chief complaint' may be used as a valid synonym for 'Presenting problem' in templates.
  ">
+				>
+				["at0005"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0008"] = <
+					text = <"Self Reported Severity">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Mild">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Medium">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"Moderate">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"Impact on daily functioning">
+					description = <"">
 				>
 			>
 		>
@@ -204,7 +243,7 @@ ontology
 					description = <"*@ internal @">
 				>
 				["at0002"] = <
-					text = <"Tipo de contato">
+					text = <"*Reason for Seeking Therapy (en)">
 					description = <"Identificação do tipo, ou categoria administrativa, ou cuidado em saúde procurado ou exigido pelo sujeito do cuidado.">
 					comment = <"Codificação do \"tipo de contato\" com uma terminologia é desejável, quando possível. Exemplos incluem: Exame pré-admissional, visita pré-natal de rotina, saúde da mulher, risco cirúrgico, ou avaliação médica anual.">
 				>
@@ -213,6 +252,30 @@ ontology
 					description = <"Identificação do problema clínico ou social que motiva o sujeito do cuidado a procurar cuidado em saúde.">
 					comment = <"
 Codificação do \"Problema apresentado\" com uma terminologia é desejável, quando possível. Razões clínicas ou sociais na busca de cuidado em saúde podem incluir problemas de saúde, sintomas ou sinais físicos. Exemplos: problemas de saúde - desejo de parar de fumar, violência doméstica; sintomas - dor abdominal, falta de ar; sinais físicos - um estado de consciência alterado. \"Queixa principal\" pode ser usada como um sinônimo válido para \"Problema apresentado\" nos modelos.">
+				>
+				["at0005"] = <
+					text = <"*Item tree (en)">
+					description = <"@ internal @">
+				>
+				["at0008"] = <
+					text = <"*Self Reported Severity (en)">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"*Mild (en)">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"*Medium (en)">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"*Moderate (en)">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"*Impact on daily functioning (en)">
+					description = <"">
 				>
 			>
 		>
@@ -227,7 +290,7 @@ Codificação do \"Problema apresentado\" com uma terminologia é desejável, qu
 					description = <"@ internal @">
 				>
 				["at0002"] = <
-					text = <"Tipo de contacto">
+					text = <"*Reason for Seeking Therapy (en)">
 					description = <"Identificación del tipo o categoría administrativa por la cuál el paciente busca asistencia médica.">
 					comment = <"Es deseable la codificación del 'Tipo de contacto' mediante una terminología. Algunos ejemplos incluyen: control previo al empleo, visita prenatal de rutina, control de salud femenino, evaluación preoperatoria, o control médico anual.">
 				>
@@ -235,6 +298,30 @@ Codificação do \"Problema apresentado\" com uma terminologia é desejável, qu
 					text = <"Problema presentado">
 					description = <"Problema o síntoma reportado por el paciente, que da inicio a la consulta médica">
 					comment = <"Es desable la codificación del 'Problema presentado' mediante una terminología. Motivos clínicos o sociales para buscar atención médica pueden incluir estos problemas, síntomas o signos físicos: deseo de dejar de fumar, violencia doméstica, dolor abdominal, problemas al respirar, alteración del estado de conciencia. En una plantilla, 'Problema principal' puede usarse como sinónimo al 'Problema presentado'.">
+				>
+				["at0005"] = <
+					text = <"*Item tree (en)">
+					description = <"@ internal @">
+				>
+				["at0008"] = <
+					text = <"*Self Reported Severity (en)">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"*Mild (en)">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"*Medium (en)">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"*Moderate (en)">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"*Impact on daily functioning (en)">
+					description = <"">
 				>
 			>
 		>
@@ -249,7 +336,7 @@ Codificação do \"Problema apresentado\" com uma terminologia é desejável, qu
 					description = <"@ internal @">
 				>
 				["at0002"] = <
-					text = <"Kontakt Typ">
+					text = <"*Reason for Seeking Therapy (en)">
 					description = <"Identifizierung des Typs oder der Verwaltungskategorie des Gesundheitswesens, der von dem Pflegebedürftigen gesucht oder benötigt wird.">
 					comment = <"Die Kodierung des \"Kontakttyps\" sollte, wenn möglich, mit einer Terminologie erfolgen. Beispiele hierfür sind: vorbereitende Untersuchungen, routinemäßiger vorgeburtlicher Vorsorgetermin, Gesundheitscheck für Frauen.">
 				>
@@ -258,6 +345,30 @@ Codificação do \"Problema apresentado\" com uma terminologia é desejável, qu
 					description = <"Identifikation des klinischen oder sozialen Problems, welches den Patienten motiviert die medizinische Versorgung aufzusuchen.">
 					comment = <"Die Kodierung der \"Problemdarstellung\" sollte, wenn möglich, mit einer Terminologie erfolgen. Klinische oder soziale Gründe für das Aufsuchen der Gesundheitsversorgung können u.a. Gesundheitsprobleme, Symptome oder andere körperliche Anzeichen sein. 
 Beispiele: Gesundheitsfragen - Wunsch, mit dem Rauchen aufzuhören, häusliche Gewalt; Symptome - Bauchschmerzen, Kurzatmigkeit; körperliche Zeichen - ein veränderter Bewusstseinszustand. \"Hauptbeschwerde\" kann als gültiges Synonym für \"Problemdarstellung\" in den Vorlagen verwendet werden.">
+				>
+				["at0005"] = <
+					text = <"*Item tree (en)">
+					description = <"@ internal @">
+				>
+				["at0008"] = <
+					text = <"*Self Reported Severity (en)">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"*Mild (en)">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"*Medium (en)">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"*Moderate (en)">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"*Impact on daily functioning (en)">
+					description = <"">
 				>
 			>
 		>
@@ -272,7 +383,7 @@ Beispiele: Gesundheitsfragen - Wunsch, mit dem Rauchen aufzuhören, häusliche G
 					description = <"@ internal @">
 				>
 				["at0002"] = <
-					text = <"Administrativ kontaktårsak">
+					text = <"*Reason for Seeking Therapy (en)">
 					description = <"Type eller administrativ kategori av helsetjenester som er årsak til at individet oppsøker eller behøver helsetjenester.">
 					comment = <"Koding av \"kontaktårsak\" med en terminologi foretrekkes når mulig. Eksempler: Helsesjekk før ansettelse, svangerskapskontroll, gynekologisk undersøkelse, preoperativ undersøkelse eller årlig medisinsk kontroll.">
 				>
@@ -280,6 +391,30 @@ Beispiele: Gesundheitsfragen - Wunsch, mit dem Rauchen aufzuhören, häusliche G
 					text = <"Klinisk kontaktårsak">
 					description = <"Klinisk eller sosial årsak til at individet oppsøker helsevesenet.">
 					comment = <"Koding av \"Klinisk problemstilling\" med en terminologi foretrekkes når mulig. Kliniske årsaker kan omfatte helseproblemer, symptomer, eller fysiske sykdomstegn. Eksempler: Helseproblemer - ønske om å slutte å røyke eller vold i hjemmet, symptomer - magesmerter eller kortpusthet, fysiske sykdomstegn - endret bevissthetsnivå. \"Hovedproblemstilling\" kan bli benyttet som et synonym for \"Klinisk kontaktårsak\" i templater.">
+				>
+				["at0005"] = <
+					text = <"*Item tree (en)">
+					description = <"@ internal @">
+				>
+				["at0008"] = <
+					text = <"*Self Reported Severity (en)">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"*Mild (en)">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"*Medium (en)">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"*Moderate (en)">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"*Impact on daily functioning (en)">
+					description = <"">
 				>
 			>
 		>
