@@ -269,7 +269,7 @@ Not to be used to represent diagnostic certainty - use the 'Diagnostic certainty
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"8615c3135f752f92934e24f6a9fc3917">
+		["MD5-CAM-1.0.1"] = <"e3c068acc91e9c88b522a05094c39152">
 		["build_uid"] = <"4ec9fbd6-944e-483d-87af-f6838b692110">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomedct or info@snomed.org.">
 		["revision"] = <"2.0.1">
@@ -278,6 +278,11 @@ Not to be used to represent diagnostic certainty - use the 'Diagnostic certainty
 definition
 	CLUSTER[at0000] matches {    -- Problem/Diagnosis qualifier
 		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0111] occurrences matches {0..1} matches {    -- Established Mental Health Diagnosis
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
 			ELEMENT[at0004] occurrences matches {0..1} matches {    -- Diagnostic status
 				value matches {
 					DV_CODED_TEXT matches {
@@ -301,75 +306,6 @@ definition
 							at0061]    -- Past
 						}
 					}
-				}
-			}
-			ELEMENT[at0003] occurrences matches {0..1} matches {    -- Active/Inactive?
-				value matches {
-					DV_CODED_TEXT matches {
-						defining_code matches {
-							[local::
-							at0026,    -- Active
-							at0027]    -- Inactive
-						}
-					}
-				}
-			}
-			ELEMENT[at0098] occurrences matches {0..1} matches {    -- Level of control
-				value matches {
-					DV_CODED_TEXT matches {
-						defining_code matches {
-							[local::
-							at0099,    -- Controlled
-							at0100,    -- Indeterminate
-							at0101]    -- Not controlled
-						}
-					}
-					DV_TEXT matches {*}
-				}
-			}
-			ELEMENT[at0102] occurrences matches {0..1} matches {    -- Progression
-				value matches {
-					DV_CODED_TEXT matches {
-						defining_code matches {
-							[local::
-							at0103,    -- Improving
-							at0104,    -- Stable
-							at0105,    -- Worsening
-							at0106]    -- Indeterminate
-						}
-					}
-					DV_TEXT matches {*}
-				}
-			}
-			ELEMENT[at0089] occurrences matches {0..1} matches {    -- Remission status
-				value matches {
-					DV_CODED_TEXT matches {
-						defining_code matches {
-							[local::
-							at0090,    -- In remission
-							at0092,    -- Not in remission
-							at0093]    -- Indeterminate
-						}
-					}
-					DV_TEXT matches {*}
-				}
-			}
-			ELEMENT[at0001] occurrences matches {0..1} matches {    -- Episodicity
-				value matches {
-					DV_CODED_TEXT matches {
-						defining_code matches {
-							[local::
-							at0034,    -- New
-							at0035,    -- Ongoing
-							at0070]    -- Indeterminate
-						}
-					}
-					DV_TEXT matches {*}
-				}
-			}
-			ELEMENT[at0107] occurrences matches {0..*} matches {    -- Reason for an ongoing episode
-				value matches {
-					DV_TEXT matches {*}
 				}
 			}
 			ELEMENT[at0071] occurrences matches {0..1} matches {    -- Occurrence
@@ -428,16 +364,6 @@ ontology
 					text = <"Problem/Diagnosis qualifier">
 					description = <"Contextual or temporal qualifier for a specified problem or diagnosis.">
 				>
-				["at0001"] = <
-					text = <"Episodicity">
-					description = <"Category of this episode for the identified problem/diagnosis.">
-					comment = <"For example: 'New' will enable clinicians to distinguish a new, acute episode of otitis media that may have arisen soon after a previous diagnosis, to distinguish it from an unresolved or 'Ongoing' diagnosis of chronic otitis media. Treatment of recurring, new and acute, episodes of a condition may differ significantly from the same condition that is not resolving or responding to treatment. In many situations the clinician will not be able to tell, and so indeterminate may be appropriate.">
-				>
-				["at0003"] = <
-					text = <"Active/Inactive?">
-					description = <"Category that supports division of problems and diagnoses into Active or Inactive problem lists.">
-					comment = <"The Active/Inactive and Current/Past data elements have similar clinical impact but represent slightly different semantics. Both are actively used in different clinical settings, but usually not together. If a Current/Past qualifier is recorded, then this data element is likely to be redundant. An exception where a condition can be current but inactive is asthma that is not causing acute symptoms.">
-				>
 				["at0004"] = <
 					text = <"Diagnostic status">
 					description = <"Stage or phase of diagnostic process.">
@@ -455,22 +381,6 @@ Preliminary or working diagnoses are intended to represent the single most likel
 				["at0018"] = <
 					text = <"Established">
 					description = <"Final substantiated diagnosis, based on a high level of clinical certainty, which may include clinical evidence from test results. It is not expected to change.">
-				>
-				["at0026"] = <
-					text = <"Active">
-					description = <"The problem or diagnosis is currently active and clinically relevant.">
-				>
-				["at0027"] = <
-					text = <"Inactive">
-					description = <"The problem or diagnosis is not completely resolved but is inactive or felt less relevant to the current clinical context.">
-				>
-				["at0034"] = <
-					text = <"New">
-					description = <"A new occurrence of either a new or existing problem or diagnosis. A flag for 'First occurrence' can be recorded separately to distinguish the first from other occurrences.">
-				>
-				["at0035"] = <
-					text = <"Ongoing">
-					description = <"The issue, problem or diagnosis continues, without new, acute episodes occurring.">
 				>
 				["at0060"] = <
 					text = <"Current/Past?">
@@ -499,10 +409,6 @@ Preliminary or working diagnoses are intended to represent the single most likel
 					text = <"Secondary diagnosis">
 					description = <"A problem or diagnosis that occurs at the same time as the primary problem or diagnosis. May also be known as a comorbid condition.">
 				>
-				["at0070"] = <
-					text = <"Indeterminate">
-					description = <"It is not possible to determine if this occurrence of the problem or diagnosis is new or ongoing.">
-				>
 				["at0071"] = <
 					text = <"Occurrence">
 					description = <"Category of the occurrence for this problem or diagnosis.">
@@ -521,23 +427,6 @@ Preliminary or working diagnoses are intended to represent the single most likel
 					text = <"Refuted">
 					description = <"The previously recorded diagnosis has been clinically reassessed or disproved with a high level of clinical certainty. This status is used to correct an error in the health record.">
 				>
-				["at0089"] = <
-					text = <"Remission status">
-					description = <"Status of the remission of an incurable diagnosis.">
-					comment = <"For example: the status of a cancer or haematological diagnosis.">
-				>
-				["at0090"] = <
-					text = <"In remission">
-					description = <"No ongoing signs or symptoms of the disease have been identified.">
-				>
-				["at0092"] = <
-					text = <"Not in remission">
-					description = <"No diminution of the signs or symptoms of the disease have been identified.">
-				>
-				["at0093"] = <
-					text = <"Indeterminate">
-					description = <"It is not possible to determine if there have been diminution of the signs or symptoms of the disease have been identified.">
-				>
 				["at0095"] = <
 					text = <"First occurrence">
 					description = <"This is the first ever occurrence of this problem or diagnosis.">
@@ -545,47 +434,6 @@ Preliminary or working diagnoses are intended to represent the single most likel
 				["at0096"] = <
 					text = <"Recurrence">
 					description = <"New occurrence of the same problem or diagnosis after a previous episode was resolved.">
-				>
-				["at0098"] = <
-					text = <"Level of control">
-					description = <"Category of the level of control of the problem or diagnosis by the current management.">
-				>
-				["at0099"] = <
-					text = <"Controlled">
-					description = <"The problem or diagnosis is controlled by current management.">
-				>
-				["at0100"] = <
-					text = <"Indeterminate">
-					description = <"It is not possible to determine if the problem or diagnosis is controlled by current management.">
-				>
-				["at0101"] = <
-					text = <"Not controlled">
-					description = <"The problem or diagnosis is not controlled by current management.">
-				>
-				["at0102"] = <
-					text = <"Progression">
-					description = <"Category of the progression through the course of a chronic problem or diagnosis.">
-				>
-				["at0103"] = <
-					text = <"Improving">
-					description = <"The problem or diagnosis is improving.">
-				>
-				["at0104"] = <
-					text = <"Stable">
-					description = <"The problem or diagnosis is unchanged.">
-				>
-				["at0105"] = <
-					text = <"Worsening">
-					description = <"The problem or diagnosis is worsening.">
-				>
-				["at0106"] = <
-					text = <"Indeterminate">
-					description = <"It is not possible to determine the progression of the problem or diagnosis.">
-				>
-				["at0107"] = <
-					text = <"Reason for an ongoing episode">
-					description = <"Reason for a problem or diagnosis not resolving as expected.">
-					comment = <"For example: incomplete or failed treatment.">
 				>
 				["at0108"] = <
 					text = <"Yes">
@@ -599,6 +447,10 @@ Preliminary or working diagnoses are intended to represent the single most likel
 					text = <"Comment">
 					description = <"Additional narrative about the Problem/Diagnosis qualifier values, not captured in other fields.">
 				>
+				["at0111"] = <
+					text = <"Established Mental Health Diagnosis">
+					description = <"">
+				>
 			>
 		>
 		["sl"] = <
@@ -606,16 +458,6 @@ Preliminary or working diagnoses are intended to represent the single most likel
 				["at0000"] = <
 					text = <"*Problem/Diagnosis qualifier(en)">
 					description = <"*Contextual or temporal qualifier for a specified problem or diagnosis.(en)">
-				>
-				["at0001"] = <
-					text = <"*Episodicity(en)">
-					description = <"*Category of this episode for the identified problem/diagnosis.(en)">
-					comment = <"*For example: 'New' will enable clinicians to distinguish a new, acute episode of otitis media that may have arisen soon after a previous diagnosis, to distinguish it from an unresolved or 'Ongoing' diagnosis of chronic otitis media. Treatment of recurring, new and acute, episodes of a condition may differ significantly from the same condition that is not resolving or responding to treatment. In many situations the clinician will not be able to tell, and so indeterminate may be appropriate.(en)">
-				>
-				["at0003"] = <
-					text = <"*Active/Inactive?(en)">
-					description = <"*Category that supports division of problems and diagnoses into Active or Inactive problem lists.(en)">
-					comment = <"*The Active/Inactive and Current/Past data elements have similar clinical impact but represent slightly different semantics. Both are actively used in different clinical settings, but usually not together. If a Current/Past qualifier is recorded, then this data element is likely to be redundant. An exception where a condition can be current but inactive is asthma that is not causing acute symptoms.(en)">
 				>
 				["at0004"] = <
 					text = <"*Diagnostic status(en)">
@@ -634,22 +476,6 @@ Preliminary or working diagnoses are intended to represent the single most likel
 				["at0018"] = <
 					text = <"*Established(en)">
 					description = <"*Final substantiated diagnosis, based on a high level of clinical certainty, which may include clinical evidence from test results. It is not expected to change.(en)">
-				>
-				["at0026"] = <
-					text = <"Aktiven">
-					description = <"Problem je trenutno aktiven in klinično relevanten">
-				>
-				["at0027"] = <
-					text = <"Ni aktiven">
-					description = <"Problem trenutno ni aktiven">
-				>
-				["at0034"] = <
-					text = <"*New(en)">
-					description = <"*A new occurrence of either a new or existing problem or diagnosis. A flag for 'First occurrence' can be recorded separately to distinguish the first from other occurrences.(en)">
-				>
-				["at0035"] = <
-					text = <"*Ongoing(en)">
-					description = <"*The issue, problem or diagnosis continues, without new, acute episodes occurring.(en)">
 				>
 				["at0060"] = <
 					text = <"*Current/Past?(en)">
@@ -678,10 +504,6 @@ In addition, the free text choice permits use of other local value sets, as requ
 					text = <"*Secondary diagnosis(en)">
 					description = <"*A problem or diagnosis that is occurs at the same time as the primary problem or diagnosis. May also be known as a comorbid condition.(en)">
 				>
-				["at0070"] = <
-					text = <"*Indeterminate(en)">
-					description = <"*It is not possible to determine if this occurrence of the problem or diagnosis is new or ongoing.(en)">
-				>
 				["at0071"] = <
 					text = <"*Occurrence (en)">
 					description = <"*Category of the occurrence for this problem or diagnosis. (en)">
@@ -700,23 +522,6 @@ In addition, the free text choice permits use of other local value sets, as requ
 					text = <"*Refuted(en)">
 					description = <"*The diagnosis has been clinically reassessed or has been disproved with a high level of clinical certainty.(en)">
 				>
-				["at0089"] = <
-					text = <"*Remission status(en)">
-					description = <"*Status of the remission of an incurable diagnosis.(en)">
-					comment = <"*For example: the status of a cancer or haematological diagnosis.(en)">
-				>
-				["at0090"] = <
-					text = <"*In complete remission(en)">
-					description = <"*No diminution of signs or symptoms of the disease have been identified.(en)">
-				>
-				["at0092"] = <
-					text = <"*Not in remission(en)">
-					description = <"*No diminution of the signs or symptoms of the disease have been identified.(en)">
-				>
-				["at0093"] = <
-					text = <"*Indeterminate(en)">
-					description = <"*It is not possible to determine if there have been diminution of the signs or symptoms of the disease have been identified.(en)">
-				>
 				["at0095"] = <
 					text = <"*First occurrence (en)">
 					description = <"*This is the first ever occurrence of this problem or diagnosis. (en)">
@@ -724,47 +529,6 @@ In addition, the free text choice permits use of other local value sets, as requ
 				["at0096"] = <
 					text = <"*Recurrence (en)">
 					description = <"*New occurrence of the same problem or diagnosis after a previous episode was resolved. (en)">
-				>
-				["at0098"] = <
-					text = <"*Level of control (en)">
-					description = <"*Category of the level of control of the problem or diagnosis by the current management. (en)">
-				>
-				["at0099"] = <
-					text = <"*Controlled (en)">
-					description = <"*The problem or diagnosis is controlled by current management. (en)">
-				>
-				["at0100"] = <
-					text = <"*Indeterminate (en)">
-					description = <"*It is not possible to determine if the problem or diagnosis is controlled by current management. (en)">
-				>
-				["at0101"] = <
-					text = <"*Not controlled (en)">
-					description = <"*The problem or diagnosis is not controlled by current management. (en)">
-				>
-				["at0102"] = <
-					text = <"*Progression (en)">
-					description = <"*Category of the progression through the course of a chronic problem or diagnosis. (en)">
-				>
-				["at0103"] = <
-					text = <"*Improving (en)">
-					description = <"*The problem or diagnosis is improving. (en)">
-				>
-				["at0104"] = <
-					text = <"*Stable (en)">
-					description = <"*The problem or diagnosis is unchanged. (en)">
-				>
-				["at0105"] = <
-					text = <"*Worsening (en)">
-					description = <"*The problem or diagnosis is worsening. (en)">
-				>
-				["at0106"] = <
-					text = <"*Indeterminate (en)">
-					description = <"*It is not possible to determine the progression of the problem or diagnosis. (en)">
-				>
-				["at0107"] = <
-					text = <"*Reason for an ongoing episode (en)">
-					description = <"*Reason for a problem or diagnosis not resolving as expected. (en)">
-					comment = <"*For example: incomplete or failed treatment. (en)">
 				>
 				["at0108"] = <
 					text = <"*Yes (en)">
@@ -778,6 +542,10 @@ In addition, the free text choice permits use of other local value sets, as requ
 					text = <"*Comment (en)">
 					description = <"*Additional narrative about the Problem/Diagnosis qualifier values, not captured in other fields. (en)">
 				>
+				["at0111"] = <
+					text = <"*Established Mental Health Diagnosis (en)">
+					description = <"">
+				>
 			>
 		>
 		["pt-br"] = <
@@ -785,16 +553,6 @@ In addition, the free text choice permits use of other local value sets, as requ
 				["at0000"] = <
 					text = <"Qualificador do problema /diagnóstico">
 					description = <"Qualificador contextual ou temporal para um problema ou diagnóstico específico.">
-				>
-				["at0001"] = <
-					text = <"Episodicidade">
-					description = <"Categoria deste episódio para o problema / diagnóstico identificado.">
-					comment = <"Por exemplo: \"Novo\" permitirá aos clínicos distinguir um novo episódio agudo de otite média que pode ter surgido logo após um diagnóstico prévio, para distingui-lo de um diagnóstico não resolvido ou \"Em curso\" da otite média crônica. O tratamento de episódios recorrentes, novos e agudos de uma condição pode diferir significativamente da mesma condição que não está resolvendo ou respondendo ao tratamento. Em muitas situações, o clínico não será capaz de dizer e, portanto, indeterminado pode ser apropriado.">
-				>
-				["at0003"] = <
-					text = <"Ativo/Inativo?">
-					description = <"Categoria que supporta a divisão de problemas and diagnósticos em listas de problemas Ativos ou Inativos.">
-					comment = <"Os elementos de dados Ativo/Inativo e Atual/Passado e têm impacto clínico similar mas com representação semântica ligeiramente diferente. Ambos são usados ativamente em diferentes contextos clínicos, mas geralmente não juntos. Se um qualificador Atual/Passado for registrado, esse elemento de dados provavelmente será redundante. Uma exceção onde uma condição pode ser atual mas inativa é a asma que não está causando sintomas agudos.">
 				>
 				["at0004"] = <
 					text = <"Estado do diagnóstico">
@@ -812,22 +570,6 @@ In addition, the free text choice permits use of other local value sets, as requ
 				["at0018"] = <
 					text = <"Estabelecido">
 					description = <"Diagnóstico final fundamentado, baseado em um alto nível de certeza clínica, que pode incluir evidências clínicas dos resultados dos testes. Não é esperado que mude.">
-				>
-				["at0026"] = <
-					text = <"Ativo">
-					description = <"O problema ou o diagnóstico está atualmente ativo e clinicamente relevante.">
-				>
-				["at0027"] = <
-					text = <"Inativo">
-					description = <"O problema ou diagnóstico não está completamente resolvido, mas está inativo ou é menos relevante no contexto clínico atual.">
-				>
-				["at0034"] = <
-					text = <"Novo">
-					description = <"Uma nova ocorrência de um problema ou diagnóstico novo ou existente. Um sinalizador para \"Primeira ocorrência\" pode ser gravado separadamente para distinguir a primeira das outras ocorrências.">
-				>
-				["at0035"] = <
-					text = <"Em curso">
-					description = <"A questão, problema ou diagnóstico continua, sem novos episódios agudos ocorrendo.">
 				>
 				["at0060"] = <
 					text = <"Atual/Passado?">
@@ -856,10 +598,6 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 					text = <"Diagnóstico secundário">
 					description = <"Um problema ou diagnóstico que ocorre ao mesmo tempo que o problema ou diagnóstico principal. Também pode ser conhecido como uma comorbidade.">
 				>
-				["at0070"] = <
-					text = <"Indeterminado">
-					description = <"Não é possível determinar se esta ocorrência do problema ou diagnóstico é nova ou está em curso.">
-				>
 				["at0071"] = <
 					text = <"Ocorrência">
 					description = <"Categoria da ocorrência para este problema ou diagnóstico.">
@@ -878,23 +616,6 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 					text = <"Descartado">
 					description = <"O diagnóstico previamente registrado foi clinicamente reavaliado ou refutado com um alto nível de certeza clínica. Este status é usado para corrigir um erro no registro de funcionamento.">
 				>
-				["at0089"] = <
-					text = <"Estado de remissão">
-					description = <"Status da remissão de um diagnóstico incurável.">
-					comment = <"Por exemplo: o status de um câncer ou diagnóstico hematológico.">
-				>
-				["at0090"] = <
-					text = <"Em remissão">
-					description = <"Nenhum sinal ou sintoma da doença em andamento foi identificado.">
-				>
-				["at0092"] = <
-					text = <"Não em remissão">
-					description = <"Nenhuma diminuição dos sinais ou sintomas da doença foi identificada.">
-				>
-				["at0093"] = <
-					text = <"Indeterminado">
-					description = <"Não é possível determinar se houve diminuição dos sinais ou sintomas da doença identificada.">
-				>
 				["at0095"] = <
 					text = <"Primeira ocorrência">
 					description = <"Esta é a primeira ocorrência deste problema ou diagnóstico.">
@@ -902,47 +623,6 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 				["at0096"] = <
 					text = <"Recorrência">
 					description = <"Nova ocorrência do mesmo problema ou diagnóstico depois que um episódio anterior foi resolvido.">
-				>
-				["at0098"] = <
-					text = <"*Level of control (en)">
-					description = <"*Category of the level of control of the problem or diagnosis by the current management. (en)">
-				>
-				["at0099"] = <
-					text = <"*Controlled (en)">
-					description = <"*The problem or diagnosis is controlled by current management. (en)">
-				>
-				["at0100"] = <
-					text = <"*Indeterminate (en)">
-					description = <"*It is not possible to determine if the problem or diagnosis is controlled by current management. (en)">
-				>
-				["at0101"] = <
-					text = <"*Not controlled (en)">
-					description = <"*The problem or diagnosis is not controlled by current management. (en)">
-				>
-				["at0102"] = <
-					text = <"*Progression (en)">
-					description = <"*Category of the progression through the course of a chronic problem or diagnosis. (en)">
-				>
-				["at0103"] = <
-					text = <"*Improving (en)">
-					description = <"*The problem or diagnosis is improving. (en)">
-				>
-				["at0104"] = <
-					text = <"*Stable (en)">
-					description = <"*The problem or diagnosis is unchanged. (en)">
-				>
-				["at0105"] = <
-					text = <"*Worsening (en)">
-					description = <"*The problem or diagnosis is worsening. (en)">
-				>
-				["at0106"] = <
-					text = <"*Indeterminate (en)">
-					description = <"*It is not possible to determine the progression of the problem or diagnosis. (en)">
-				>
-				["at0107"] = <
-					text = <"*Reason for an ongoing episode (en)">
-					description = <"*Reason for a problem or diagnosis not resolving as expected. (en)">
-					comment = <"*For example: incomplete or failed treatment. (en)">
 				>
 				["at0108"] = <
 					text = <"*Yes (en)">
@@ -956,6 +636,10 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 					text = <"*Comment (en)">
 					description = <"*Additional narrative about the Problem/Diagnosis qualifier values, not captured in other fields. (en)">
 				>
+				["at0111"] = <
+					text = <"*Established Mental Health Diagnosis (en)">
+					description = <"">
+				>
 			>
 		>
 		["nb"] = <
@@ -963,16 +647,6 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 				["at0000"] = <
 					text = <"Problem/diagnose-kvalifikator">
 					description = <"Kontekst- eller tidsspesifikk kvalifikator for et problem eller en diagnose.">
-				>
-				["at0001"] = <
-					text = <"Episodisitet">
-					description = <"Kategorisering av denne episoden av problemet/diagnosen.">
-					comment = <"For eksempel: \"Ny\" gjør det mulig for klinikere å holde et nytt og akutt tilfelle av mellomørebetennelse som har oppstått raskt etter en tidligere diagnose adskilt fra en pågående kronisk mellomørebetennelse. Behandling av gjentakende, nye og akutte episoder av en tilstand kan være vesentlig forskjellig fra behandling av den samme tilstanden som ikke bedres eller ikke responderer på behandling. I mange situasjoner vil det ikke være mulig for klinikeren å skille dem fra hverandre, og i disse tilfellene vil \"Ubestemmelig\" være relevant.">
-				>
-				["at0003"] = <
-					text = <"Aktiv/inaktiv?">
-					description = <"Kategori som støtter inndeling av problemer og diagnoser i lister over aktive og inaktive problemer.">
-					comment = <"Elementene Aktiv/inaktiv og Nåværende/tidligere har lignende klinisk innflytelse, men representerer noe forskjellig betydning. Begge brukes aktivt i forskjellige kliniske sammenhenger, men som regel ikke sammen. Dersom Nåværende/tidligere er registrert, er dette elementet sannsynligvis overflødig. Et unntak der en tilstand kan være både nåværende og inaktivt, er astma som ikke forårsaker akutte symptomer.">
 				>
 				["at0004"] = <
 					text = <"Diagnostisk status">
@@ -990,22 +664,6 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 				["at0018"] = <
 					text = <"Fastslått">
 					description = <"Endelig underbygget diagnose, basert på en høy grad av klinisk sikkerhet, som kan omfatte klinisk evidens fra undersøkelser. Den er ikke forventet å endres.">
-				>
-				["at0026"] = <
-					text = <"Aktiv">
-					description = <"Problemet eller diagnosen er aktivt og kliniske relevant ved registreringstidspunktet.">
-				>
-				["at0027"] = <
-					text = <"Inaktiv">
-					description = <"Problemet eller diagnosen er ikke fullstendig bedret, men er inaktivt eller mindre relevant for den nåværende kliniske sammenhengen.">
-				>
-				["at0034"] = <
-					text = <"Ny">
-					description = <"En ny forekomst av enten et nytt eller et eksisterende problem eller diagnose. Et flagg for \"Første forekomst\" kan registreres separat for å skille den første forekomsten fra påfølgende.">
-				>
-				["at0035"] = <
-					text = <"Pågående">
-					description = <"Problemet eller diagnosen er pågående, uten at det har forekommet nye episoder.">
 				>
 				["at0060"] = <
 					text = <"Nåværende/tidligere?">
@@ -1033,10 +691,6 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 					text = <"Bidiagnose">
 					description = <"Et problem eller diagnose som opptrer samtidig som hoveddiagnosen. Kan også omtales som en komorbiditet.">
 				>
-				["at0070"] = <
-					text = <"Ubestemmelig">
-					description = <"Det er ikke mulig å bestemme hvorvidt denne forekomsten av problemet eller diagnosen er ny eller pågående.">
-				>
 				["at0071"] = <
 					text = <"Forekomst">
 					description = <"Kategorisering av forekomsten for dette problemet eller diagnosen.">
@@ -1055,23 +709,6 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 					text = <"Avkreftet">
 					description = <"Diagnosen har blitt klinisk revurdert, eller er motbevist med en høy grad av klinisk sikkerhet. Denne statusen brukes for å korrigere feil i journalen.">
 				>
-				["at0089"] = <
-					text = <"Remisjonsstatus">
-					description = <"Remisjonsstatus for en ikke-kurerbar diagnose.">
-					comment = <"For eksempel status for kreft eller en hematologisk diagnose.">
-				>
-				["at0090"] = <
-					text = <"I remisjon">
-					description = <"Ingen pågående sykdomstegn eller symptomer på sykdommen er identifisert.">
-				>
-				["at0092"] = <
-					text = <"Ikke i remisjon">
-					description = <"Ingen reduksjon av sykdomstegn eller symptomer er identifisert.">
-				>
-				["at0093"] = <
-					text = <"Ubestemmelig">
-					description = <"Det er ikke mulig å bestemme om sykdomstegnene eller symptomene av sykdommen er reduserte.">
-				>
 				["at0095"] = <
 					text = <"Første forekomst">
 					description = <"Dette er den første forekomsten av dette problemet eller diagnosen.">
@@ -1079,47 +716,6 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 				["at0096"] = <
 					text = <"Tilbakefall">
 					description = <"Ny forekomst av det samme problemet eller diagnosen etter at en tidligere episode var bedret.">
-				>
-				["at0098"] = <
-					text = <"Kontrollnivå">
-					description = <"Kategorisering av kontrollnivå den nåværende behandlingen har over problemet eller diagnosen.">
-				>
-				["at0099"] = <
-					text = <"Godt kontrollert">
-					description = <"Problemet eller diagnosen er godt kontrollert av nåværende behandling.">
-				>
-				["at0100"] = <
-					text = <"Ubestemmelig">
-					description = <"Det er ikke mulig å bestemme om nåværende behandling holder problemet eller diagnosen under kontroll.">
-				>
-				["at0101"] = <
-					text = <"Ikke kontrollert">
-					description = <"Problemet eller diagnosen er ikke kontrollert av nåværende behandling.">
-				>
-				["at0102"] = <
-					text = <"Progresjon">
-					description = <"Kategorisering av progresjonen gjennom forløpet til et kronisk problem eller diagnose.">
-				>
-				["at0103"] = <
-					text = <"I bedring">
-					description = <"Problemet eller diagnosen er i bedring.]">
-				>
-				["at0104"] = <
-					text = <"Stabil">
-					description = <"Problemet eller diagnosen er uendret.">
-				>
-				["at0105"] = <
-					text = <"I forverring">
-					description = <"Problemet eller diagnosen er i forverring.">
-				>
-				["at0106"] = <
-					text = <"Ubestemmelig">
-					description = <"Det er ikke mulig å bestemme problemet eller diagnosens progresjon.">
-				>
-				["at0107"] = <
-					text = <"Årsak for en pågående episode">
-					description = <"Årsak for at problemet eller diagnosen ikke bedres som forventet.">
-					comment = <"For eksempel: ufullstendig eller feilslått behandling.">
 				>
 				["at0108"] = <
 					text = <"Ja">
@@ -1133,6 +729,10 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 					text = <"Kommentar">
 					description = <"Ytterligere fritekst om problem/diagnose-kvalifikatorverdiene som ikke fanges opp i andre felt.">
 				>
+				["at0111"] = <
+					text = <"*Established Mental Health Diagnosis (en)">
+					description = <"">
+				>
 			>
 		>
 		["ko"] = <
@@ -1140,16 +740,6 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 				["at0000"] = <
 					text = <"문제/진단 한정자">
 					description = <"특정 문제 또는 진단을 위한 문맥 또는 시간적 한정자.">
-				>
-				["at0001"] = <
-					text = <"삽화">
-					description = <"확인된 문제/진단에 대한 삽화의 범주.">
-					comment = <"예: '새로운'은 임상의가 치료되지 않았거나 진행 중인 만성중이염 진단과 이전 진단 이후 바로 발생한 것일 수 있는 새로운 급성 중이염 삽화를 구별할 수 있도록 함. 재발이면서 새로이 발생한 급성 상태의 삽화에 대한 치료는 치료가 안됐거나 치료에 반응하지 않는 같은 상태와 상당히 다를 것임. 많은 상황에서, 임상의는 구별할 수 없을 것이며 그래서 결정불능이 적절할 수도 있음.">
-				>
-				["at0003"] = <
-					text = <"활성/비활성">
-					description = <"문제와 진단을 활성 또는 비활성 문제 목록으로 구분하는 것을 지원하기 위한 범주.">
-					comment = <"활성/비활성 그리고 현재/과거 데이터 엘리먼트는 비슷한 임상적 영향을 가지지만 약간 다른 의미를 표현함. 둘 다 상이한 임상 환경에서 활발하게 사용되지만 보통 같이 사용되지는 않음. 현재/과거 한정자가 기록되어 있다면, 이 데이터 엘리먼트는 중복일 가능성이 있음. 상태가 현재일 수는 있지만 비활성인 예외 경우는 급성 증상을 일으키지 않는 천식임.">
 				>
 				["at0004"] = <
 					text = <"진단 상태">
@@ -1168,22 +758,6 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 				["at0018"] = <
 					text = <"확립">
 					description = <"검사결과에 따른 임상 근거를 포함할 수 있는, 높은 수준의 임상적 확실성에 기반한 최종의 실질적인 진단. 변경될 것으로 기대되지 않음.">
-				>
-				["at0026"] = <
-					text = <"활성">
-					description = <"현재 활성화되어 있고 임상적으로 관련된 문제 또는 진단">
-				>
-				["at0027"] = <
-					text = <"비활성">
-					description = <"완치된 문제 또는 진단은 아니지만 비활성 상태이거나 현재 임상 상황에 거의 관련성이 없다고 느껴짐.">
-				>
-				["at0034"] = <
-					text = <"새로운">
-					description = <"새로 또는 존재하는 문제 또는 진단의 새로운 발생. '처음 발생'을 위한 표시는 다른 발생으로 부터 처음 발생을 구별하기 위해 구분해서 기록될 수 있음.">
-				>
-				["at0035"] = <
-					text = <"진행중">
-					description = <"이슈 또는 문제, 진단이 새로운 급성 삽화의 발생없이 진행 중임.">
 				>
 				["at0060"] = <
 					text = <"현재/과거?">
@@ -1213,10 +787,6 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 					text = <"이차 진단">
 					description = <"일차 문제 또는 진단과 동시에 발생한 문제 또는 진단. 동반 상태로 알려질 수도 있음.">
 				>
-				["at0070"] = <
-					text = <"결정불능">
-					description = <"문제 또는 진단의 발생이 새로운 것인지 진행 중인 것인지 구별하는 것이 불가능함.">
-				>
 				["at0071"] = <
 					text = <"*Occurrence (en)">
 					description = <"*Category of the occurrence for this problem or diagnosis. (en)">
@@ -1235,23 +805,6 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 					text = <"반증">
 					description = <"이전에 기록된 진단이 임상적으로 재평가되고 높은 수준의 임상적 확실성으로 반증됨. 이 상태는 건강 기록내의 오류를 교정하는데 사용됨.">
 				>
-				["at0089"] = <
-					text = <"관해 상태">
-					description = <"불치병 진단의 관해 상태.">
-					comment = <"예: 암 또는 혈액학적 진단 상태.">
-				>
-				["at0090"] = <
-					text = <"완전 관해">
-					description = <"확인되는 진행 중인 질병의 증상이나 징후가 없음.">
-				>
-				["at0092"] = <
-					text = <"관해 아님">
-					description = <"질병의 증상이나 증후의 감소가 확인되지 않음.">
-				>
-				["at0093"] = <
-					text = <"결정불능">
-					description = <"질병의 증상이나 증후의 감소가 있는지 결정하는 것이 불가능함.">
-				>
 				["at0095"] = <
 					text = <"*First occurrence (en)">
 					description = <"*This is the first ever occurrence of this problem or diagnosis. (en)">
@@ -1259,47 +812,6 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 				["at0096"] = <
 					text = <"*Recurrence (en)">
 					description = <"*New occurrence of the same problem or diagnosis after a previous episode was resolved. (en)">
-				>
-				["at0098"] = <
-					text = <"*Level of control (en)">
-					description = <"*Category of the level of control of the problem or diagnosis by the current management. (en)">
-				>
-				["at0099"] = <
-					text = <"*Controlled (en)">
-					description = <"*The problem or diagnosis is controlled by current management. (en)">
-				>
-				["at0100"] = <
-					text = <"*Indeterminate (en)">
-					description = <"*It is not possible to determine if the problem or diagnosis is controlled by current management. (en)">
-				>
-				["at0101"] = <
-					text = <"*Not controlled (en)">
-					description = <"*The problem or diagnosis is not controlled by current management. (en)">
-				>
-				["at0102"] = <
-					text = <"*Progression (en)">
-					description = <"*Category of the progression through the course of a chronic problem or diagnosis. (en)">
-				>
-				["at0103"] = <
-					text = <"*Improving (en)">
-					description = <"*The problem or diagnosis is improving. (en)">
-				>
-				["at0104"] = <
-					text = <"*Stable (en)">
-					description = <"*The problem or diagnosis is unchanged. (en)">
-				>
-				["at0105"] = <
-					text = <"*Worsening (en)">
-					description = <"*The problem or diagnosis is worsening. (en)">
-				>
-				["at0106"] = <
-					text = <"*Indeterminate (en)">
-					description = <"*It is not possible to determine the progression of the problem or diagnosis. (en)">
-				>
-				["at0107"] = <
-					text = <"*Reason for an ongoing episode (en)">
-					description = <"*Reason for a problem or diagnosis not resolving as expected. (en)">
-					comment = <"*For example: incomplete or failed treatment. (en)">
 				>
 				["at0108"] = <
 					text = <"*Yes (en)">
@@ -1313,6 +825,10 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 					text = <"*Comment (en)">
 					description = <"*Additional narrative about the Problem/Diagnosis qualifier values, not captured in other fields. (en)">
 				>
+				["at0111"] = <
+					text = <"*Established Mental Health Diagnosis (en)">
+					description = <"">
+				>
 			>
 		>
 		["de"] = <
@@ -1320,16 +836,6 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 				["at0000"] = <
 					text = <"Problem/Diagnose Attribut">
 					description = <"Kontextabhängiges oder temporäres Attribut für ein bestimmtes Problem oder eine bestimmte Diagnose.">
-				>
-				["at0001"] = <
-					text = <"Episode">
-					description = <"Die Kategorie der Episode für das identifizierte Problem oder die identifizierte Diagnose.">
-					comment = <"Zum Beispiel: Die Episode \"Neu\" ermöglicht es Klinikern eine neue akute Episode von Otitis media, welche möglicherweise kurz nach einer früheren Otitis media-Diagnose aufgetreten ist, von einer ungelösten oder \"andauernden\" chronischen Diagnose Otitis media zu unterscheiden. Die Behandlung von wiederkehrenden, neuen und akuten Episoden einer Erkrankung kann sich erheblich von der Behandlung der gleichen Erkrankung, welche noch nicht genesen ist, oder keine Reaktion auf eine bestimmte Behandlung gezeigt hat, unterscheiden. In vielen Fällen kann der Kliniker dies nicht sagen und eine Einteilung der Episode als \"Unbestimmt\" könnte angemessen sein.">
-				>
-				["at0003"] = <
-					text = <"Aktiv / Inaktiv?">
-					description = <"Eine Kategorie, die die Aufteilung der Problemlisten von Problemen und Diagnosen in aktiv und inaktiv unterstützt.">
-					comment = <"Die Aktiv/Inaktiv und Aktuell/Vergangen Datenelemente haben einen ähnlichen klinischen Einfluss, repräsentieren aber eine etwas andere Semantik. Beide werden aktiv in verschiedenen klinischen Rahmen benutzt, aber normalerweise nicht zusammen. Wenn ein Aktuell/Vergangen Attribut dokumentiert wird, dann ist dieses Datenelement wahrscheinlich redundant. Eine Ausnahme ist ein Zustand der aktuell, aber inaktiv ist. Ein Beispiel dafür ist Asthma, welches keine akuten Symptome auslöst.">
 				>
 				["at0004"] = <
 					text = <"Diagnosestatus">
@@ -1348,22 +854,6 @@ Vorläufige Diagnose oder Diagnose in Bearbeitung soll die wahrscheinlichste Wah
 				["at0018"] = <
 					text = <"Festgestellt">
 					description = <"Die endgültige Diagnose, welche auf einem hohen Level von klinischer Sicherheit beruht, die klinische Anhaltspunkte von Testergebnissen beinhalten kann. Es ist nicht zu erwarten, dass die Diagnose sich noch ändert.">
-				>
-				["at0026"] = <
-					text = <"Aktiv">
-					description = <"Das Problem oder die Diagnose ist derzeit aktiv und klinisch relevant.">
-				>
-				["at0027"] = <
-					text = <"Inaktiv">
-					description = <"Das Problem oder die Diagnose ist nicht komplett behoben, ist aber inaktiv oder ist weniger relevant in dem gegenwärtigen klinischen Kontext.">
-				>
-				["at0034"] = <
-					text = <"Neu">
-					description = <"Ein neues Auftreten eines neuen oder bereits existierenden Problems oder einer Diagnose. Um das erste Auftreten von anderen Vorkommnissen zu unterscheiden, kann eine Kennzeichnung für das \"Erstes Auftreten\" separat dargestellt werden.">
-				>
-				["at0035"] = <
-					text = <"Andauernd">
-					description = <"Das Problem oder die Diagnose setzt sich fort, ohne dass neue oder akute Episoden auftreten.">
 				>
 				["at0060"] = <
 					text = <"Aktuell/Vergangen?">
@@ -1392,10 +882,6 @@ Falls es nötig sein sollte, erlaubt das Freitextfeld die Benutzung von lokalen 
 					text = <"Nebendiagnose">
 					description = <"Ein Problem oder eine Diagnose, die zur gleichen Zeit auftritt wie die Hauptdiagnose. Könnte auch als komorbider Zustand bezeichnet werden.">
 				>
-				["at0070"] = <
-					text = <"Unbestimmt">
-					description = <"Es ist nicht möglich zu überprüfen, ob die Episode des Problems oder der Diagnose neu oder andauernd ist.">
-				>
 				["at0071"] = <
 					text = <"Auftreten">
 					description = <"Die Kategorie des Auftretens des Problems oder der Diagnose.">
@@ -1414,23 +900,6 @@ Falls es nötig sein sollte, erlaubt das Freitextfeld die Benutzung von lokalen 
 					text = <"Widerlegt">
 					description = <"Die zuvor gestellte Diagnose wurde klinisch neu bewertet oder mit einem hohen Level an klinischer Sicherheit widerlegt. Dieser Status wird zur Korrektur von Fehlern in der Gesundheitsakte benutzt.">
 				>
-				["at0089"] = <
-					text = <"Remissionsstatus">
-					description = <"Der Remissionsstatus einer nicht heilbaren Krankheit.">
-					comment = <"Zum Beispiel: Der Status von Krebs oder einer hämatologischen Diagnose.">
-				>
-				["at0090"] = <
-					text = <"In Remission">
-					description = <"Keine anhaltenden Anzeichen oder Symptome der Krankheit konnten festgestellt werden.">
-				>
-				["at0092"] = <
-					text = <"Nicht in Remission">
-					description = <"Keine Minderung der Anzeichen oder der Symptome der Krankheit konnte festgestellt werden.">
-				>
-				["at0093"] = <
-					text = <"Unbestimmt">
-					description = <"Es ist nicht möglich zu überprüfen, ob eine Minderung der Anzeichen oder der Symptome der Krankheit festgestellt wurde.">
-				>
 				["at0095"] = <
 					text = <"Erstes Auftreten">
 					description = <"Dies ist das erste Auftreten dieses Problems oder dieser Diagnose.">
@@ -1438,47 +907,6 @@ Falls es nötig sein sollte, erlaubt das Freitextfeld die Benutzung von lokalen 
 				["at0096"] = <
 					text = <"Rezidiv">
 					description = <"Das erneute Auftreten des gleichen Problems oder der gleichen Diagnose nach einer vorherigen behobenen Episode.">
-				>
-				["at0098"] = <
-					text = <"Kontrollniveau">
-					description = <"Kategorie des Kontrollniveaus des Problems oder der Diagnose durch das aktuelle Management.">
-				>
-				["at0099"] = <
-					text = <"Kontrolliert">
-					description = <"Das Problem oder die Diagnose wird vom aktuellen Management kontrolliert.">
-				>
-				["at0100"] = <
-					text = <"Unbestimmt">
-					description = <"Es ist nicht möglich festzustellen, ob das Problem oder die Diagnose vom derzeitigen Management kontrolliert wird.">
-				>
-				["at0101"] = <
-					text = <"Nicht kontrolliert">
-					description = <"Das Problem oder die Diagnose wird nicht vom derzeitigen Management kontrolliert.">
-				>
-				["at0102"] = <
-					text = <"Progression">
-					description = <"Kategorie des Verlaufs eines chronischen Problems oder der Diagnose.">
-				>
-				["at0103"] = <
-					text = <"Verbesserung">
-					description = <"Das Problem oder die Diagnose verbessert sich.">
-				>
-				["at0104"] = <
-					text = <"Stabil">
-					description = <"Das Problem oder die Diagnose ist unverändert.">
-				>
-				["at0105"] = <
-					text = <"Verschlechterung">
-					description = <"Das Problem oder die Diagnose verschlechtert sich.">
-				>
-				["at0106"] = <
-					text = <"Unbestimmt">
-					description = <"Es ist nicht möglich, den Fortschritt des Problems oder der Diagnose zu bestimmen.">
-				>
-				["at0107"] = <
-					text = <"Grund für eine andauernde Episode.">
-					description = <"Grund für ein Problem oder eine Diagnose, die nicht wie erwartet behoben wird.">
-					comment = <"Zum Beispiel: unvollständige oder erfolglose Behandlung.">
 				>
 				["at0108"] = <
 					text = <"Ja">
@@ -1492,6 +920,10 @@ Falls es nötig sein sollte, erlaubt das Freitextfeld die Benutzung von lokalen 
 					text = <"Kommentar">
 					description = <"Zusätzliche Erläuterung zu den Werten des Problem/Diagnose Attributs, die nicht in anderen Feldern erfasst werden.">
 				>
+				["at0111"] = <
+					text = <"*Established Mental Health Diagnosis (en)">
+					description = <"">
+				>
 			>
 		>
 		["it"] = <
@@ -1499,16 +931,6 @@ Falls es nötig sein sollte, erlaubt das Freitextfeld die Benutzung von lokalen 
 				["at0000"] = <
 					text = <"Qualificatore di problema/diagnosi.">
 					description = <"Qualificatore di contesto o di tempo per uno specifico problema o una specifica diagnosi.">
-				>
-				["at0001"] = <
-					text = <"Episodicità">
-					description = <"Categoria di questo episodio per il problema/diagnosi identificati. ">
-					comment = <"Ad esempio: \"Nuovo\" permetterà ai medici di distinguere un nuovo episodio acuto di otite media che può essere sorto subito dopo una diagnosi precedente, per distinguerlo da una diagnosi irrisolta o \"in corso\" di otite media cronica. Il trattamento di episodi ricorrenti, nuovi e acuti di una patologia, può differire significativamente dalla stessa patologia che non si risolve o non risponde al trattamento. In molte situazioni il clinico non sarà in grado di dirlo, e quindi indeterminato può essere appropriato.">
-				>
-				["at0003"] = <
-					text = <"Attivo/Inattivo?">
-					description = <"Categoria che supporta la divisione di problemi e diagnosi in elenchi di problemi Attivi o Inattivi.">
-					comment = <"I dati Attivo/Inattivo e Corrente/Passato hanno un impatto clinico simile, ma rappresentano una semantica leggermente diversa. Entrambi sono utilizzati attivamente in contesti clinici diversi, ma di solito non insieme. Se viene registrato un qualificatore Corrente/Passato, è probabile che questo dato sia ridondante. Un'eccezione in cui una condizione può essere corrente ma inattiva è l'asma che non causa sintomi acuti.">
 				>
 				["at0004"] = <
 					text = <"Stato diagnostico">
@@ -1528,22 +950,6 @@ Le diagnosi preliminari o di lavoro sono destinate a rappresentare la scelta pi�
 				["at0018"] = <
 					text = <"Definitiva">
 					description = <"Diagnosi definitiva documentata, basata su un alto livello di certezza clinica, che può includere l'evidenza clinica dei risultati dei test. Non ci si aspetta che cambi.">
-				>
-				["at0026"] = <
-					text = <"Attivo">
-					description = <"Il problema o la diagnosi sono attualmente attivi e clinicamente rilevanti.">
-				>
-				["at0027"] = <
-					text = <"Inattivo">
-					description = <"Il problema o la diagnosi non sono completamente risolti, ma sono inattivi o ritenuti meno rilevanti nel contesto clinico attuale.">
-				>
-				["at0034"] = <
-					text = <"Nuovo">
-					description = <"Una nuova insorgenza di un problema o di una diagnosi nuova o già esistente. Un flag per \"Prima occorrenza\" può essere registrato separatamente per distinguere la prima da altre occorrenze.">
-				>
-				["at0035"] = <
-					text = <"In corso">
-					description = <"Il fenomeno, il problema o la diagnosi continua, senza che si verifichino nuovi episodi acuti.">
 				>
 				["at0060"] = <
 					text = <"Corrente/Passato?">
@@ -1572,10 +978,6 @@ Le diagnosi preliminari o di lavoro sono destinate a rappresentare la scelta pi�
 					text = <"Diagnosi secondaria">
 					description = <"Un problema o una diagnosi che si verifica contemporaneamente al problema o alla diagnosi primaria. Può anche essere conosciuta come una condizione di comorbidità.">
 				>
-				["at0070"] = <
-					text = <"Indeterminato">
-					description = <"Non è possibile determinare se il problema o la diagnosi sono nuovi o in corso.">
-				>
 				["at0071"] = <
 					text = <"Occorrenza">
 					description = <"Categoria di occorrenza per questo problema o diagnosi.">
@@ -1594,23 +996,6 @@ Le diagnosi preliminari o di lavoro sono destinate a rappresentare la scelta pi�
 					text = <"Confutato">
 					description = <"La diagnosi precedentemente registrata è stata clinicamente rivalutata o smentita con un alto livello di certezza clinica. Questo stato viene utilizzato per correggere un errore nella cartella clinica.">
 				>
-				["at0089"] = <
-					text = <"Stato di recesso">
-					description = <"Stato di recesso di una diagnosi incurabile.">
-					comment = <"Per esempio: lo stato di un cancro o la diagnosi ematologica.">
-				>
-				["at0090"] = <
-					text = <"In recesso">
-					description = <"Non sono stati identificati segni o sintomi in corso della malattia.">
-				>
-				["at0092"] = <
-					text = <"Non in recesso">
-					description = <"Non è stata identificata alcuna diminuzione dei segni o dei sintomi della malattia.">
-				>
-				["at0093"] = <
-					text = <"Indeterminato">
-					description = <"Non è possibile determinare se ci sia stata una diminuzione dei segni o dei sintomi della malattia.">
-				>
 				["at0095"] = <
 					text = <"Prima occorrenza">
 					description = <"Questa è la prima occorrenza di questo problema o questa diagnosi.">
@@ -1618,47 +1003,6 @@ Le diagnosi preliminari o di lavoro sono destinate a rappresentare la scelta pi�
 				["at0096"] = <
 					text = <"Ricorrenza">
 					description = <"Nuova comparsa dello stesso problema o diagnosi dopo un episodio precedente è stata risolta.">
-				>
-				["at0098"] = <
-					text = <"*Level of control (en)">
-					description = <"*Category of the level of control of the problem or diagnosis by the current management. (en)">
-				>
-				["at0099"] = <
-					text = <"*Controlled (en)">
-					description = <"*The problem or diagnosis is controlled by current management. (en)">
-				>
-				["at0100"] = <
-					text = <"*Indeterminate (en)">
-					description = <"*It is not possible to determine if the problem or diagnosis is controlled by current management. (en)">
-				>
-				["at0101"] = <
-					text = <"*Not controlled (en)">
-					description = <"*The problem or diagnosis is not controlled by current management. (en)">
-				>
-				["at0102"] = <
-					text = <"*Progression (en)">
-					description = <"*Category of the progression through the course of a chronic problem or diagnosis. (en)">
-				>
-				["at0103"] = <
-					text = <"*Improving (en)">
-					description = <"*The problem or diagnosis is improving. (en)">
-				>
-				["at0104"] = <
-					text = <"*Stable (en)">
-					description = <"*The problem or diagnosis is unchanged. (en)">
-				>
-				["at0105"] = <
-					text = <"*Worsening (en)">
-					description = <"*The problem or diagnosis is worsening. (en)">
-				>
-				["at0106"] = <
-					text = <"*Indeterminate (en)">
-					description = <"*It is not possible to determine the progression of the problem or diagnosis. (en)">
-				>
-				["at0107"] = <
-					text = <"*Reason for an ongoing episode (en)">
-					description = <"*Reason for a problem or diagnosis not resolving as expected. (en)">
-					comment = <"*For example: incomplete or failed treatment. (en)">
 				>
 				["at0108"] = <
 					text = <"*Yes (en)">
@@ -1672,6 +1016,10 @@ Le diagnosi preliminari o di lavoro sono destinate a rappresentare la scelta pi�
 					text = <"*Comment (en)">
 					description = <"*Additional narrative about the Problem/Diagnosis qualifier values, not captured in other fields. (en)">
 				>
+				["at0111"] = <
+					text = <"*Established Mental Health Diagnosis (en)">
+					description = <"">
+				>
 			>
 		>
 		["sv"] = <
@@ -1679,16 +1027,6 @@ Le diagnosi preliminari o di lavoro sono destinate a rappresentare la scelta pi�
 				["at0000"] = <
 					text = <"Problem/diagnoskvalificering">
 					description = <"Kontextuell eller temporal kvalificering för ett specifikt problem eller diagnos.">
-				>
-				["at0001"] = <
-					text = <"Episodicitet">
-					description = <"Kategori av episod för det identifierade problemet/diagnosen.">
-					comment = <"Till exempel: \"Nytt\" gör det möjligt för kliniker att skilja en ny, akut episod av mediaotit som kan ha uppstått strax efter en tidigare diagnos, att skilja den från en olöst eller \"Pågående\" diagnos av kronisk mediaotit. Behandling av återkommande, nya och akuta episoder av ett tillstånd kan skilja sig avsevärt från samma tillstånd som inte svarar på behandlingen. I många situationer kommer läkaren inte att kunna fastställa något, och obestämd kan vara lämpligt.">
-				>
-				["at0003"] = <
-					text = <"Aktiv/Inaktiv?">
-					description = <"Kategori som stöder uppdelning av problem och diagnoser i aktiva eller inaktiva problemlistor.">
-					comment = <"De aktiva/inaktiva och aktuella/tidigare dataelementen har liknande klinisk påverkan men representerar en något annorlunda semantik. Båda används aktivt i olika kliniska miljöer, men vanligtvis inte tillsammans. Om en nuvarande/tidigare kvalificering registreras är det sannolikt att detta dataelement är överflödigt. Ett undantag där ett tillstånd kan vara aktuellt men inaktivt är astma som inte orsakar akuta symtom.">
 				>
 				["at0004"] = <
 					text = <"Diagnosstatus">
@@ -1707,22 +1045,6 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 				["at0018"] = <
 					text = <"Fastställd">
 					description = <"En slutlig motiverad diagnos, baserad på en hög nivå av klinisk säkerhet, som kan inkludera kliniska bevis från testresultaten. Det förväntas inte förändras.">
-				>
-				["at0026"] = <
-					text = <"Aktiv">
-					description = <"Problemet eller diagnosen är för närvarande aktiv och kliniskt relevant.">
-				>
-				["at0027"] = <
-					text = <"Inaktiv">
-					description = <"Problemet eller diagnosen har inte helt gått tillbaka men är inaktiv eller känns mindre relevant för det nuvarande kliniska sammanhanget.">
-				>
-				["at0034"] = <
-					text = <"Ny">
-					description = <"En ny förekomst av antingen ett nytt eller befintligt problem eller en diagnos. En flagga för \"Första förekomst\" kan spelas in separat för att skilja den första från andra händelser.">
-				>
-				["at0035"] = <
-					text = <"Pågående">
-					description = <"Problemet eller diagnosen fortsätter utan att nya, akuta episoder inträffar.">
 				>
 				["at0060"] = <
 					text = <"Nuvarande/förflutna?">
@@ -1751,10 +1073,6 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 					text = <"Bidiagnos">
 					description = <"Ett problem eller en diagnos som inträffar samtidigt som det primära problemet eller diagnosen. Kan också vara känt som komorbida tillstånd.">
 				>
-				["at0070"] = <
-					text = <"Obestämd">
-					description = <"Det är inte möjligt att avgöra om denna förekomst av problemet eller diagnosen är ny eller pågående.">
-				>
 				["at0071"] = <
 					text = <"Förekomst">
 					description = <"Kategori av förekomsten för detta problem eller diagnos.">
@@ -1773,23 +1091,6 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 					text = <"Motbevisat">
 					description = <"Den tidigare registrerade diagnosen har omprövats kliniskt eller motbevisats med hög klinisk säkerhet. Denna status används för att korrigera ett fel i journalen.">
 				>
-				["at0089"] = <
-					text = <"Remission">
-					description = <"Status för remission av en obotlig diagnos.">
-					comment = <"Till exempel: status för cancer eller hematologisk diagnos.">
-				>
-				["at0090"] = <
-					text = <"I remission">
-					description = <"Inga pågående tecken eller symtom på sjukdomen har identifierats.">
-				>
-				["at0092"] = <
-					text = <"Inte i remission">
-					description = <"Ingen minskning av tecken eller symtom på sjukdomen har identifierats.">
-				>
-				["at0093"] = <
-					text = <"Obestämd">
-					description = <"Det är inte möjligt att avgöra om det har skett en minskning av tecken eller symtom på sjukdomen.">
-				>
 				["at0095"] = <
 					text = <"Första förekomsten">
 					description = <"Detta är den första förekomsten av detta problem eller diagnos.">
@@ -1797,47 +1098,6 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 				["at0096"] = <
 					text = <"Upprepning">
 					description = <"Ny förekomst av samma problem eller diagnos efter att ett tidigare avsnitt löstes.">
-				>
-				["at0098"] = <
-					text = <"Level of control">
-					description = <"*Category of the level of control of the problem or diagnosis by the current management. (en)">
-				>
-				["at0099"] = <
-					text = <"Controlled">
-					description = <"*The problem or diagnosis is controlled by current management. (en)">
-				>
-				["at0100"] = <
-					text = <"Indeterminate">
-					description = <"*It is not possible to determine if the problem or diagnosis is controlled by current management. (en)">
-				>
-				["at0101"] = <
-					text = <"Not controlled">
-					description = <"*The problem or diagnosis is not controlled by current management. (en)">
-				>
-				["at0102"] = <
-					text = <"Progression">
-					description = <"*Category of the progression through the course of a chronic problem or diagnosis. (en)">
-				>
-				["at0103"] = <
-					text = <"Improving">
-					description = <"*The problem or diagnosis is improving. (en)">
-				>
-				["at0104"] = <
-					text = <"Stable">
-					description = <"*The problem or diagnosis is unchanged. (en)">
-				>
-				["at0105"] = <
-					text = <"Worsening">
-					description = <"*The problem or diagnosis is worsening. (en)">
-				>
-				["at0106"] = <
-					text = <"Indeterminate">
-					description = <"*It is not possible to determine the progression of the problem or diagnosis. (en)">
-				>
-				["at0107"] = <
-					text = <"*Reason for an ongoing episode (en)">
-					description = <"*Reason for a problem or diagnosis not resolving as expected. (en)">
-					comment = <"*For example: incomplete or failed treatment. (en)">
 				>
 				["at0108"] = <
 					text = <"*Yes (en)">
@@ -1851,6 +1111,10 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 					text = <"*Comment (en)">
 					description = <"*Additional narrative about the Problem/Diagnosis qualifier values, not captured in other fields. (en)">
 				>
+				["at0111"] = <
+					text = <"*Established Mental Health Diagnosis (en)">
+					description = <"">
+				>
 			>
 		>
 		["zh"] = <
@@ -1858,16 +1122,6 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 				["at0000"] = <
 					text = <"*Problem/Diagnosis qualifier(en)">
 					description = <"*Contextual or temporal qualifier for a specified problem or diagnosis.(en)">
-				>
-				["at0001"] = <
-					text = <"*Episodicity(en)">
-					description = <"*Category of this episode for the identified problem/diagnosis.(en)">
-					comment = <"*For example: 'New' will enable clinicians to distinguish a new, acute episode of otitis media that may have arisen soon after a previous diagnosis, to distinguish it from an unresolved or 'Ongoing' diagnosis of chronic otitis media. Treatment of recurring, new and acute, episodes of a condition may differ significantly from the same condition that is not resolving or responding to treatment. In many situations the clinician will not be able to tell, and so indeterminate may be appropriate.(en)">
-				>
-				["at0003"] = <
-					text = <"*Active/Inactive?(en)">
-					description = <"*Category that supports division of problems and diagnoses into Active or Inactive problem lists.(en)">
-					comment = <"*The Active/Inactive and Current/Past data elements have similar clinical impact but represent slightly different semantics. Both are actively used in different clinical settings, but usually not together. If a Current/Past qualifier is recorded, then this data element is likely to be redundant. An exception where a condition can be current but inactive is asthma that is not causing acute symptoms.(en)">
 				>
 				["at0004"] = <
 					text = <"诊断状态">
@@ -1886,22 +1140,6 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 				["at0018"] = <
 					text = <"*Established(en)">
 					description = <"*Final substantiated diagnosis, based on a high level of clinical certainty, which may include clinical evidence from test results. It is not expected to change.(en)">
-				>
-				["at0026"] = <
-					text = <"*Active(en)">
-					description = <"*The problem or diagnosis is currently active and clinically relevant.(en)">
-				>
-				["at0027"] = <
-					text = <"*Inactive(en)">
-					description = <"*The problem or diagnosis is not completely resolved but is inactive or felt less relevant to the current clinical context.(en)">
-				>
-				["at0034"] = <
-					text = <"*New(en)">
-					description = <"*A new occurrence of either a new or existing problem or diagnosis. A flag for 'First occurrence' can be recorded separately to distinguish the first from other occurrences.(en)">
-				>
-				["at0035"] = <
-					text = <"*Ongoing(en)">
-					description = <"*The issue, problem or diagnosis continues, without new, acute episodes occurring.(en)">
 				>
 				["at0060"] = <
 					text = <"*Current/Past?(en)">
@@ -1930,10 +1168,6 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 					text = <"*Secondary diagnosis(en)">
 					description = <"*A problem or diagnosis that occurs at the same time as the primary problem or diagnosis. May also be known as a comorbid condition.(en)">
 				>
-				["at0070"] = <
-					text = <"*Indeterminate(en)">
-					description = <"*It is not possible to determine if this occurrence of the problem or diagnosis is new or ongoing.(en)">
-				>
 				["at0071"] = <
 					text = <"*Occurrence(en)">
 					description = <"*Category of the occurrence for this problem or diagnosis.(en)">
@@ -1952,23 +1186,6 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 					text = <"*Refuted(en)">
 					description = <"*The previously recorded diagnosis has been clinically reassessed or disproved with a high level of clinical certainty. This status is used to correct an error in the health record.(en)">
 				>
-				["at0089"] = <
-					text = <"缓解阶段">
-					description = <"不治之症的缓解状况。">
-					comment = <"比如：肿瘤或血液病的状态。">
-				>
-				["at0090"] = <
-					text = <"*In remission(en)">
-					description = <"*No ongoing signs or symptoms of the disease have been identified.(en)">
-				>
-				["at0092"] = <
-					text = <"*Not in remission(en)">
-					description = <"*No diminution of the signs or symptoms of the disease have been identified.(en)">
-				>
-				["at0093"] = <
-					text = <"*Indeterminate(en)">
-					description = <"*It is not possible to determine if there have been diminution of the signs or symptoms of the disease have been identified.(en)">
-				>
 				["at0095"] = <
 					text = <"*First occurrence(en)">
 					description = <"*This is the first ever occurrence of this problem or diagnosis.(en)">
@@ -1976,47 +1193,6 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 				["at0096"] = <
 					text = <"*Recurrence(en)">
 					description = <"*New occurrence of the same problem or diagnosis after a previous episode was resolved.(en)">
-				>
-				["at0098"] = <
-					text = <"Level of control">
-					description = <"*Category of the level of control of the problem or diagnosis by the current management. (en)">
-				>
-				["at0099"] = <
-					text = <"Controlled">
-					description = <"*The problem or diagnosis is controlled by current management. (en)">
-				>
-				["at0100"] = <
-					text = <"Indeterminate">
-					description = <"*It is not possible to determine if the problem or diagnosis is controlled by current management. (en)">
-				>
-				["at0101"] = <
-					text = <"Not controlled">
-					description = <"*The problem or diagnosis is not controlled by current management. (en)">
-				>
-				["at0102"] = <
-					text = <"Progression">
-					description = <"*Category of the progression through the course of a chronic problem or diagnosis. (en)">
-				>
-				["at0103"] = <
-					text = <"Improving">
-					description = <"*The problem or diagnosis is improving. (en)">
-				>
-				["at0104"] = <
-					text = <"Stable">
-					description = <"*The problem or diagnosis is unchanged. (en)">
-				>
-				["at0105"] = <
-					text = <"Worsening">
-					description = <"*The problem or diagnosis is worsening. (en)">
-				>
-				["at0106"] = <
-					text = <"Indeterminate">
-					description = <"*It is not possible to determine the progression of the problem or diagnosis. (en)">
-				>
-				["at0107"] = <
-					text = <"*Reason for an ongoing episode (en)">
-					description = <"*Reason for a problem or diagnosis not resolving as expected. (en)">
-					comment = <"*For example: incomplete or failed treatment. (en)">
 				>
 				["at0108"] = <
 					text = <"*Yes (en)">
@@ -2030,6 +1206,10 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 					text = <"*Comment (en)">
 					description = <"*Additional narrative about the Problem/Diagnosis qualifier values, not captured in other fields. (en)">
 				>
+				["at0111"] = <
+					text = <"*Established Mental Health Diagnosis (en)">
+					description = <"">
+				>
 			>
 		>
 		["zh-cn"] = <
@@ -2037,16 +1217,6 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 				["at0000"] = <
 					text = <"问题/诊断限定词">
 					description = <"针对指定问题/诊断的上下文/语境类限定词（contextual qualifier）或时间类限定词（temporal qualifier）。">
-				>
-				["at0001"] = <
-					text = <"节段特征">
-					description = <"所确定的问题/诊断的此次发生发展过程（episode，节段/事件）的类别。又可称为“节段特性”、“发生发展特征/特性”或“发作特征/特性”。">
-					comment = <"例如：“新发”将使得临床医生/临床医务人员能够分清可能在某一既往诊断之后不久已经出现的中耳炎（otitis media）的新的急性发作节段/事件/发生发展过程（acute episode），从而将其与慢性中耳炎的未解决或“持续存在之中”的诊断区别开来。某一疾病的复发性、新发性和急性发作节段的治疗可能与“并未在逐渐解决中”或“并无反应”的相同疾病的治疗有着很大不同。在很多情况下，临床医生/临床医务人员会无法做出确切的判断，因此“不明确”可能会是合适的选项。">
-				>
-				["at0003"] = <
-					text = <"现行有效还是无效？">
-					description = <"支持将问题和诊断划入“现行有效”还是“无效”问题清单的类别。">
-					comment = <"“当前还是既往”（Current/Past ）和“现行有效还是无效”（Active/Inactive）数据元具有相似的临床影响，但二者所表达的语义略有不同。两者在不同的临床场所环境下都有着活跃的运用，但通常并不会一起使用。如果记录了“当前还是既往”限定词，则当数据元可能就会变得多余。关于同一疾病可以为当前疾病但同时又处于无效状态，作为的特例就是，当前并未引发急性症状的哮喘。">
 				>
 				["at0004"] = <
 					text = <"诊断状态">
@@ -2066,22 +1236,6 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 				["at0018"] = <
 					text = <"最终">
 					description = <"基于高水平的临床确定性（其中可能包括来自检查/检验结果的临床证据）所获得的经过证实的最终诊断。最终诊断预计不会发生变化。">
-				>
-				["at0026"] = <
-					text = <"现行有效">
-					description = <"该问题或诊断现行有效且具有临床相关性/贴切性（clinically relevant）。">
-				>
-				["at0027"] = <
-					text = <"无效">
-					description = <"该问题或诊断尚未获得完全解决，但目前已属无效或者感觉其与当前的临床上下文/语境不太相关/不太贴合。">
-				>
-				["at0034"] = <
-					text = <"新发">
-					description = <"新发或现有问题或诊断的新的一次出现/发生。可以通过单独记录代表“首次出现/发生”的标志，将首次出现/发生与他次的出现/发生区分开来。">
-				>
-				["at0035"] = <
-					text = <"持续存在之中">
-					description = <"事项（issue）、问题或诊断持续存在，但并没有出现新的急性发作节段/发生发展过程（episode）。">
 				>
 				["at0060"] = <
 					text = <"当前还是既往？">
@@ -2111,10 +1265,6 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 					text = <"次要诊断">
 					description = <"与主要问题或诊断同时出现的问题或诊断。可能又将其称为共病（comorbid condition）。">
 				>
-				["at0070"] = <
-					text = <"不明确">
-					description = <"无法确定该问题或诊断的出现/发生（occurrence）究竟属于是新发还是在持续存在之中。">
-				>
 				["at0071"] = <
 					text = <"出现/发生类别">
 					description = <"该问题或诊断该次出现/发生的类别">
@@ -2133,23 +1283,6 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 					text = <"已否认">
 					description = <"以高度的临床确定性，已经从临床上予以重新评估且证明不成立的，先前所记录的诊断。此状态用于更正健康档案之中的错误。">
 				>
-				["at0089"] = <
-					text = <"缓解状态">
-					description = <"无法/不可治愈的诊断的缓解状态。">
-					comment = <"例如：癌症或血液学诊断的状态。">
-				>
-				["at0090"] = <
-					text = <"缓解中">
-					description = <"尚未发现该疾病（问题/诊断）的持续存在的症状或体征。">
-				>
-				["at0092"] = <
-					text = <"未缓解">
-					description = <"尚未发现该疾病（问题/诊断）的症状或体征有任何的减轻。">
-				>
-				["at0093"] = <
-					text = <"不明确">
-					description = <"无法确定该疾病（问题/诊断）的症状或体征是否有所减轻。">
-				>
 				["at0095"] = <
 					text = <"首次出现/发生">
 					description = <"这是该问题或诊断的首次出现/发生。">
@@ -2157,47 +1290,6 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 				["at0096"] = <
 					text = <"复发">
 					description = <"该问题或诊断在其上次发作节段得到解决之后新的一次出现/发生。">
-				>
-				["at0098"] = <
-					text = <"控制程度">
-					description = <"当前的管理措施对该问题或诊断的控制程度的类别。">
-				>
-				["at0099"] = <
-					text = <"受到控制">
-					description = <"该问题或诊断已受到当前管理措施的控制。">
-				>
-				["at0100"] = <
-					text = <"不明确">
-					description = <"无法确定该问题或诊断是否受到当前管理措施的控制。">
-				>
-				["at0101"] = <
-					text = <"不受控制">
-					description = <"该问题或诊断并未受到当前管理措施的控制。">
-				>
-				["at0102"] = <
-					text = <"进展">
-					description = <"在长期/慢性问题或诊断的整个发展进程当中的进展的类别。">
-				>
-				["at0103"] = <
-					text = <"正在改善">
-					description = <"该问题或诊断当前正在改善当中。">
-				>
-				["at0104"] = <
-					text = <"稳定">
-					description = <"该问题或诊断当前没有变化。">
-				>
-				["at0105"] = <
-					text = <"正在恶化">
-					description = <"该问题或诊断当前正在恶化当中。">
-				>
-				["at0106"] = <
-					text = <"不明确">
-					description = <"无法确定该问题或诊断的进展类别/进展情况。">
-				>
-				["at0107"] = <
-					text = <"持续存在之中节段的原因">
-					description = <"关于该问题或诊断未按预期获得逐渐解决的原因。">
-					comment = <"例如：不完整或失败的治疗。">
 				>
 				["at0108"] = <
 					text = <"是">
@@ -2211,13 +1303,16 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 					text = <"备注">
 					description = <"其他字段之中并未采集的，关于问题/诊断限定词取值的其他叙述。">
 				>
+				["at0111"] = <
+					text = <"*Established Mental Health Diagnosis (en)">
+					description = <"">
+				>
 			>
 		>
 	>
 	term_binding = <
 		["SNOMED-CT"] = <
 			items = <
-				["at0001"] = <[SNOMED-CT::288526004]>
 				["at0004"] = <[SNOMED-CT::106229004]>
 				["at0016"] = <[SNOMED-CT::148006]>
 				["at0017"] = <[SNOMED-CT::5558000]>
