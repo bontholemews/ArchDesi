@@ -269,14 +269,14 @@ Not to be used to represent diagnostic certainty - use the 'Diagnostic certainty
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"e3c068acc91e9c88b522a05094c39152">
+		["MD5-CAM-1.0.1"] = <"e27955f5463826e223f9c9e120bbd989">
 		["build_uid"] = <"4ec9fbd6-944e-483d-87af-f6838b692110">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomedct or info@snomed.org.">
 		["revision"] = <"2.0.1">
 	>
 
 definition
-	CLUSTER[at0000] matches {    -- Problem/Diagnosis qualifier
+	CLUSTER[at0000] matches {    -- Mental Health History
 		items cardinality matches {1..*; unordered} matches {
 			ELEMENT[at0111] occurrences matches {0..1} matches {    -- Established Mental Health Diagnosis
 				value matches {
@@ -308,46 +308,17 @@ definition
 					}
 				}
 			}
-			ELEMENT[at0071] occurrences matches {0..1} matches {    -- Occurrence
-				value matches {
-					DV_CODED_TEXT matches {
-						defining_code matches {
-							[local::
-							at0095,    -- First occurrence
-							at0096]    -- Recurrence
-						}
-					}
-					DV_TEXT matches {*}
-				}
-			}
-			ELEMENT[at0063] occurrences matches {0..*} matches {    -- Diagnostic category
-				value matches {
-					DV_CODED_TEXT matches {
-						defining_code matches {
-							[local::
-							at0064,    -- Principal diagnosis
-							at0066,    -- Secondary diagnosis
-							at0076]    -- Complication
-						}
-					}
-					DV_TEXT matches {*}
-				}
-			}
-			ELEMENT[at0073] occurrences matches {0..1} matches {    -- Admission diagnosis?
-				value matches {
-					DV_BOOLEAN matches {
-						value matches {true}
-					}
-					DV_CODED_TEXT matches {
-						defining_code matches {
-							[local::
-							at0108,    -- Yes
-							at0109]    -- No
-						}
-					}
-				}
-			}
 			ELEMENT[at0110] occurrences matches {0..1} matches {    -- Comment
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0112] occurrences matches {0..1} matches {    -- Previous MH Treatment
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0113] occurrences matches {0..1} matches {    -- Past Treatments
 				value matches {
 					DV_TEXT matches {*}
 				}
@@ -361,7 +332,7 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Problem/Diagnosis qualifier">
+					text = <"Mental Health History">
 					description = <"Contextual or temporal qualifier for a specified problem or diagnosis.">
 				>
 				["at0004"] = <
@@ -395,53 +366,9 @@ Preliminary or working diagnoses are intended to represent the single most likel
 					text = <"Current">
 					description = <"An issue occuring at present.">
 				>
-				["at0063"] = <
-					text = <"Diagnostic category">
-					description = <"Category of the problem or diagnosis within a specified episode of care and/or local care context.">
-					comment = <"This data element contains a value set commonly used in diagnostic categorisation. In episodic care contexts (commonly secondary care) it is common to categorise/organise diagnoses according to their relationship to the principal diagnosis being addressed during that episode of care. These categories may also be used for clinical coding, reporting and billing purposes. In some countries the diagnostic category may be known as a DRG.
- In addition, the free text choice permits use of other local value sets, as required.">
-				>
-				["at0064"] = <
-					text = <"Principal diagnosis">
-					description = <"The diagnosis determined to be the primary reason for an episode of admitted patient care, an episode of residential care or an attendance at the health care establishment.">
-				>
-				["at0066"] = <
-					text = <"Secondary diagnosis">
-					description = <"A problem or diagnosis that occurs at the same time as the primary problem or diagnosis. May also be known as a comorbid condition.">
-				>
-				["at0071"] = <
-					text = <"Occurrence">
-					description = <"Category of the occurrence for this problem or diagnosis.">
-					comment = <"This data element can be an additional qualifier to the 'New' value in the 'Episodicity' value set, that is a condition such as asthma can have recurring new episodes that have periods of resolution in between. However it can be important to identify the first ever episode of asthma from all of the other episodes.">
-				>
-				["at0073"] = <
-					text = <"Admission diagnosis?">
-					description = <"Was the problem or diagnosis present at admission?">
-					comment = <"Record as True or 'Yes' if the problem or diagnosis was present on admission. This data element is a requirement from DRG reporting in some countries.">
-				>
-				["at0076"] = <
-					text = <"Complication">
-					description = <"An unfavorable evolution of a problem or diagnosis.">
-				>
 				["at0088"] = <
 					text = <"Refuted">
 					description = <"The previously recorded diagnosis has been clinically reassessed or disproved with a high level of clinical certainty. This status is used to correct an error in the health record.">
-				>
-				["at0095"] = <
-					text = <"First occurrence">
-					description = <"This is the first ever occurrence of this problem or diagnosis.">
-				>
-				["at0096"] = <
-					text = <"Recurrence">
-					description = <"New occurrence of the same problem or diagnosis after a previous episode was resolved.">
-				>
-				["at0108"] = <
-					text = <"Yes">
-					description = <"">
-				>
-				["at0109"] = <
-					text = <"No">
-					description = <"">
 				>
 				["at0110"] = <
 					text = <"Comment">
@@ -451,12 +378,20 @@ Preliminary or working diagnoses are intended to represent the single most likel
 					text = <"Established Mental Health Diagnosis">
 					description = <"">
 				>
+				["at0112"] = <
+					text = <"Previous MH Treatment">
+					description = <"">
+				>
+				["at0113"] = <
+					text = <"Past Treatments">
+					description = <"">
+				>
 			>
 		>
 		["sl"] = <
 			items = <
 				["at0000"] = <
-					text = <"*Problem/Diagnosis qualifier(en)">
+					text = <"*Mental Health History (en)">
 					description = <"*Contextual or temporal qualifier for a specified problem or diagnosis.(en)">
 				>
 				["at0004"] = <
@@ -490,53 +425,9 @@ Preliminary or working diagnoses are intended to represent the single most likel
 					text = <"*Current(en)">
 					description = <"*An issue occuring at present.(en)">
 				>
-				["at0063"] = <
-					text = <"*Diagnostic category(en)">
-					description = <"*Category of the problem or diagnosis within a specified episode of care and/or local care context.(en)">
-					comment = <"*This data element contains a value set commonly used in diagnostic categorisation. In episodic care contexts (commonly secondary care) it is common to categorise/organise diagnoses according to their relationship to the principal diagnosis being addressed during that episode of care. These categories may also be used for clinical coding, reporting and billing purposes. In some countries the diagnostic category may be known as a DRG.
-In addition, the free text choice permits use of other local value sets, as required.(en)">
-				>
-				["at0064"] = <
-					text = <"*Principal diagnosis(en)">
-					description = <"*The diagnosis determined to be chiefly responsible for occasionaing an episode of admitted patient care, an episode of residential care or an attendance at the health care establishment.(en)">
-				>
-				["at0066"] = <
-					text = <"*Secondary diagnosis(en)">
-					description = <"*A problem or diagnosis that is occurs at the same time as the primary problem or diagnosis. May also be known as a comorbid condition.(en)">
-				>
-				["at0071"] = <
-					text = <"*Occurrence (en)">
-					description = <"*Category of the occurrence for this problem or diagnosis. (en)">
-					comment = <"*This data element can be an additional qualifier to the 'New' value in the 'Episodicity' value set, that is a condition such as asthma can have recurring new episodes that have periods of resolution in between. However it can be important to identify the first ever episode of asthma from all of the other episodes. (en)">
-				>
-				["at0073"] = <
-					text = <"*Admission diagnosis?(en)">
-					description = <"*Was the problem or diagnosis present at admission?(en)">
-					comment = <"*Record as True or 'Yes' if the problem or diagnosis was present on admission. This data element is a requirement from DRG reporting in some countries. (en)">
-				>
-				["at0076"] = <
-					text = <"*Complication(en)">
-					description = <"*An unfavorable evolution of a problem or diagnosis.(en)">
-				>
 				["at0088"] = <
 					text = <"*Refuted(en)">
 					description = <"*The diagnosis has been clinically reassessed or has been disproved with a high level of clinical certainty.(en)">
-				>
-				["at0095"] = <
-					text = <"*First occurrence (en)">
-					description = <"*This is the first ever occurrence of this problem or diagnosis. (en)">
-				>
-				["at0096"] = <
-					text = <"*Recurrence (en)">
-					description = <"*New occurrence of the same problem or diagnosis after a previous episode was resolved. (en)">
-				>
-				["at0108"] = <
-					text = <"*Yes (en)">
-					description = <"">
-				>
-				["at0109"] = <
-					text = <"*No (en)">
-					description = <"">
 				>
 				["at0110"] = <
 					text = <"*Comment (en)">
@@ -546,12 +437,20 @@ In addition, the free text choice permits use of other local value sets, as requ
 					text = <"*Established Mental Health Diagnosis (en)">
 					description = <"">
 				>
+				["at0112"] = <
+					text = <"*Previous MH Treatment (en)">
+					description = <"">
+				>
+				["at0113"] = <
+					text = <"*Past Treatments (en)">
+					description = <"">
+				>
 			>
 		>
 		["pt-br"] = <
 			items = <
 				["at0000"] = <
-					text = <"Qualificador do problema /diagnóstico">
+					text = <"*Mental Health History (en)">
 					description = <"Qualificador contextual ou temporal para um problema ou diagnóstico específico.">
 				>
 				["at0004"] = <
@@ -584,53 +483,9 @@ In addition, the free text choice permits use of other local value sets, as requ
 					text = <"Atual">
 					description = <"Um problema ocorrendo no momento.">
 				>
-				["at0063"] = <
-					text = <"Categoria do diagnóstico">
-					description = <"Categoria do problema ou diagnóstico dentro de um episódio específico de cuidado e / ou contexto de cuidados local.">
-					comment = <"Esse elemento de dados contém um conjunto de valores comumente usado na categorização de diagnóstico. Em contextos de cuidados episódicos (geralmente cuidados secundários) é comum categorizar / organizar diagnósticos de acordo com a sua relação com o diagnóstico principal a ser abordado durante esse episódio de atenção. Essas categorias também podem ser usadas para fins clínicos de codificação, geração de relatórios e faturamento. Em alguns países, a categoria de diagnóstico pode ser conhecida como DRG.
-Além disso, a opção de texto livre permite o uso de outros conjuntos de valores locais, conforme necessário.">
-				>
-				["at0064"] = <
-					text = <"Diagnóstico principal">
-					description = <"O diagnóstico específico a ser responsável por desencadear um episódio de cuidado do paciente admitido, um episódio de cuidados domiciliares ou um comparecimento no estabelecimento de cuidados de saúde.">
-				>
-				["at0066"] = <
-					text = <"Diagnóstico secundário">
-					description = <"Um problema ou diagnóstico que ocorre ao mesmo tempo que o problema ou diagnóstico principal. Também pode ser conhecido como uma comorbidade.">
-				>
-				["at0071"] = <
-					text = <"Ocorrência">
-					description = <"Categoria da ocorrência para este problema ou diagnóstico.">
-					comment = <"Este elemento de dados pode ser um qualificador adicional para o valor \"Novo\" no conjunto de valores de \"Episodicidade\", ou seja, uma condição como a asma pode ter episódios novos recorrentes com períodos de resolução intermediários. No entanto, pode ser importante identificar o primeiro episódio de asma de todos os outros episódios.">
-				>
-				["at0073"] = <
-					text = <"Diagnóstico de admissão?">
-					description = <"O problema ou diagnóstico estava presente na admissão?">
-					comment = <"*Record as True or 'Yes' if the problem or diagnosis was present on admission. This data element is a requirement from DRG reporting in some countries. (en)">
-				>
-				["at0076"] = <
-					text = <"Complicação">
-					description = <"Uma evolução desfavorável de um problema ou diagnóstico.">
-				>
 				["at0088"] = <
 					text = <"Descartado">
 					description = <"O diagnóstico previamente registrado foi clinicamente reavaliado ou refutado com um alto nível de certeza clínica. Este status é usado para corrigir um erro no registro de funcionamento.">
-				>
-				["at0095"] = <
-					text = <"Primeira ocorrência">
-					description = <"Esta é a primeira ocorrência deste problema ou diagnóstico.">
-				>
-				["at0096"] = <
-					text = <"Recorrência">
-					description = <"Nova ocorrência do mesmo problema ou diagnóstico depois que um episódio anterior foi resolvido.">
-				>
-				["at0108"] = <
-					text = <"*Yes (en)">
-					description = <"">
-				>
-				["at0109"] = <
-					text = <"*No (en)">
-					description = <"">
 				>
 				["at0110"] = <
 					text = <"*Comment (en)">
@@ -640,12 +495,20 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 					text = <"*Established Mental Health Diagnosis (en)">
 					description = <"">
 				>
+				["at0112"] = <
+					text = <"*Previous MH Treatment (en)">
+					description = <"">
+				>
+				["at0113"] = <
+					text = <"*Past Treatments (en)">
+					description = <"">
+				>
 			>
 		>
 		["nb"] = <
 			items = <
 				["at0000"] = <
-					text = <"Problem/diagnose-kvalifikator">
+					text = <"*Mental Health History (en)">
 					description = <"Kontekst- eller tidsspesifikk kvalifikator for et problem eller en diagnose.">
 				>
 				["at0004"] = <
@@ -678,52 +541,9 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 					text = <"Nåværende">
 					description = <"Problemet/diagnosen er tilstede ved registreringstidspunktet.">
 				>
-				["at0063"] = <
-					text = <"Diagnosisk kategori">
-					description = <"Kategorisering av problemet eller diagnosen innenfor en spesifikk kontakt og/eller lokal behandlingssammenheng.">
-					comment = <"Dette elementet inneholder et verdisett som er i vanlig bruk innen diagnosekategorisering. I episodiske behandlingssammenhenger (som regel spesialisthelsetjenesten) er det vanlig å kategorisere/organisere diagnoser i henhold til deres forhold til hoveddiagnosen som behandles i den aktuelle kontakten. Disse kategoriene kan også brukes for klinisk koding, rapportering og fakturering. I noen land omtales diagnosekategorien som \"en DRG\". I tillegg gjør muligheten for å legge til annen fri eller kodet tekst at det er mulig å bruke andre lokale verdisett ved behov.">
-				>
-				["at0064"] = <
-					text = <"Hoveddiagnose">
-					description = <"Diagnosen som er bestemt å være hovedårsaken til den aktuelle kontakten.">
-				>
-				["at0066"] = <
-					text = <"Bidiagnose">
-					description = <"Et problem eller diagnose som opptrer samtidig som hoveddiagnosen. Kan også omtales som en komorbiditet.">
-				>
-				["at0071"] = <
-					text = <"Forekomst">
-					description = <"Kategorisering av forekomsten for dette problemet eller diagnosen.">
-					comment = <"Dette dataelementet kan brukes som en ytterligere kvalifikator i tillegg til verdien \"Ny\" i elementet \"Episodisitet\". For eksempel kan en sykdom som astma ha gjentakende episoder med bedre perioder mellom, men det kan likevel være viktig å kunne identifisere den første astmaepisoden fra de påfølgende.">
-				>
-				["at0073"] = <
-					text = <"Tilstede ved innleggelse?">
-					description = <"Var problemet eller diagnosen tilstede ved innleggelse?">
-					comment = <"Registrer som \"sann\" eller \"Ja\" dersom problemet eller diagnosen var tilstede ved innleggelse. Dette elementet er et krav i forbindelse med DRG i noen land.">
-				>
-				["at0076"] = <
-					text = <"Komplikasjon">
-					description = <"En ugunstig utvikling av et problem eller diagnose.">
-				>
 				["at0088"] = <
 					text = <"Avkreftet">
 					description = <"Diagnosen har blitt klinisk revurdert, eller er motbevist med en høy grad av klinisk sikkerhet. Denne statusen brukes for å korrigere feil i journalen.">
-				>
-				["at0095"] = <
-					text = <"Første forekomst">
-					description = <"Dette er den første forekomsten av dette problemet eller diagnosen.">
-				>
-				["at0096"] = <
-					text = <"Tilbakefall">
-					description = <"Ny forekomst av det samme problemet eller diagnosen etter at en tidligere episode var bedret.">
-				>
-				["at0108"] = <
-					text = <"Ja">
-					description = <"">
-				>
-				["at0109"] = <
-					text = <"Nei">
-					description = <"">
 				>
 				["at0110"] = <
 					text = <"Kommentar">
@@ -733,12 +553,20 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 					text = <"*Established Mental Health Diagnosis (en)">
 					description = <"">
 				>
+				["at0112"] = <
+					text = <"*Previous MH Treatment (en)">
+					description = <"">
+				>
+				["at0113"] = <
+					text = <"*Past Treatments (en)">
+					description = <"">
+				>
 			>
 		>
 		["ko"] = <
 			items = <
 				["at0000"] = <
-					text = <"문제/진단 한정자">
+					text = <"*Mental Health History (en)">
 					description = <"특정 문제 또는 진단을 위한 문맥 또는 시간적 한정자.">
 				>
 				["at0004"] = <
@@ -772,54 +600,9 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 					text = <"현재">
 					description = <"현재 발생한 이슈.">
 				>
-				["at0063"] = <
-					text = <"진단 범주">
-					description = <"특별한 진료 그리고/또는 로컬 케어 환경의 삽화 내에서의 문제 또는 진단의 범주">
-					comment = <"이 데이터 엘리먼트는 진단 범주에서 공통적으로 사용되는 value set을 포함함. 삽화적인 진료환경(보통 이차 진료)에서, 해당 진료삽화 동안 대처해야하는 주진단과의 관계에 따라 범주화/조직화하는 것이 일반적임. 이 범주는 또한 임상 코딩과 리포팅, 청구목적을 위해 사용될 수 있음. 몇몇 국가에서는 진단 범주가 DRG로 알려지기도 함. 
-추가로, 자유 텍스트 선택은 요구에 따라 다른 로컬 value set의 사용을 허용함.">
-				>
-				["at0064"] = <
-					text = <"주요 진단">
-					description = <"입원 환자 진료의 삽화 또는 요양 진료의 삽화, 의료기관 방문을 야기하는데 주요하게 책임이 있는 것으로 결정된 진단.
-">
-				>
-				["at0066"] = <
-					text = <"이차 진단">
-					description = <"일차 문제 또는 진단과 동시에 발생한 문제 또는 진단. 동반 상태로 알려질 수도 있음.">
-				>
-				["at0071"] = <
-					text = <"*Occurrence (en)">
-					description = <"*Category of the occurrence for this problem or diagnosis. (en)">
-					comment = <"*This data element can be an additional qualifier to the 'New' value in the 'Episodicity' value set, that is a condition such as asthma can have recurring new episodes that have periods of resolution in between. However it can be important to identify the first ever episode of asthma from all of the other episodes. (en)">
-				>
-				["at0073"] = <
-					text = <"입원 진단?">
-					description = <"입원시 존재했던 문제 또는 진단인가?">
-					comment = <"*Record as True or 'Yes' if the problem or diagnosis was present on admission. This data element is a requirement from DRG reporting in some countries. (en)">
-				>
-				["at0076"] = <
-					text = <"합병증">
-					description = <"문제 또는 진단의 원치않는 발전.">
-				>
 				["at0088"] = <
 					text = <"반증">
 					description = <"이전에 기록된 진단이 임상적으로 재평가되고 높은 수준의 임상적 확실성으로 반증됨. 이 상태는 건강 기록내의 오류를 교정하는데 사용됨.">
-				>
-				["at0095"] = <
-					text = <"*First occurrence (en)">
-					description = <"*This is the first ever occurrence of this problem or diagnosis. (en)">
-				>
-				["at0096"] = <
-					text = <"*Recurrence (en)">
-					description = <"*New occurrence of the same problem or diagnosis after a previous episode was resolved. (en)">
-				>
-				["at0108"] = <
-					text = <"*Yes (en)">
-					description = <"">
-				>
-				["at0109"] = <
-					text = <"*No (en)">
-					description = <"">
 				>
 				["at0110"] = <
 					text = <"*Comment (en)">
@@ -829,12 +612,20 @@ Além disso, a opção de texto livre permite o uso de outros conjuntos de valor
 					text = <"*Established Mental Health Diagnosis (en)">
 					description = <"">
 				>
+				["at0112"] = <
+					text = <"*Previous MH Treatment (en)">
+					description = <"">
+				>
+				["at0113"] = <
+					text = <"*Past Treatments (en)">
+					description = <"">
+				>
 			>
 		>
 		["de"] = <
 			items = <
 				["at0000"] = <
-					text = <"Problem/Diagnose Attribut">
+					text = <"*Mental Health History (en)">
 					description = <"Kontextabhängiges oder temporäres Attribut für ein bestimmtes Problem oder eine bestimmte Diagnose.">
 				>
 				["at0004"] = <
@@ -868,53 +659,9 @@ Vorläufige Diagnose oder Diagnose in Bearbeitung soll die wahrscheinlichste Wah
 					text = <"Aktuell">
 					description = <"Eine Diagnose, die derzeit besteht.">
 				>
-				["at0063"] = <
-					text = <"Diagnostische Kategorie">
-					description = <"Die Kategorie des Problems oder der Diagnose innerhalb eines spezifischen Behandlungszeitraumes und/oder eines lokalen Behandlungskontextes.">
-					comment = <"Dieses Datenelement enthält eine Gruppe von Werten, welche üblicherweise in der diagnostischen Kategorisierung benutzt werden. Es ist üblich, dass im episodischen Versorgungskontext (üblicherweise in der Sekundärversorgung) die Diagnosen während der aktuellen Versorgungsepisode nach ihrer Beziehung zur Hauptdiagnose zu kategorisieren/ zu organisieren sind. Diese Kategorien können ebenfalls für die klinische Kodierungs-, Berichts- und Abrechnungszwecke verwendet werden. In manchen Ländern kann die diagnostische Kategorisierung als DRG (diagnosebezogene Fallgruppierungen) bezeichnet werden.
-Falls es nötig sein sollte, erlaubt das Freitextfeld die Benutzung von lokalen Werten.">
-				>
-				["at0064"] = <
-					text = <"Hauptdiagnose">
-					description = <"Die Diagnose wurde als Hauptgrund für eine Episode der zugewiesenen Patientenversorgung, eine Episode der stationären Pflege oder einen Besuch in der Einrichtung des Gesundheitswesens ermittelt.">
-				>
-				["at0066"] = <
-					text = <"Nebendiagnose">
-					description = <"Ein Problem oder eine Diagnose, die zur gleichen Zeit auftritt wie die Hauptdiagnose. Könnte auch als komorbider Zustand bezeichnet werden.">
-				>
-				["at0071"] = <
-					text = <"Auftreten">
-					description = <"Die Kategorie des Auftretens des Problems oder der Diagnose.">
-					comment = <"Dieses Datenelement kann ein zusätzliches Attribut zu dem Wert \"Neu\" in der Gruppe von Werten bei \"Episoden\" sein. Asthma wäre ein Beispiel für einen Zustand, welcher wiederauftretende neue Episoden hat, welche durch Perioden der Genesung unterbrochen werden. Allerdings kann es wichtig sein, die allererste Episode, in der Asthma aufgetreten ist, von den anderen Episoden zu trennen.">
-				>
-				["at0073"] = <
-					text = <"Aufnahmediagnose?">
-					description = <"War das Problem oder die Diagnose bei der Aufnahme vorhanden?">
-					comment = <"Tragen Sie als „Wahr“ oder „Ja“ ein, wenn das Problem oder die Diagnose bei der Aufnahme vorhanden war. Dieses Datenelement wird in einigen Ländern von dem DRG-Reporting verlangt.">
-				>
-				["at0076"] = <
-					text = <"Komplikation">
-					description = <"Eine ungünstige Entwicklung eines Problems oder einer Diagnose.">
-				>
 				["at0088"] = <
 					text = <"Widerlegt">
 					description = <"Die zuvor gestellte Diagnose wurde klinisch neu bewertet oder mit einem hohen Level an klinischer Sicherheit widerlegt. Dieser Status wird zur Korrektur von Fehlern in der Gesundheitsakte benutzt.">
-				>
-				["at0095"] = <
-					text = <"Erstes Auftreten">
-					description = <"Dies ist das erste Auftreten dieses Problems oder dieser Diagnose.">
-				>
-				["at0096"] = <
-					text = <"Rezidiv">
-					description = <"Das erneute Auftreten des gleichen Problems oder der gleichen Diagnose nach einer vorherigen behobenen Episode.">
-				>
-				["at0108"] = <
-					text = <"Ja">
-					description = <"">
-				>
-				["at0109"] = <
-					text = <"Nein">
-					description = <"">
 				>
 				["at0110"] = <
 					text = <"Kommentar">
@@ -924,12 +671,20 @@ Falls es nötig sein sollte, erlaubt das Freitextfeld die Benutzung von lokalen 
 					text = <"*Established Mental Health Diagnosis (en)">
 					description = <"">
 				>
+				["at0112"] = <
+					text = <"*Previous MH Treatment (en)">
+					description = <"">
+				>
+				["at0113"] = <
+					text = <"*Past Treatments (en)">
+					description = <"">
+				>
 			>
 		>
 		["it"] = <
 			items = <
 				["at0000"] = <
-					text = <"Qualificatore di problema/diagnosi.">
+					text = <"*Mental Health History (en)">
 					description = <"Qualificatore di contesto o di tempo per uno specifico problema o una specifica diagnosi.">
 				>
 				["at0004"] = <
@@ -964,53 +719,9 @@ Le diagnosi preliminari o di lavoro sono destinate a rappresentare la scelta pi�
 					text = <"Corrente">
 					description = <"Un problema che si sta verificando al momento.">
 				>
-				["at0063"] = <
-					text = <"Categoria diagnostica">
-					description = <"Categoria del problema o diagnosi all'interno di un episodio specifico di cura e/o contesto di cura locale.">
-					comment = <"Questo dato contiene un set di valori comunemente usato nella categorizzazione diagnostica. In contesti di assistenza episodica (comunemente assistenza secondaria) è comune categorizzare/organizzare le diagnosi in base alla loro relazione con la diagnosi principale che viene affrontata durante quell'episodio di assistenza. Queste categorie possono essere utilizzate anche per la codifica clinica, la segnalazione e la fatturazione. In alcuni paesi la categoria diagnostica può essere conosciuta come DRG.
- Inoltre, la scelta del testo libero permette l'uso di altri set di valori locali, come richiesto.">
-				>
-				["at0064"] = <
-					text = <"Diagnosi principale">
-					description = <"La diagnosi è stata determinata come responsabile principale di un episodio di ricovero del paziente, di un episodio di assistenza residenziale o di una presenza presso la struttura sanitaria.">
-				>
-				["at0066"] = <
-					text = <"Diagnosi secondaria">
-					description = <"Un problema o una diagnosi che si verifica contemporaneamente al problema o alla diagnosi primaria. Può anche essere conosciuta come una condizione di comorbidità.">
-				>
-				["at0071"] = <
-					text = <"Occorrenza">
-					description = <"Categoria di occorrenza per questo problema o diagnosi.">
-					comment = <"Questo dato può essere un qualificatore aggiuntivo al valore \"Nuovo\" nel set di valori \"Episodicità\", cioè una condizione come l'asma può avere nuovi episodi ricorrenti che hanno periodi di risoluzione nel mezzo. Tuttavia può essere importante identificare il primo episodio di asma da tutti gli altri episodi.">
-				>
-				["at0073"] = <
-					text = <"Diagnosi di ammissione?">
-					description = <"Il problema o la diagnosi erano presenti al momento del ricovero? ">
-					comment = <"*Record as True or 'Yes' if the problem or diagnosis was present on admission. This data element is a requirement from DRG reporting in some countries. (en)">
-				>
-				["at0076"] = <
-					text = <"Complicazione">
-					description = <"Un'evoluzione sfavorevole di un problema o di una diagnosi.">
-				>
 				["at0088"] = <
 					text = <"Confutato">
 					description = <"La diagnosi precedentemente registrata è stata clinicamente rivalutata o smentita con un alto livello di certezza clinica. Questo stato viene utilizzato per correggere un errore nella cartella clinica.">
-				>
-				["at0095"] = <
-					text = <"Prima occorrenza">
-					description = <"Questa è la prima occorrenza di questo problema o questa diagnosi.">
-				>
-				["at0096"] = <
-					text = <"Ricorrenza">
-					description = <"Nuova comparsa dello stesso problema o diagnosi dopo un episodio precedente è stata risolta.">
-				>
-				["at0108"] = <
-					text = <"*Yes (en)">
-					description = <"">
-				>
-				["at0109"] = <
-					text = <"*No (en)">
-					description = <"">
 				>
 				["at0110"] = <
 					text = <"*Comment (en)">
@@ -1020,12 +731,20 @@ Le diagnosi preliminari o di lavoro sono destinate a rappresentare la scelta pi�
 					text = <"*Established Mental Health Diagnosis (en)">
 					description = <"">
 				>
+				["at0112"] = <
+					text = <"*Previous MH Treatment (en)">
+					description = <"">
+				>
+				["at0113"] = <
+					text = <"*Past Treatments (en)">
+					description = <"">
+				>
 			>
 		>
 		["sv"] = <
 			items = <
 				["at0000"] = <
-					text = <"Problem/diagnoskvalificering">
+					text = <"*Mental Health History (en)">
 					description = <"Kontextuell eller temporal kvalificering för ett specifikt problem eller diagnos.">
 				>
 				["at0004"] = <
@@ -1059,53 +778,9 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 					text = <"Nuvarande">
 					description = <"Ett problem som uppstår för närvarande.">
 				>
-				["at0063"] = <
-					text = <"Diagnostisk kategori">
-					description = <"Kategori av problemet eller diagnosen inom en specifik episod av vård och/eller lokal vårdkontext.">
-					comment = <"Detta dataelement innehåller en värdeuppsättning som vanligtvis används i diagnostisk kategorisering. I episodiska vårdkontexter (vanligtvis sekundärvård) är det vanligt att kategorisera / organisera diagnoser efter deras förhållande till den huvudsakliga diagnosen som behandlas under den episoden av vården. Dessa kategorier kan också användas för klinisk kodning, rapportering och fakturering. I vissa länder kan den diagnostiska kategorin kallas DRG.
- Dessutom tillåter valet av fritext användning av andra lokala värdesatser, efter behov.">
-				>
-				["at0064"] = <
-					text = <"Huvuddiagnos">
-					description = <"Diagnosen fastställdes vara den främsta orsaken till en episod av inlagd patientvård, en episod av vård eller en närvaro på vårdinrättningen.">
-				>
-				["at0066"] = <
-					text = <"Bidiagnos">
-					description = <"Ett problem eller en diagnos som inträffar samtidigt som det primära problemet eller diagnosen. Kan också vara känt som komorbida tillstånd.">
-				>
-				["at0071"] = <
-					text = <"Förekomst">
-					description = <"Kategori av förekomsten för detta problem eller diagnos.">
-					comment = <"Detta dataelement kan vara en ytterligare kvalificering till \"Ny\"-värdet i \"Episodicitets\" -uppsättningen, det vill säga att astma kan ha återkommande nya episoder som har upplösningsperioder däremellan. Det kan dock vara viktigt att identifiera den första episoden av astma från alla andra episoder.">
-				>
-				["at0073"] = <
-					text = <"Diagnos vid inskrvning?">
-					description = <"Var problemet eller diagnosen närvarande vid inskrivning?">
-					comment = <"*Record as True or 'Yes' if the problem or diagnosis was present on admission. This data element is a requirement from DRG reporting in some countries. (en)">
-				>
-				["at0076"] = <
-					text = <"Komplikation">
-					description = <"En ogynnsam utveckling av ett problem eller en diagnos.">
-				>
 				["at0088"] = <
 					text = <"Motbevisat">
 					description = <"Den tidigare registrerade diagnosen har omprövats kliniskt eller motbevisats med hög klinisk säkerhet. Denna status används för att korrigera ett fel i journalen.">
-				>
-				["at0095"] = <
-					text = <"Första förekomsten">
-					description = <"Detta är den första förekomsten av detta problem eller diagnos.">
-				>
-				["at0096"] = <
-					text = <"Upprepning">
-					description = <"Ny förekomst av samma problem eller diagnos efter att ett tidigare avsnitt löstes.">
-				>
-				["at0108"] = <
-					text = <"*Yes (en)">
-					description = <"">
-				>
-				["at0109"] = <
-					text = <"*No (en)">
-					description = <"">
 				>
 				["at0110"] = <
 					text = <"*Comment (en)">
@@ -1115,12 +790,20 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 					text = <"*Established Mental Health Diagnosis (en)">
 					description = <"">
 				>
+				["at0112"] = <
+					text = <"*Previous MH Treatment (en)">
+					description = <"">
+				>
+				["at0113"] = <
+					text = <"*Past Treatments (en)">
+					description = <"">
+				>
 			>
 		>
 		["zh"] = <
 			items = <
 				["at0000"] = <
-					text = <"*Problem/Diagnosis qualifier(en)">
+					text = <"*Mental Health History (en)">
 					description = <"*Contextual or temporal qualifier for a specified problem or diagnosis.(en)">
 				>
 				["at0004"] = <
@@ -1154,53 +837,9 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 					text = <"*Current(en)">
 					description = <"*An issue occuring at present.(en)">
 				>
-				["at0063"] = <
-					text = <"*Diagnostic category(en)">
-					description = <"*Category of the problem or diagnosis within a specified episode of care and/or local care context.(en)">
-					comment = <"*This data element contains a value set commonly used in diagnostic categorisation. In episodic care contexts (commonly secondary care) it is common to categorise/organise diagnoses according to their relationship to the principal diagnosis being addressed during that episode of care. These categories may also be used for clinical coding, reporting and billing purposes. In some countries the diagnostic category may be known as a DRG.
- In addition, the free text choice permits use of other local value sets, as required.(en)">
-				>
-				["at0064"] = <
-					text = <"*Principal diagnosis(en)">
-					description = <"*The diagnosis determined to be the primary reason for an episode of admitted patient care, an episode of residential care or an attendance at the health care establishment.(en)">
-				>
-				["at0066"] = <
-					text = <"*Secondary diagnosis(en)">
-					description = <"*A problem or diagnosis that occurs at the same time as the primary problem or diagnosis. May also be known as a comorbid condition.(en)">
-				>
-				["at0071"] = <
-					text = <"*Occurrence(en)">
-					description = <"*Category of the occurrence for this problem or diagnosis.(en)">
-					comment = <"*This data element can be an additional qualifier to the 'New' value in the 'Episodicity' value set, that is a condition such as asthma can have recurring new episodes that have periods of resolution in between. However it can be important to identify the first ever episode of asthma from all of the other episodes.(en)">
-				>
-				["at0073"] = <
-					text = <"*Admission diagnosis?(en)">
-					description = <"*Was the problem or diagnosis present at admission?(en)">
-					comment = <"*Record as True or 'Yes' if the problem or diagnosis was present on admission. This data element is a requirement from DRG reporting in some countries. (en)">
-				>
-				["at0076"] = <
-					text = <"*Complication(en)">
-					description = <"*An unfavorable evolution of a problem or diagnosis.(en)">
-				>
 				["at0088"] = <
 					text = <"*Refuted(en)">
 					description = <"*The previously recorded diagnosis has been clinically reassessed or disproved with a high level of clinical certainty. This status is used to correct an error in the health record.(en)">
-				>
-				["at0095"] = <
-					text = <"*First occurrence(en)">
-					description = <"*This is the first ever occurrence of this problem or diagnosis.(en)">
-				>
-				["at0096"] = <
-					text = <"*Recurrence(en)">
-					description = <"*New occurrence of the same problem or diagnosis after a previous episode was resolved.(en)">
-				>
-				["at0108"] = <
-					text = <"*Yes (en)">
-					description = <"">
-				>
-				["at0109"] = <
-					text = <"*No (en)">
-					description = <"">
 				>
 				["at0110"] = <
 					text = <"*Comment (en)">
@@ -1210,12 +849,20 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 					text = <"*Established Mental Health Diagnosis (en)">
 					description = <"">
 				>
+				["at0112"] = <
+					text = <"*Previous MH Treatment (en)">
+					description = <"">
+				>
+				["at0113"] = <
+					text = <"*Past Treatments (en)">
+					description = <"">
+				>
 			>
 		>
 		["zh-cn"] = <
 			items = <
 				["at0000"] = <
-					text = <"问题/诊断限定词">
+					text = <"*Mental Health History (en)">
 					description = <"针对指定问题/诊断的上下文/语境类限定词（contextual qualifier）或时间类限定词（temporal qualifier）。">
 				>
 				["at0004"] = <
@@ -1250,54 +897,9 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 					text = <"当前">
 					description = <"当前正在发生的问题/诊断。">
 				>
-				["at0063"] = <
-					text = <"诊断类别">
-					description = <"该问题或诊断在指定的照护服务节段（episode of care）和/或本地照护服务上下文/语境当中的类别。">
-					comment = <"此数据元之中收录了诊断分类时常用的取值集合。在节段性照护服务（episodic care）（通常为二级照护服务/医疗护理服务）的上下文/语境当中，通常会依据诊断与当前照护服务节段期间所处理/设法解决的主要诊断的关系对诊断加以分类/组织。这些类别也可能会用于临床编码、报送/上报和计费的目的。在一些国家/地区，可能会将诊断类别称为 DRG（诊断相关组）。
-
-此外，自由文本型选项还允许根据需要使用其他的本地取值集合。">
-				>
-				["at0064"] = <
-					text = <"主要诊断">
-					description = <"被确定为入院患者照护服务、住院照护服务或到医疗保健机构就诊的主要原因的诊断。">
-				>
-				["at0066"] = <
-					text = <"次要诊断">
-					description = <"与主要问题或诊断同时出现的问题或诊断。可能又将其称为共病（comorbid condition）。">
-				>
-				["at0071"] = <
-					text = <"出现/发生类别">
-					description = <"该问题或诊断该次出现/发生的类别">
-					comment = <"此数据元可以作为是“节段特征”（Episodicity）取值集合之中的取值“New”（新发）的附加限定词。也就是说，哮喘之类的疾病可以有反复出现的新的发作节段/事件/发生发展过程（episode），而在这些发作节段之间则存在着解决阶段。然而，很重要的一点可能就是，从所有其他的发作节段当中确定出哮喘的首次发作节段。">
-				>
-				["at0073"] = <
-					text = <"是否为入院诊断">
-					description = <"是否为入院时所提出/存在的问题或诊断？">
-					comment = <"如果是入院时所提出/存在的问题或诊断，则记录为 True 或 “Yes”。在某些国家/地区，此数据元乃是 DRG （诊断相关组）报送的要求。">
-				>
-				["at0076"] = <
-					text = <"并发症">
-					description = <"问题或诊断的不利演变。">
-				>
 				["at0088"] = <
 					text = <"已否认">
 					description = <"以高度的临床确定性，已经从临床上予以重新评估且证明不成立的，先前所记录的诊断。此状态用于更正健康档案之中的错误。">
-				>
-				["at0095"] = <
-					text = <"首次出现/发生">
-					description = <"这是该问题或诊断的首次出现/发生。">
-				>
-				["at0096"] = <
-					text = <"复发">
-					description = <"该问题或诊断在其上次发作节段得到解决之后新的一次出现/发生。">
-				>
-				["at0108"] = <
-					text = <"是">
-					description = <"">
-				>
-				["at0109"] = <
-					text = <"否">
-					description = <"">
 				>
 				["at0110"] = <
 					text = <"备注">
@@ -1305,6 +907,14 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 				>
 				["at0111"] = <
 					text = <"*Established Mental Health Diagnosis (en)">
+					description = <"">
+				>
+				["at0112"] = <
+					text = <"*Previous MH Treatment (en)">
+					description = <"">
+				>
+				["at0113"] = <
+					text = <"*Past Treatments (en)">
 					description = <"">
 				>
 			>
@@ -1320,8 +930,6 @@ Preliminära eller fungerande diagnoser är avsedda att representera det mest tr
 				["at0061"] = <[SNOMED-CT::410513005]>
 				["at0062"] = <[SNOMED-CT::15240007]>
 				["at0018"] = <[SNOMED-CT::14657009]>
-				["at0064"] = <[SNOMED-CT::8319008]>
-				["at0066"] = <[SNOMED-CT::85097005]>
 			>
 		>
 	>
