@@ -1,0 +1,131 @@
+archetype (adl_version=1.4; uid=c4c54f27-d7bd-4aab-b61e-25a6f3c5275c)
+	openEHR-EHR-EVALUATION.mh_initial_info.v1
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2024-12-01">
+	>
+	lifecycle_state = <"unmanaged">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"9c9d167fd3166523455e1ab8c363b6ee">
+		["build_uid"] = <"d364f091-5e6b-3563-923f-a5074dfc723d">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- mh_initial_info
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {*}    -- Name
+					ELEMENT[at0003] occurrences matches {0..1} matches {    -- DOB
+						value matches {
+							DV_DATE matches {*}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {    -- Address
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {    -- Phone Number
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {    -- Email
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0007] occurrences matches {0..1} matches {    -- Insurance Provider
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0008] occurrences matches {0..1} matches {    -- Policy Number
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0009] occurrences matches {0..1} matches {    -- Emergency Contact name and Number
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0010] occurrences matches {0..1} matches {    -- Date of Assessment
+						value matches {
+							DV_DATE matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"mh_initial_info">
+					description = <"mh_initial_info">
+				>
+				["at0001"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Name">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"DOB">
+					description = <"">
+				>
+				["at0004"] = <
+					text = <"Address">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"Phone Number">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"Email">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Insurance Provider">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Policy Number">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Emergency Contact name and Number">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Date of Assessment">
+					description = <"">
+				>
+			>
+		>
+	>
