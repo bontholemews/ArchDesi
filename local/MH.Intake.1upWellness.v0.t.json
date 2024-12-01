@@ -19,9 +19,9 @@
       "original_namespace" : "",
       "original_publisher" : "",
       "custodian_namespace" : "",
-      "sem_ver" : "0.1.0",
+      "sem_ver" : "1.0.0",
       "build_uid" : "",
-      "MD5-CAM-1.0.1" : "031dc840df574c65a64e798f3d9a34bd",
+      "MD5-CAM-1.0.1" : "1f378c44608c7dfb42c2d696295aaf3d",
       "PARENT:MD5-CAM-1.0.1" : "327A8885F97587660404644C3C6053B6"
     },
     "details" : {
@@ -248,6 +248,15 @@
                 "attributeTuples" : [ ],
                 "archetypeRef" : "openEHR-EHR-CLUSTER.ovl-address-001.v1",
                 "referenceType" : "archetypeOverlay"
+              }, {
+                "@type" : "C_ARCHETYPE_ROOT",
+                "rmTypeName" : "CLUSTER",
+                "occurrences" : "0..1",
+                "nodeId" : "at0002.3",
+                "attributes" : [ ],
+                "attributeTuples" : [ ],
+                "archetypeRef" : "openEHR-EHR-CLUSTER.ovl-problem_qualifier-001.v2",
+                "referenceType" : "archetypeOverlay"
               } ]
             } ],
             "attributeTuples" : [ ]
@@ -399,7 +408,113 @@
       "otherDetails" : {
         "PARENT:MD5-CAM-1.0.1" : "4CB383854196F76408BABBEB02117881"
       },
-      "details" : { }
+      "details" : {
+        "de" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "de"
+          },
+          "purpose" : "Zur Darstellung von Details über den Standort einer Person, eines physischen Gebäudes oder einer Landmarke, wie sie im Rahmen der klinischen Dokumentation bekannt sind oder verstanden werden.",
+          "keywords" : [ "Adresse", "Anschrift", "postalisch", "Mailing", "Privat", "Geschäft", "physisch", "Landmarke" ],
+          "use" : "Verwenden Sie diesen Archetyp, um Details über den Standort einer Person, eines physischen Gebäudes oder einer Landmarke darzustellen, wie sie im Rahmen der klinischen Dokumentation bekannt sind oder verstanden werden, oft ad hoc oder wenn es nicht angemessen oder möglich ist, einen Adresssuchdienst zu verwenden. Beispiele beinhalten:\r\n- die Geschäftsadresse einer Organisation, die eine Person zu Hause betreut; oder\r\n- die Postanschrift des Inhabers einer Patientenverfügung innerhalb des Archetyps EVALUATION.advance_care_directive; oder\r\n- der Sturz- oder Unfallort.\r\n\r\nDer Geltungsbereich dieses Archetyps wurde darauf beschränkt, nur die gebräuchlichsten strukturierten Komponenten zur Identifizierung eines bestimmten physischen Gebäudes oder einer Landmarke zu enthalten. In diesem Zusammenhang kann eine vollständige Adresse beschrieben werden mit:\r\n- Ein oder mehrere Freitext-„Adresszeilen“-Datenelemente, um die große Vielfalt an Möglichkeiten darzustellen, wie Details auf „Straßenebene“ aufgezeichnet werden müssen; und\r\n- „Stadt“, um einen Vorort, eine Stadt, ein Dorf oder eine Gemeinde darzustellen;\r\n- „Region/Landkreis“ zur Darstellung eines lokalen Regierungsbezirks;\r\n- „Staat/Territorium/Provinz“, um einen großen Regierungsbezirk darzustellen;\r\n- „Postleitzahl“ und\r\n- \"Land\".\r\n\r\nDieser Archetyp könnte auch als Ersatz für formelle demografische Daten verwendet werden, wenn ein Template mit Domänenexperten überprüft wird – beispielsweise bei einer Bewertung, bei der Prüfer eine Adresse in einem Bewertungsformular erwarten würden. Dieser CLUSTER.address könnte auch als Stellvertreter für eine Adresse in formalen demografischen Adressdaten verwendet werden, wenn ein Template mit Klinikern überprüft wird – zum Beispiel bei einer Bewertung, bei der Prüfer erwarten würden, dass die vollständigen Kontaktdaten der Person oben auf dem Bewertungsformular angezeigt werden.",
+          "misuse" : "Darf nicht verwendet werden, um eine vollständig strukturierte Adresse, wie sie in ISO-Standards beschrieben ist, im Rahmen der Führung eines offiziellen demografischen Registers oder Index zu erfassen. Verwenden Sie zu diesem Zweck einen Adresssuchdienst, einen formalen Master Patient Index oder Health Provider Index oder Archetypen, die auf dem openEHR Demographic Information Model basieren.\r\n\r\nDarf nicht verwendet werden, um digitale Adressen zur Verwendung in der elektronischen Kommunikation darzustellen. Verwenden Sie für diesen Zweck den Archetyp CLUSTER.electronic_communication.\r\n\r\nDarf nicht verwendet werden, um Details über Wohnungs- oder Obdachlosigkeit darzustellen. Verwenden Sie für diesen Zweck den Archetyp EVALUATION.housing_summary.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "pt-pt" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "pt-pt"
+          },
+          "purpose" : "Registar os detalhes sobre a localização de uma pessoa, edifício físico ou ponto de referência, tal como são conhecidos ou compreendidos no decurso da documentação clínica.",
+          "keywords" : [ "endereço", "morada", "postal", "correio", "casa", "negócio", "físico", "marco", "ponto de referência" ],
+          "use" : "Utilize para registar detalhes sobre a localização de uma pessoa, edifício físico ou ponto de referência, tal como são conhecidos ou compreendidos no decurso da documentação clínica, muitas vezes ad hoc ou quando não é apropriado ou possível utilizar um serviço de pesquisa de endereços. Exemplos incluem:\r\n- o endereço comercial de uma organização que presta cuidados domiciliários a um indivíduo; ou\r\n- o endereço postal do titular de um registo de cuidados avançados, dentro do arquétipo EVALUATION.advance_care_directive; ou\r\n- a localização física de uma queda ou acidente.\r\n\r\nO âmbito deste arquétipo foi restringido para conter os componentes estruturados mais comuns para identificar um edifício físico ou um ponto de referência específico. Neste contexto, um endereço completo pode ser descrito utilizando:\r\n- Um ou mais elementos de dados de texto livre de 'Linha de endereço' para representar a enorme variedade de formas pelas quais os detalhes 'ao nível da rua' podem ter de ser registados; e\r\n- 'Cidade' para representar um subúrbio, vila, cidade, vila ou comunidade;\r\n- 'Distrito/Concelho' para representar um distrito governamental local;\r\n- 'Estado/Território/Província' para representar um importante distrito governamental;\r\n- ‘Código postal’, e\r\n- 'País'.\r\nNo entanto, este arquétipo pode ser estendido para incluir detalhes adicionais sobre o endereço, aninhando o CLUSTER.structured_address dentro do SLOT 'Endereço estruturado'.\r\n\r\nEste arquétipo CLUSTER.address também pode ser utilizado como um substituto para um endereço em dados formais de endereço demográfico ao rever um template com especialistas do domínio - por exemplo, uma avaliação em que os revisores esperariam ver os detalhes completos de contacto do indivíduo na parte superior do formulário de avaliação.",
+          "misuse" : "Não deve ser utilizado para registar um endereço totalmente estruturado, tal como descrito nas normas ISO ou como parte da manutenção de um registo ou índice demográfico oficial. Utilize um serviço de pesquisa de endereços, um Índice Mestre de Pacientes formal ou um Índice de Prestadores de Cuidados de Saúde para este fim, ou arquétipos baseados no Modelo de Informação Demográfica openEHR.\r\n\r\nNão deve ser utilizado para representar endereços digitais para utilização em comunicação eletrónica. Utilize CLUSTER.electronic_communication para este efeito.\r\n\r\nNão deve ser utilizado para registar detalhes sobre habitação ou falta de habitação. Utilize EVALUATION.housing_summary para esta finalidade.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "sv" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "sv"
+          },
+          "purpose" : "*To record details about the location of a person, physical building or landmark as they are known or understood in the course of clinical documentation.(en)",
+          "keywords" : [ "adress", "postadress", "hem", "företag", "position", "ort", "distrikt", "region" ],
+          "use" : "*Use to record details about the location of a person, physical building or landmark as they are known or understood in the course of clinical documentation, often ad hoc or when it is not appropriate or possible to use an address lookup service. Examples include:\r\n- the business address of an organisation providing home care to an individual; or\r\n- the postal address of the copyholder of an advanced care record, within the EVALUATION.advance_care_directive archetype; or\r\n- the physical location of a fall or accident.\r\n\r\nThe scope of this archetype has been constrained to carry the commonest structured components for identifying a specific physical building or landmark. In this context, a complete address may be described using:\r\n- One or more free text 'Address line' data elements to represent the huge variety of ways that ‘street-level' details may need to be recorded; and\r\n- 'Town' to represent a suburb, town, city, village, or community;\r\n- 'District/County' to represent a local government district;\r\n- 'State/Territory/Province’ to represent a major government district;\r\n- ‘Postcode’, and \r\n- ‘Country'.\r\nHowever, this archetype can be extended to include additional fine-grained details about the address by nesting the CLUSTER.structured_address within the 'Structured address' SLOT.\r\n\r\nThis CLUSTER.address archetype can also be used as a proxy for an address in formal demographic address data when reviewing a template with domain experts - for example, an assessment where reviewers would expect to see the individual's full contact details at the top of the assessment form.(en)",
+          "misuse" : "*Not to be used to record a fully structured address, such as described in ISO standards or as part of maintaining an official demographic register or index. Use an address lookup service, a formal Master Patient Index or a Health Provider Index for this purpose, or archetypes based on the openEHR Demographic Information Model.\r\n\r\nNot to be used to represent digital addresses for use in electronic communication. Use CLUSTER.electronic_communication for this purpose.\r\n\r\nNot to be used to record details about housing or homelessness. Use the EVALUATION.housing_summary for this purpose.(en)",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "nb" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "nb"
+          },
+          "purpose" : "For å registrere detaljer om lokaliseringen til en person, en fysisk bygning eller et landemerke, som man har informasjon om eller har forstått, i det kliniske dokumentasjonsarbeidet.",
+          "keywords" : [ "adresse", "postadresse", "hjem", "arbeid", "fysisk", "oppmøtested" ],
+          "use" : "\t\r\nBrukes for å registrere detaljer om lokaliseringen til en person, en fysisk bygning eller et landemerke, som man har informasjon om eller har forstått, i det kliniske dokumentasjonsarbeidet. Brukes ofte ad hoc eller i de tilfeller der det ikke er ønskelig eller mulig å bruke et formelt demografisk register eller indeks.\r\nFor eksempel:\r\n- Adressen til hjemmetjeneste eller en annen helsetjenesteyter.\r\n- Adressen til en person eller organisasjon som oppbevarer fremtidige behandlingsvalg i arketypen EVALUATION.advance_care_directive (Fremtidig behandlingsvalg).\r\n- Adressen til hendelsestedet til en ulykke eller et fall.\r\n\r\nOmfanget av denne arketypen har blitt begrenset til å dekke de vanligste komponentene i en enkel adresse. I denne sammenhengen kan en fullstendig adresse beskrives ved å bruke:\r\n- Ett eller flere \"Adresselinje\"-dataelementer for å representere det store utvalget av måter \"gatenivå\" kan registreres på.\r\n- \"By\" for å representere en forstad, by eller landsby.\r\n- \"Distrikt/fylke\" for å representere et lokalt myndighetsdistrikt.\r\n- \"Stat/territorium/provins\" for å representere et større myndighetsdistrikt.\r\n- \"Postnummer\".\r\n- \"Land\".\r\nImidlertidig kan denne arketypen utvides for å inkludere ytteligere detaljer om adressen ved å nøste arketypen CLUSTER.structured_address i SLOTet \"Strukturert adresse\"\r\n\r\nDenne CLUSTER-arketypen kan også brukes istedenfor formelle demografiske adressedata ved gjennomgang av et templat med klinikere – for eksempel en vurdering der brukeren/klinikeren forventer å se personens fullstendige kontaktinformasjon øverst i vurderingsskjemaet.",
+          "misuse" : "Brukes ikke til å representere en fullstendig strukturert adresse, som beskrevet i ISO-standarder eller for å opprettholde et demografisk register eller en indeks. Bruk en adresseoppslagstjeneste, et formelt pasientregister, helsepersonellregister eller arketyper basert på openEHR demografisk informasjonsmodell til dette formålet.\r\n\r\nBrukes ikke til å representere digitale adresser for bruk i elektronisk kommunikasjon. Bruk CLUSTER.electronic_communication (Elektronisk kommunikasjon) for dette formålet.\r\n\r\nBrukes ikke for å registrere detaljer om bolig eller hjemløshet, Bruk arketypen EVALUATION.housing_summary (Boligsammendrag) for dette formålet.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "el" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "el"
+          },
+          "purpose" : "*To record details about the location of a person, physical building or landmark as they are known or understood in the course of clinical documentation.(en)",
+          "keywords" : [ "*address(en)", "*postal(en)", "*mailing(en)", "*home(en)", "*business(en)", "*physical(en)", "*landmark(en)" ],
+          "use" : "*Use to record details about the location of a person, physical building or landmark as they are known or understood in the course of clinical documentation, often ad hoc or when it is not appropriate or possible to use an address lookup service. Examples include:\r\n- the business address of an organisation providing home care to an individual; or\r\n- the postal address of the copyholder of an advanced care record, within the EVALUATION.advance_care_directive archetype; or\r\n- the physical location of a fall or accident.\r\n\r\nThe scope of this archetype has been constrained to carry the commonest structured components for identifying a specific physical building or landmark. In this context, a complete address may be described using:\r\n- One or more free text 'Address line' data elements to represent the huge variety of ways that ‘street-level' details may need to be recorded; and\r\n- 'Town' to represent a suburb, town, city, village, or community;\r\n- 'District/County' to represent a local government district;\r\n- 'State/Territory/Province’ to represent a major government district;\r\n- ‘Postcode’, and \r\n- ‘Country'.\r\nHowever, this archetype can be extended to include additional fine-grained details about the address by nesting the CLUSTER.structured_address within the 'Structured address' SLOT.\r\n\r\nThis CLUSTER.address archetype can also be used as a proxy for an address in formal demographic address data when reviewing a template with domain experts - for example, an assessment where reviewers would expect to see the individual's full contact details at the top of the assessment form.(en)",
+          "misuse" : "*Not to be used to record a fully structured address, such as described in ISO standards or as part of maintaining an official demographic register or index. Use an address lookup service, a formal Master Patient Index or a Health Provider Index for this purpose, or archetypes based on the openEHR Demographic Information Model.\r\n\r\nNot to be used to represent digital addresses for use in electronic communication. Use CLUSTER.electronic_communication for this purpose.\r\n\r\nNot to be used to record details about housing or homelessness. Use the EVALUATION.housing_summary for this purpose.(en)",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "en" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "en"
+          },
+          "purpose" : "To record details about the location of a person, physical building or landmark as they are known or understood in the course of clinical documentation.",
+          "keywords" : [ "address", "postal", "mailing", "home", "business", "physical", "landmark" ],
+          "use" : "Use to record details about the location of a person, physical building or landmark as they are known or understood in the course of clinical documentation, often ad hoc or when it is not appropriate or possible to use an address lookup service. Examples include:\r\n- the business address of an organisation providing home care to an individual; or\r\n- the postal address of the copyholder of an advanced care record, within the EVALUATION.advance_care_directive archetype; or\r\n- the physical location of a fall or accident.\r\n\r\nThe scope of this archetype has been constrained to carry the commonest structured components for identifying a specific physical building or landmark. In this context, a complete address may be described using:\r\n- One or more free text 'Address line' data elements to represent the huge variety of ways that ‘street-level' details may need to be recorded; and\r\n- 'Town' to represent a suburb, town, city, village, or community;\r\n- 'District/County' to represent a local government district;\r\n- 'State/Territory/Province’ to represent a major government district;\r\n- ‘Postcode’, and \r\n- ‘Country'.\r\nHowever, this archetype can be extended to include additional fine-grained details about the address by nesting the CLUSTER.structured_address within the 'Structured address' SLOT.\r\n\r\nThis CLUSTER.address archetype can also be used as a proxy for an address in formal demographic address data when reviewing a template with domain experts - for example, an assessment where reviewers would expect to see the individual's full contact details at the top of the assessment form.",
+          "misuse" : "Not to be used to record a fully structured address, such as described in ISO standards or as part of maintaining an official demographic register or index. Use an address lookup service, a formal Master Patient Index or a Health Provider Index for this purpose, or archetypes based on the openEHR Demographic Information Model.\r\n\r\nNot to be used to represent digital addresses for use in electronic communication. Use CLUSTER.electronic_communication for this purpose.\r\n\r\nNot to be used to record details about housing or homelessness. Use the EVALUATION.housing_summary for this purpose.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "fr" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "fr"
+          },
+          "purpose" : "Enregistrer des détails sur la localisation d'une personne, d'un bâtiment physique ou d'un point de repère, tels qu'ils sont connus ou compris dans le cadre de la documentation clinique.",
+          "keywords" : [ "adresse", "postale", "courrier", "domicile", "professionnel", "physique", "repère" ],
+          "use" : "Sert à enregistrer des détails sur la localisation d'une personne, d'un bâtiment physique ou d'un point de repère, tels qu'ils sont connus ou compris dans le cadre de la documentation clinique, souvent de manière ad hoc ou lorsqu'il n'est pas approprié ou possible d'utiliser un service de recherche d'adresses. Il s'agit par exemple\r\n- l'adresse professionnelle d'une organisation fournissant des soins à domicile à une personne ; ou\r\n- l'adresse postale du détenteur de la copie d'un dossier de soins avancés, dans l'archétype EVALUATION.advance_care_directive ; ou\r\n- le lieu physique d'une chute ou d'un accident.\r\n\r\nLe champ d'application de cet archétype a été limité aux composants structurés les plus courants permettant d'identifier un bâtiment physique ou un point de repère spécifique. Dans ce contexte, une adresse complète peut être décrite à l'aide des éléments suivants\r\n- un ou plusieurs éléments de données \"ligne d'adresse\" en texte libre pour représenter l'énorme variété de façons dont les détails \"au niveau de la rue\" peuvent être enregistrés ; et\r\n- Ville\" pour représenter une banlieue, une ville, un village ou une communauté ;\r\n- District/County\" pour représenter un district d'administration locale ;\r\n- \"État/Territoire/Province\" pour représenter un grand district gouvernemental ;\r\n- Code postal\", et \r\n- Pays\".\r\nToutefois, cet archétype peut être étendu pour inclure des détails plus fins sur l'adresse en imbriquant le CLUSTER.structured_address dans le SLOT \"Adresse structurée\".\r\n\r\nCet archétype CLUSTER.address peut également être utilisé comme substitut d'une adresse dans les données démographiques formelles lors de la révision d'un modèle avec des experts du domaine - par exemple, une évaluation où les examinateurs s'attendent à voir les coordonnées complètes de la personne en haut du formulaire d'évaluation.",
+          "misuse" : "Ne pas utiliser pour enregistrer une adresse entièrement structurée, telle que décrite dans les normes ISO ou dans le cadre de la tenue d'un registre ou d'un index démographique officiel. Utiliser à cette fin un service de recherche d'adresses, un index principal officiel des patients ou un index des prestataires de soins de santé, ou des archétypes fondés sur le modèle d'information démographique de l'openEHR.\r\n\r\nNe pas utiliser pour représenter des adresses numériques destinées à la communication électronique. Utiliser CLUSTER.electronic_communication à cette fin.\r\n\r\nNe doit pas être utilisé pour enregistrer des détails sur le logement ou l'absence de domicile. Utilisez EVALUATION.housing_summary à cette fin.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        }
+      }
     },
     "parentArchetypeId" : "openEHR-EHR-CLUSTER.address.v1",
     "differential" : true,
@@ -956,7 +1071,114 @@
       "otherDetails" : {
         "PARENT:MD5-CAM-1.0.1" : "d5b0a9a305cfac4b2385bc0ebaea1d08"
       },
-      "details" : { }
+      "details" : {
+        "de" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "de"
+          },
+          "purpose" : "Zur Darstellung von Informationen zu einer Person, wie sie bekannt sind oder im Rahmen der klinischen Dokumentation verstanden werden.",
+          "keywords" : [ "Anbieter, Dienstleister, Betreuer, Personal, medizinisches Fachpersonal, Verwandter, Angehöriger, Hausarzt, Zeuge, Freund, Nachbar, Kind, Familie, Geschwister, Elternteil, Einzelperson" ],
+          "use" : "Der Archetyp wird verwendet, um Informationen zur einer Person darzustellen, wie sie bekannt sind oder im Rahmen der klinischen Dokumentation verstanden werden, oft ad hoc oder wenn die Verwendung von einem formellen demografischen Register oder einem Index nicht angemessen oder nicht möglich ist.\nBeispiele beinhalten:\n- der Inhaber einer Patientenverfügung unter Verwendung des SLOT „Inhaber der Kopie“ innerhalb des Archetyps EVALUATION.advance_care_directive;\n- die Rolle und Kontaktdaten eines benannten Ansprechpartners in einer Organisation, unter Verwendung des SLOT „Kontaktperson“ innerhalb des Archetyps CLUSTER.organisation;\n- Angaben zu einem Verwandten in einer Familienanamnese unter Verwendung des SLOT „Angaben zum Familienmitglied“ innerhalb des Archetyps openEHR-EHR-EVALUATION.family_history;\n- der Name der Person, die eine Laborprobe von einem Patienten entnommen hat, unter Verwendung der „Angaben zum Probennehmer“ innerhalb des Archetyps CLUSTER.specimen oder\n- ein Zeuge eines Sturzes oder Unfalls, unter Verwendung des SLOT \"Zeuge\" innerhalb des Archetyps CLUSTER.health_event.\n\nIn den meisten einfachen Anwendungsfällen reicht das unstrukturierte Element „Name“ innerhalb des Archetyps CLUSTER.person aus, um den Namen einer Person als Teil einer Gesundheitsakte darzustellen. In Fällen, in denen ein strukturierter Name für klinische Aufzeichnungszwecke erforderlich oder wünschenswert ist, verschachteln Sie diesen Archetyp jedoch im SLOT „Name strukturiert“ im Archetyp CLUSTER.person. Wenn der Archetyp CLUSTER.structured_name in den SLOT „Name strukturiert“ eingebettet ist, können beliebige oder alle Datenelemente als Textzeichenfolge kombiniert und im Element „Name“ dargestellt werden, solange sie konsistent sind.\n\nDieser Archetyp könnte auch stellvertretend für formale demografische Daten verwendet werden, wenn ein Template mit Domänenexperten überprüft wird – beispielsweise eine Bewertung, bei der Prüfer erwarten würden, dass die Details einer Person oben im Bewertungsformular angezeigt werden.",
+          "misuse" : "Der Archetyp darf nicht verwendet werden, um das formelle Identifikationsmanagement darzustellen oder zu ersetzen oder um ein offizielles demografisches Register oder einen Index zu führen. Verwenden Sie zu diesem Zweck einen formellen Master Patient Index oder Health Provider Index oder Archetypen, die auf dem demografischen Informationsmodell von openEHR basieren.\n\nDarf nicht verwendet werden, um den Patienten, die Teilnehmer oder den Verfasser der Akte und ähnliche Datenelemente darzustellen, die formal in der Patientenakte unter Verwendung der Referenzmodellattribute dargestellt werden sollten.\n\nDarf nicht verwendet werden, um das Geburtsdatum einer Person darzustellen – verwenden Sie zu diesem Zweck das Datenelement „Geburtsdatum“ im Archetyp EVALUATION.birth_summary.\n\nDarf nicht verwendet werden, um biometrische Details oder Biomarker über eine Person darzustellen – verwenden Sie zu diesem Zweck einen speziellen ENTRY-Archetyp.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "pt-pt" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "pt-pt"
+          },
+          "purpose" : "Para registar detalhes sobre uma pessoa tal como são conhecidos ou compreendidos aquando da documentação clínica.",
+          "keywords" : [ "prestador de cuidados, cuidador, funcionário, profissional de saúde, familiar, familiar mais próximo, testemunha, amigo, vizinho, criança, família, irmão, pai, indivíduo" ],
+          "use" : "Utilizado para registar detalhes de uma pessoa conforme são conhecidos ou compreendidos aquando da documentação clínica, frequentemente ad hoc ou quando não é apropriado ou possível usar um registo demográfico ou índice formal. Exemplos incluem:\n- o detentor da cópia de um registo de cuidados avançados, utilizando o SLOT 'Copyholder' dentro do arquétipo EVALUATION.advance_care_directive;\n- o papel e detalhes de contacto de uma pessoa designada dentro de uma organização, utilizando o SLOT 'Contact person' dentro do arquétipo CLUSTER.organisation;\n- detalhes sobre um familiar num registo de histórico familiar, utilizando o SLOT 'Family member details' dentro do arquétipo openEHR-EHR-EVALUATION.family_history;\n- o nome da pessoa que recolheu uma amostra laboratorial de um paciente, utilizando os 'Specimen collector details' dentro do arquétipo CLUSTER.specimen; ou\n- uma testemunha de uma queda ou acidente, utilizando o SLOT 'Witness' dentro do arquétipo CLUSTER.health_event.\n\nNa maioria dos casos simples de registo clínico, o elemento não estruturado 'Name' dentro do arquétipo CLUSTER.person será suficiente para registar o nome de uma pessoa como parte de um registo de saúde. No entanto, em circunstâncias em que um nome estruturado é necessário ou desejável para fins de registo clínico, incorpore este arquétipo dentro do SLOT 'Structured name' no arquétipo CLUSTER.person. Se o arquétipo CLUSTER.structured_name estiver incorporado dentro do SLOT 'Structured name', todos ou alguns dos elementos de dados podem ser combinados como uma string de texto e representados no elemento 'Name', desde que sejam consistentes.\n\nEste arquétipo também poderia ser utilizado como um proxy para dados demográficos formais ao rever um template com especialistas do domínio - por exemplo, uma avaliação onde os revisores esperariam ver os detalhes de uma pessoa no topo do formulário de avaliação.",
+          "misuse" : "Não deve ser utilizado para representar ou substituir a gestão formal de identificação ou para efeitos de manutenção de um registo ou índice demográfico oficial. Utilize um Master Patient Index formal ou Health Provider Index para este fim, ou arquétipos baseados no Demographic Information Model do openEHR.\n\nNão deve ser utilizado para representar o sujeito do cuidado, participantes ou autor do registo e elementos de dados semelhantes que devem ser representados formalmente no registo de saúde utilizando os atributos do Reference Model.\n\nNão deve ser utilizado para registar a data de nascimento de um indivíduo - utilize o elemento de dados 'Date of birth' dentro do EVALUATION.birth_summary para este fim.\n\nNão deve ser utilizado para registar detalhes biométricos ou biomarcadores sobre um indivíduo - utilize um arquétipo ENTRY específico para este fim.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "sv" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "sv"
+          },
+          "purpose" : "Används för att registrera information om en person som behöver representeras i patientjournalen.",
+          "keywords" : [ "Leverantör, vårdare, vårdgivare, personal, vårdpersonal, släkting, anhöriga, läkare, vittne, vän, granne, barn, familj, syskon, förälder, individ" ],
+          "use" : "Används för att registrera uppgifter om en person i den elektroniska journalen, när det inte är lämpligt eller möjligt att använda ett formellt demografiskt register eller index. Exempelvis:\n- Namn och kontaktuppgifter för en person som innehar en fysisk kopia av ett dokument om framtida behandlingsval eller behandlingsreservationer; exempelvis 'Copyholder'-attributet i arketypen EVALUATION.advance_care_directive;\n- Namn och kontaktuppgifter för en vårdgivare i en remiss;\n- Namn, roll och kontaktuppgifter för en medlem av ett vårdgivarteam;\n- Rollen och kontaktuppgifterna för en namngiven kontaktperson inom en organisation;\n- uppgifter om en släkting i en släkthistoria; eller\n- ett vittne till ett epileptisk anfall.\n\nI de flesta vanliga användningsfallen där ett namn måste inkluderas i en journal räcker det med fritextinmatning inom elementet 'Ostrukturerat namn'. I situationer när det krävs mer detaljerade detaljer om en eller flera namnkomponenter, använd de ytterligare strukturerade dataelementen i arketypen CLUSTER.structured_name. I denna arketyp finns en SLOT kapslade i \"Structured name\" . Om arketypen CLUSTER.structured name är kapslad i 'Structured name' SLOT, kan något eller alla av de strukturerade namnelementen sammanfogas och representeras i elementet 'Ostrukturerat namn'.\n\nDenna arketyp kan också användas som en proxy för formella demografiska data när man granskar en mall med domänexperter – till exempel en bedömning där granskare förväntar sig att se patientens uppgifter högst upp i bedömningsformuläret.",
+          "misuse" : "Får inte användas för att representera eller ersätta formell identifieringshantering eller i syfte att upprätthålla ett officiellt demografiskt register eller index. Använd ett formellt Master Patient Index eller Vårdgivare Index för detta ändamål, eller arketyper baserade på openEHR Demographic Information Model.\n\nFår inte användas för att representera patienten, deltagare eller författare till journalen och liknande dataelement som bör representeras formellt i journalen med hjälp av Referensmodellens attribut.\n\nFår inte användas för att registrera en individs födelsedatum - använd istället dataelementet \"Födelsedatum\" i EVALUATION.birth_summary för detta ändamål\n\nFår inte användas för att registrera biometriska detaljer eller biomarkörer om en individ - använd en specifik ENTRY-arketyp för detta ändamål.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "nb" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "nb"
+          },
+          "purpose" : "For å registrere detaljer om en person i en pasientjournal.",
+          "keywords" : [ "tjenesteyter, omsorgsperson, helsepersonell, slektning, pårørende, vitne, venn, nabo, barn, familie, søsken, forelder, arbeidsgiver, rekvirent, henviser, ektefelle, verge, samboer, kjæreste" ],
+          "use" : "Brukes for å registrere detaljer om en person i en pasientjournal, når det ikke er ønskelig eller mulig å bruke et formelt demografisk register eller indeks.\n\nFor eksempel:\n- navn og kontaktdetaljer til en person som har en kopi av et fremtidig behandlingsvalg, i SLOTet \"Kopiholder\" i arketypen EVALUATION.advance_care_directive (Fremtidig behandlingsvalg).\n- navn og kontaktdetaljer til en omsorgsperson eller helsepersonell i en organisasjon, i SLOTet \"Kontaktperson\" i arketypen CLUSTER.organisation (Organisasjon).\n- detaljer om en slektning i en familieanamnese, I SLOTet \"Detaljer om familiemedlem\" i arketypen EVALUATION.family_history (Familieanamnese).\n- navnet på en person som gjennomførte prøvetakning på en pasient, i SLOTet \"Detaljer om prøvetaker\" i arketypen CLUSTER.specimen (Prøvemateriale).\n- et vitne til et fall eller en ulykke, i SLOTet \"Witness\" i arketypen CLUSTER.health_event.\n\nI de mest vanlige brukscasene der navn skal registreres i pasientjournalen, vil dataelementet \"Navn\" i denne arketypen være tilstrekkelig. I tilfeller der det er nødvendig eller ønskelig med detaljer om en eller flere navnekomponenter, bruk arketypen CLUSTER.structured_name i SLOTet \"Strukturert navn\" i denne arketypen. \nOm det er gjort, kan noen eller alle de strukturerte navnelementene slås sammen av programvaren man benytter, og lagres i dataelementet \"Navn\".\n\nDenne arketypen kan også brukes som en midlertidig erstatning for formelle demografiske data når man gjennomgår et templat med domeneeksperter - for eksempel en vurdering der man i templatet forventer å se detaljer om en person på toppen av vurderingsskjema.",
+          "misuse" : "Brukes ikke til å representere eller erstatte de formelle demografiske opplysninger for formell identitetsforvaltning eller for å opprettholde et demografisk register eller en indeks. Bruk et formelt pasientregister, helsepersonellregister eller arketyper basert på openEHR demografisk informasjonsmodell til dette formålet.\n\nBrukes ikke for å representere pasient, deltakere eller forfatter av skjema eller lignende, som skal representeres formelt i pasientjournalen. Bruk attributter fra Referansemodellen for dette formålet.\n\nBrukes ikke for å registrere fødselsdato for individet - bruk dataelementet \"Fødselsdato\" i arketypen EVALUATION.birth_summary for dette formålet.\n\nBrukes ikke for å registrere detaljer om biometri eller biomarkører for personen - bruk en spesifikk ENTRY-arketype for dette formålet.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "en" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "en"
+          },
+          "purpose" : "To record details about a person as they are known or understood in the course of clinical documentation.",
+          "keywords" : [ "provider, carer, staff, healthcare professional, relative, next-of-kin, practitioner, witness, friend, neighbour, child, family, sibling, parent, individual" ],
+          "use" : "Use to record details of a person as they are known or understood in the course of clinical documentation, often ad hoc or when it is not appropriate or possible to use a formal demographic register or index. Examples include:\n- the copyholder of an advanced care record, using the 'Copyholder' SLOT within the EVALUATION.advance_care_directive archetype;\n- the role and contact details of a named contact person within an organisation, using the 'Contact person' SLOT within the CLUSTER.organisation archetype;\n- details about a relative in a family history record, using the 'Family member details' SLOT within the openEHR-EHR-EVALUATION.family_history archetype; \n- the name of the person who collected a laboratory specimen from a patient, using the 'Specimen collector details' within the CLUSTER.specimen archetype; or\n- a witness to a fall or accident, using the 'Witness' SLOT within the CLUSTER.health_event archetype.\n\nIn most simple clinical recording use cases, the unstructured 'Name' element within the CLUSTER.person archetype will be sufficient to record the name of a person as part of a health record. However, in circumstances where a structured name is necessary or desirable for clinical recording purposes, nest this archetype within the 'Structured name' SLOT in CLUSTER.person archetype. If the CLUSTER.structured_name archetype is nested within the 'Structured name' SLOT, any or all of the data elements can be combined together as a text string and represented in the 'Name' element, as long as they are consistent.\n\nThis archetype could also be used as a proxy for formal demographic data when reviewing a template with domain experts - for example, an assessment where reviewers would expect to see a person's details at the top of the assessment form.",
+          "misuse" : "Not to be used to represent or replace formal identification management or for the purposes of maintaining an official demographic register or index. Use a formal Master Patient Index or Health Provider Index for this purpose, or archetypes based on the openEHR Demographic Information Model.\n\nNot to be used to represent the subject of care, participants or author of the record and similar data elements that should be represented formally in the health record using the Reference Model attributes.\n\nNot to be used to record the date of birth of an individual - use the 'Date of birth' data element within the EVALUATION.birth_summary for this purpose\n\nNot to be used to record biometric detail or biomarkers about an individual - use a specific ENTRY archetype for this purpose.",
+          "copyright" : "© openEHR Foundation",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "es" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "es"
+          },
+          "purpose" : "Para registrar detalles sobre una persona tal y como se conocen o entienden en el curso de la documentación clínica.",
+          "keywords" : [ "proveedor, cuidador, personal, profesional sanitario, familiar, pariente cercano, profesional, testigo, amigo, vecino, niño, familia, hermano, padre, individuo" ],
+          "use" : "Utilizar para registrar los detalles de una persona tal y como se conocen o entienden en el curso de la documentación clínica, a menudo ad hoc o cuando no es apropiado o posible utilizar un registro o índice demográfico formal. Algunos ejemplos son:\n- El nombre y los datos de contacto de una persona que posee una copia física de un documento de voluntades anticipadas, usando el slot 'Encargado de la copia' en el arquetipo EVALUATION.advance_care_directive;\n- La función y los datos de una persona de contacto nombrada dentro de una organización, utilizando el SLOT \"Persona de contacto\" dentro del arquetipo CLUSTER.organisation;\n- Los datos de un pariente en un registro de historia familiar, utilizando el SLOT 'Family member details' dentro del arquetipo openEHR-EHR-EVALUATION.family_history;\n- El nombre de la persona que recogió una muestra de laboratorio de un paciente, utilizando los \"detalles del recolector de muestras\" dentro del arquetipo CLUSTER.specimen; o\n- Un testigo de una caída o accidente, utilizando el SLOT \"Testigo\" dentro del arquetipo CLUSTER.health_event.\n\nEn la mayoría de los casos de uso de registros clínicos sencillos, el elemento no estructurado \"Nombre\" dentro del arquetipo CLUSTER.person será suficiente para registrar el nombre de una persona como parte de un registro sanitario. Sin embargo, en circunstancias en las que sea necesario o deseable un nombre estructurado para fines de registro clínico, incluya este arquetipo dentro del SLOT 'Nombre estructurado' en el arquetipo CLUSTER.person. Si el arquetipo CLUSTER.structured_name se incluye dentro del SLOT 'Structured name', cualquiera de los elementos de datos, o todos ellos, pueden combinarse juntos como una cadena de texto y representarse en el elemento 'Nombre' siempre que sean coherentes.\n\nEste arquetipo también puede utilizarse como sustituto de los datos demográficos formales cuando se revise una plantilla con expertos del dominio - por ejemplo, una evaluación en la que los revisores esperarían ver los datos del paciente en la parte superior del formulario.",
+          "misuse" : "No debe utilizarse para representar o sustituir la gestión de la identificación formal ni para mantener un registro o índice demográfico oficial. Utilice para ello un Índice Maestro de Pacientes o un Índice de Proveedores de Salud formales o arquetipos basados en el Modelo de Información Demográfico de openEHR.\n\nNo debe utilizarse para representar el sujeto de la atención, los participantes o el autor del registro y elementos de datos similares que deberían representarse formalmente en el registro sanitario utilizando los atributos del Modelo de Referencia.\n\nNo debe utilizarse para registrar la fecha de nacimiento de un individuo: utilice el elemento de datos \"Fecha de nacimiento\" dentro de EVALUATION.birth_summary para este fin\n\nNo debe utilizarse para registrar detalles biométricos o biomarcadores sobre un individuo - utilice un arquetipo de ENTRY específico para este fin.\n",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "zh" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "zh"
+          },
+          "purpose" : "*To record details about a person as they are known or understood in the course of clinical documentation. (en)",
+          "keywords" : [ "*provider, carer, staff, healthcare professional, relative, next-of-kin, practitioner, witness, friend, neighbour, child, family, sibling, parent, individual (en)" ],
+          "use" : "*Use to record details of a person as they are known or understood in the course of clinical documentation, often ad hoc or when it is not appropriate or possible to use a formal demographic register or index. Examples include:\n- the copyholder of an advanced care record, using the 'Copyholder' SLOT within the EVALUATION.advance_care_directive archetype;\n- the role and contact details of a named contact person within an organisation, using the 'Contact person' SLOT within the CLUSTER.organisation archetype;\n- details about a relative in a family history record, using the 'Family member details' SLOT within the openEHR-EHR-EVALUATION.family_history archetype; \n- the name of the person who collected a laboratory specimen from a patient, using the 'Specimen collector details' within the CLUSTER.specimen archetype; or\n- a witness to a fall or accident, using the 'Witness' SLOT within the CLUSTER.health_event archetype.\n\nIn most simple clinical recording use cases, the unstructured 'Name' element within the CLUSTER.person archetype will be sufficient to record the name of a person as part of a health record. However, in circumstances where a structured name is necessary or desirable for clinical recording purposes, nest this archetype within the 'Structured name' SLOT in CLUSTER.person archetype. If the CLUSTER.structured_name archetype is nested within the 'Structured name' SLOT, any or all of the data elements can be combined together as a text string and represented in the 'Name' element, as long as they are consistent.\n\nThis archetype could also be used as a proxy for formal demographic data when reviewing a template with domain experts - for example, an assessment where reviewers would expect to see a person's details at the top of the assessment form. (en)",
+          "misuse" : "*Not to be used to represent or replace formal identification management or for the purposes of maintaining an official demographic register or index. Use a formal Master Patient Index or Health Provider Index for this purpose, or archetypes based on the openEHR Demographic Information Model.\n\nNot to be used to represent the subject of care, participants or author of the record and similar data elements that should be represented formally in the health record using the Reference Model attributes.\n\nNot to be used to record the date of birth of an individual - use the 'Date of birth' data element within the EVALUATION.birth_summary for this purpose\n\nNot to be used to record biometric detail or biomarkers about an individual - use a specific ENTRY archetype for this purpose. (en)",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        }
+      }
     },
     "parentArchetypeId" : "openEHR-EHR-CLUSTER.person.v1",
     "differential" : true,
@@ -1159,7 +1381,38 @@
       "otherDetails" : {
         "PARENT:MD5-CAM-1.0.1" : "2E4CD41132330A5BEC28342786B0748E"
       },
-      "details" : { }
+      "details" : {
+        "pt-br" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "pt-br"
+          },
+          "purpose" : "Representação de outros dados de uma pessoa além daqueles especificados pela ISO 22220.",
+          "keywords" : [ "serviço demográfico", "dados demográficos de uma pessoa" ],
+          "use" : "Usado em serviço demográficos para coletar os dados de uma pessoa.",
+          "copyright" : "© openEHR Foundation",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "en" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "en"
+          },
+          "purpose" : "Representation of other person's data besides those specified in ISO 22220.",
+          "keywords" : [ "demographic service", "person's demographic data" ],
+          "use" : "Used in demographic service to collect a person's data.",
+          "copyright" : "© openEHR Foundation",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        }
+      }
     },
     "parentArchetypeId" : "openEHR-DEMOGRAPHIC-CLUSTER.person_additional_data_br.v0",
     "differential" : true,
@@ -1225,7 +1478,53 @@
       "otherDetails" : {
         "PARENT:MD5-CAM-1.0.1" : "631B12227B6F857367CA40D256DD814A"
       },
-      "details" : { }
+      "details" : {
+        "de" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "de"
+          },
+          "purpose" : "Zur Darstellung von Informationen über eine bestimmte Art der elektronischen Kommunikation, wie sie bekannt ist oder im Rahmen der klinischen Dokumentation verstanden wird.",
+          "keywords" : [ "Telefon, Mobiltelefon, E-Mail, Fax, Pager, Chat, Soziale Medien, asynchron, Kommunikation, SoMe" ],
+          "use" : "Zur Darstellung von Informationen über eine bestimmte Art der elektronischen Kommunikation für eine Person oder Organisation, wie sie bekannt ist oder im Rahmen der klinischen Dokumentation verstanden wird. Dies geschieht üblicherweise ad hoc oder wenn es nicht angemessen oder möglich ist, ein formelles Register oder einen Index zu verwenden.",
+          "misuse" : "Nicht für komplexe Kommunikationsdarstellung oder -verwaltung zu verwenden, wie z. B. bevorzugte Telefonnummern oder Gültigkeit der Nutzung. Verwenden Sie zu diesem Zweck einen formellen Master Patient Index oder Health Provider Index oder Archetypen, die auf dem demografischen Informationsmodell von openEHR basieren.\r\n\r\nDarf nicht verwendet werden, um das formelle Identifikationsmanagement darzustellen oder zu ersetzen oder um ein offizielles demografisches Register oder einen Index zu führen. Verwenden Sie zu diesem Zweck einen formellen Master Patient Index oder Health Provider Index oder Archetypen, die auf dem openEHR Demographic Information Model basieren.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "nb" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "nb"
+          },
+          "purpose" : "For å registrere detaljer om en spesifikk type elektronisk kommunikasjon som man har informasjon om eller har forstått, i det kliniske dokumentasjonsarbeidet.",
+          "keywords" : [ "telefon, mobil, e-post, faks, personsøker, chat, asynkron dialog, sosiale media, kommunikasjon, SoMe," ],
+          "use" : "Brukes for å registrere detaljer om en spesifikk type elektronisk kommunikasjon for en person eller en organisasjon, som man har informasjon om eller har forstått, i det kliniske dokumentasjonsarbeidet. Brukes ofte ad hoc eller i de tilfeller når det ikke er ønskelig eller mulig å bruke et formelt demografisk register eller indeks.",
+          "misuse" : "Brukes ikke til kompleks kommunikasjonsadministrasjon, for eksempel foretrukne telefonnummer eller gyldige bruksdatoer. Bruk et formelt pasientregister, helsepersonellregister eller arketyper basert på openEHR demografisk informasjonsmodell til dette formålet.\r\n\t\r\nBrukes ikke til å representere eller erstatte de formelle demografiske opplysninger for formell identitetsforvaltning eller for å opprettholde et demografisk register eller en indeks. Bruk et formelt pasientregister, helsepersonellregister eller arketyper basert på openEHR demografisk informasjonsmodell til dette formålet.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "en" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "en"
+          },
+          "purpose" : "To record details about a specified type of electronic communication as it is known or understood in the course of clinical documentation.",
+          "keywords" : [ "telephone, phone, mobile, email, fax, pager, chat, social media, asynchronous, communication, SoMe" ],
+          "use" : "Use to record details about a specified type of electronic communication for an individual or an organisation as it is known or understood in the course of clinical documentation. This is commonly ad hoc or when it is not appropriate or possible to use a formal register or index.",
+          "misuse" : "Not to be used for complex communication representation or management, such as preferred phone numbers or valid dates of usage. Use a formal Master Patient Index or Health Provider Index for this purpose, or archetypes based on the openEHR Demographic Information Model.\r\n\r\nNot to be used to represent or replace formal identification management or for the purposes of maintaining an official demographic register or index. Use a formal Master Patient Index or Health Provider Index for this purpose, or archetypes based on the openEHR Demographic Information Model.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        }
+      }
     },
     "parentArchetypeId" : "openEHR-EHR-CLUSTER.electronic_communication.v1",
     "differential" : true,
@@ -1394,6 +1693,1508 @@
         "name" : "Kanika Kuwelker, John Tore Valand, Liv Laugen",
         "organisation" : "Helse Vest IKT, Helse Bergen, ​Oslo University Hospital, Norway",
         "email" : "kanika.kuwelker@helse-vest-ikt.no, john.tore.valand@helse-vest-ikt.no, liv.laugen@ous-hf.no"
+      },
+      "otherDetails" : { }
+    } ]
+  }, {
+    "@type" : "TEMPLATE_OVERLAY",
+    "uid" : "215e346a-c7e6-4d4d-b4d2-5d05412e6410",
+    "description" : {
+      "@type" : "RESOURCE_DESCRIPTION",
+      "originalAuthor" : { },
+      "otherContributors" : [ ],
+      "ipAcknowledgements" : { },
+      "references" : { },
+      "conversionDetails" : { },
+      "otherDetails" : {
+        "PARENT:MD5-CAM-1.0.1" : "e3c068acc91e9c88b522a05094c39152"
+      },
+      "details" : { }
+    },
+    "parentArchetypeId" : "openEHR-EHR-CLUSTER.problem_qualifier.v2",
+    "differential" : true,
+    "archetypeId" : {
+      "@type" : "ARCHETYPE_HRID",
+      "value" : "openEHR-EHR-CLUSTER.ovl-problem_qualifier-001.v2"
+    },
+    "definition" : {
+      "@type" : "C_COMPLEX_OBJECT",
+      "rmTypeName" : "CLUSTER",
+      "nodeId" : "at0000.1",
+      "attributes" : [ ],
+      "attributeTuples" : [ ]
+    },
+    "terminology" : {
+      "@type" : "ARCHETYPE_TERMINOLOGY",
+      "conceptCode" : "at0000",
+      "termDefinitions" : {
+        "en" : {
+          "at0001" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0001",
+            "text" : "Episodicity",
+            "description" : "Category of this episode for the identified problem/diagnosis.",
+            "comment" : "For example: 'New' will enable clinicians to distinguish a new, acute episode of otitis media that may have arisen soon after a previous diagnosis, to distinguish it from an unresolved or 'Ongoing' diagnosis of chronic otitis media. Treatment of recurring, new and acute, episodes of a condition may differ significantly from the same condition that is not resolving or responding to treatment. In many situations the clinician will not be able to tell, and so indeterminate may be appropriate."
+          },
+          "at0003" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0003",
+            "text" : "Active/Inactive?",
+            "description" : "Category that supports division of problems and diagnoses into Active or Inactive problem lists.",
+            "comment" : "The Active/Inactive and Current/Past data elements have similar clinical impact but represent slightly different semantics. Both are actively used in different clinical settings, but usually not together. If a Current/Past qualifier is recorded, then this data element is likely to be redundant. An exception where a condition can be current but inactive is asthma that is not causing acute symptoms."
+          },
+          "at0026" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0026",
+            "text" : "Active",
+            "description" : "The problem or diagnosis is currently active and clinically relevant."
+          },
+          "at0027" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0027",
+            "text" : "Inactive",
+            "description" : "The problem or diagnosis is not completely resolved but is inactive or felt less relevant to the current clinical context."
+          },
+          "at0034" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0034",
+            "text" : "New",
+            "description" : "A new occurrence of either a new or existing problem or diagnosis. A flag for 'First occurrence' can be recorded separately to distinguish the first from other occurrences."
+          },
+          "at0035" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0035",
+            "text" : "Ongoing",
+            "description" : "The issue, problem or diagnosis continues, without new, acute episodes occurring."
+          },
+          "at0070" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0070",
+            "text" : "Indeterminate",
+            "description" : "It is not possible to determine if this occurrence of the problem or diagnosis is new or ongoing."
+          },
+          "at0089" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0089",
+            "text" : "Remission status",
+            "description" : "Status of the remission of an incurable diagnosis.",
+            "comment" : "For example: the status of a cancer or haematological diagnosis."
+          },
+          "at0090" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0090",
+            "text" : "In remission",
+            "description" : "No ongoing signs or symptoms of the disease have been identified."
+          },
+          "at0092" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0092",
+            "text" : "Not in remission",
+            "description" : "No diminution of the signs or symptoms of the disease have been identified."
+          },
+          "at0093" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0093",
+            "text" : "Indeterminate",
+            "description" : "It is not possible to determine if there have been diminution of the signs or symptoms of the disease have been identified."
+          },
+          "at0098" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0098",
+            "text" : "Level of control",
+            "description" : "Category of the level of control of the problem or diagnosis by the current management."
+          },
+          "at0099" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0099",
+            "text" : "Controlled",
+            "description" : "The problem or diagnosis is controlled by current management."
+          },
+          "at0100" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0100",
+            "text" : "Indeterminate",
+            "description" : "It is not possible to determine if the problem or diagnosis is controlled by current management."
+          },
+          "at0101" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0101",
+            "text" : "Not controlled",
+            "description" : "The problem or diagnosis is not controlled by current management."
+          },
+          "at0102" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0102",
+            "text" : "Progression",
+            "description" : "Category of the progression through the course of a chronic problem or diagnosis."
+          },
+          "at0103" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0103",
+            "text" : "Improving",
+            "description" : "The problem or diagnosis is improving."
+          },
+          "at0104" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0104",
+            "text" : "Stable",
+            "description" : "The problem or diagnosis is unchanged."
+          },
+          "at0105" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0105",
+            "text" : "Worsening",
+            "description" : "The problem or diagnosis is worsening."
+          },
+          "at0106" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0106",
+            "text" : "Indeterminate",
+            "description" : "It is not possible to determine the progression of the problem or diagnosis."
+          },
+          "at0107" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0107",
+            "text" : "Reason for an ongoing episode",
+            "description" : "Reason for a problem or diagnosis not resolving as expected.",
+            "comment" : "For example: incomplete or failed treatment."
+          }
+        },
+        "sl" : {
+          "at0001" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0001",
+            "text" : "*Episodicity(en)",
+            "description" : "*Category of this episode for the identified problem/diagnosis.(en)",
+            "comment" : "*For example: 'New' will enable clinicians to distinguish a new, acute episode of otitis media that may have arisen soon after a previous diagnosis, to distinguish it from an unresolved or 'Ongoing' diagnosis of chronic otitis media. Treatment of recurring, new and acute, episodes of a condition may differ significantly from the same condition that is not resolving or responding to treatment. In many situations the clinician will not be able to tell, and so indeterminate may be appropriate.(en)"
+          },
+          "at0003" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0003",
+            "text" : "*Active/Inactive?(en)",
+            "description" : "*Category that supports division of problems and diagnoses into Active or Inactive problem lists.(en)",
+            "comment" : "*The Active/Inactive and Current/Past data elements have similar clinical impact but represent slightly different semantics. Both are actively used in different clinical settings, but usually not together. If a Current/Past qualifier is recorded, then this data element is likely to be redundant. An exception where a condition can be current but inactive is asthma that is not causing acute symptoms.(en)"
+          },
+          "at0026" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0026",
+            "text" : "Aktiven",
+            "description" : "Problem je trenutno aktiven in klinično relevanten"
+          },
+          "at0027" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0027",
+            "text" : "Ni aktiven",
+            "description" : "Problem trenutno ni aktiven"
+          },
+          "at0034" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0034",
+            "text" : "*New(en)",
+            "description" : "*A new occurrence of either a new or existing problem or diagnosis. A flag for 'First occurrence' can be recorded separately to distinguish the first from other occurrences.(en)"
+          },
+          "at0035" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0035",
+            "text" : "*Ongoing(en)",
+            "description" : "*The issue, problem or diagnosis continues, without new, acute episodes occurring.(en)"
+          },
+          "at0070" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0070",
+            "text" : "*Indeterminate(en)",
+            "description" : "*It is not possible to determine if this occurrence of the problem or diagnosis is new or ongoing.(en)"
+          },
+          "at0089" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0089",
+            "text" : "*Remission status(en)",
+            "description" : "*Status of the remission of an incurable diagnosis.(en)",
+            "comment" : "*For example: the status of a cancer or haematological diagnosis.(en)"
+          },
+          "at0090" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0090",
+            "text" : "*In complete remission(en)",
+            "description" : "*No diminution of signs or symptoms of the disease have been identified.(en)"
+          },
+          "at0092" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0092",
+            "text" : "*Not in remission(en)",
+            "description" : "*No diminution of the signs or symptoms of the disease have been identified.(en)"
+          },
+          "at0093" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0093",
+            "text" : "*Indeterminate(en)",
+            "description" : "*It is not possible to determine if there have been diminution of the signs or symptoms of the disease have been identified.(en)"
+          },
+          "at0098" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0098",
+            "text" : "*Level of control (en)",
+            "description" : "*Category of the level of control of the problem or diagnosis by the current management. (en)"
+          },
+          "at0099" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0099",
+            "text" : "*Controlled (en)",
+            "description" : "*The problem or diagnosis is controlled by current management. (en)"
+          },
+          "at0100" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0100",
+            "text" : "*Indeterminate (en)",
+            "description" : "*It is not possible to determine if the problem or diagnosis is controlled by current management. (en)"
+          },
+          "at0101" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0101",
+            "text" : "*Not controlled (en)",
+            "description" : "*The problem or diagnosis is not controlled by current management. (en)"
+          },
+          "at0102" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0102",
+            "text" : "*Progression (en)",
+            "description" : "*Category of the progression through the course of a chronic problem or diagnosis. (en)"
+          },
+          "at0103" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0103",
+            "text" : "*Improving (en)",
+            "description" : "*The problem or diagnosis is improving. (en)"
+          },
+          "at0104" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0104",
+            "text" : "*Stable (en)",
+            "description" : "*The problem or diagnosis is unchanged. (en)"
+          },
+          "at0105" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0105",
+            "text" : "*Worsening (en)",
+            "description" : "*The problem or diagnosis is worsening. (en)"
+          },
+          "at0106" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0106",
+            "text" : "*Indeterminate (en)",
+            "description" : "*It is not possible to determine the progression of the problem or diagnosis. (en)"
+          },
+          "at0107" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0107",
+            "text" : "*Reason for an ongoing episode (en)",
+            "description" : "*Reason for a problem or diagnosis not resolving as expected. (en)",
+            "comment" : "*For example: incomplete or failed treatment. (en)"
+          }
+        },
+        "pt-br" : {
+          "at0001" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0001",
+            "text" : "Episodicidade",
+            "description" : "Categoria deste episódio para o problema / diagnóstico identificado.",
+            "comment" : "Por exemplo: \"Novo\" permitirá aos clínicos distinguir um novo episódio agudo de otite média que pode ter surgido logo após um diagnóstico prévio, para distingui-lo de um diagnóstico não resolvido ou \"Em curso\" da otite média crônica. O tratamento de episódios recorrentes, novos e agudos de uma condição pode diferir significativamente da mesma condição que não está resolvendo ou respondendo ao tratamento. Em muitas situações, o clínico não será capaz de dizer e, portanto, indeterminado pode ser apropriado."
+          },
+          "at0003" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0003",
+            "text" : "Ativo/Inativo?",
+            "description" : "Categoria que supporta a divisão de problemas and diagnósticos em listas de problemas Ativos ou Inativos.",
+            "comment" : "Os elementos de dados Ativo/Inativo e Atual/Passado e têm impacto clínico similar mas com representação semântica ligeiramente diferente. Ambos são usados ativamente em diferentes contextos clínicos, mas geralmente não juntos. Se um qualificador Atual/Passado for registrado, esse elemento de dados provavelmente será redundante. Uma exceção onde uma condição pode ser atual mas inativa é a asma que não está causando sintomas agudos."
+          },
+          "at0026" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0026",
+            "text" : "Ativo",
+            "description" : "O problema ou o diagnóstico está atualmente ativo e clinicamente relevante."
+          },
+          "at0027" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0027",
+            "text" : "Inativo",
+            "description" : "O problema ou diagnóstico não está completamente resolvido, mas está inativo ou é menos relevante no contexto clínico atual."
+          },
+          "at0034" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0034",
+            "text" : "Novo",
+            "description" : "Uma nova ocorrência de um problema ou diagnóstico novo ou existente. Um sinalizador para \"Primeira ocorrência\" pode ser gravado separadamente para distinguir a primeira das outras ocorrências."
+          },
+          "at0035" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0035",
+            "text" : "Em curso",
+            "description" : "A questão, problema ou diagnóstico continua, sem novos episódios agudos ocorrendo."
+          },
+          "at0070" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0070",
+            "text" : "Indeterminado",
+            "description" : "Não é possível determinar se esta ocorrência do problema ou diagnóstico é nova ou está em curso."
+          },
+          "at0089" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0089",
+            "text" : "Estado de remissão",
+            "description" : "Status da remissão de um diagnóstico incurável.",
+            "comment" : "Por exemplo: o status de um câncer ou diagnóstico hematológico."
+          },
+          "at0090" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0090",
+            "text" : "Em remissão",
+            "description" : "Nenhum sinal ou sintoma da doença em andamento foi identificado."
+          },
+          "at0092" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0092",
+            "text" : "Não em remissão",
+            "description" : "Nenhuma diminuição dos sinais ou sintomas da doença foi identificada."
+          },
+          "at0093" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0093",
+            "text" : "Indeterminado",
+            "description" : "Não é possível determinar se houve diminuição dos sinais ou sintomas da doença identificada."
+          },
+          "at0098" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0098",
+            "text" : "*Level of control (en)",
+            "description" : "*Category of the level of control of the problem or diagnosis by the current management. (en)"
+          },
+          "at0099" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0099",
+            "text" : "*Controlled (en)",
+            "description" : "*The problem or diagnosis is controlled by current management. (en)"
+          },
+          "at0100" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0100",
+            "text" : "*Indeterminate (en)",
+            "description" : "*It is not possible to determine if the problem or diagnosis is controlled by current management. (en)"
+          },
+          "at0101" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0101",
+            "text" : "*Not controlled (en)",
+            "description" : "*The problem or diagnosis is not controlled by current management. (en)"
+          },
+          "at0102" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0102",
+            "text" : "*Progression (en)",
+            "description" : "*Category of the progression through the course of a chronic problem or diagnosis. (en)"
+          },
+          "at0103" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0103",
+            "text" : "*Improving (en)",
+            "description" : "*The problem or diagnosis is improving. (en)"
+          },
+          "at0104" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0104",
+            "text" : "*Stable (en)",
+            "description" : "*The problem or diagnosis is unchanged. (en)"
+          },
+          "at0105" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0105",
+            "text" : "*Worsening (en)",
+            "description" : "*The problem or diagnosis is worsening. (en)"
+          },
+          "at0106" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0106",
+            "text" : "*Indeterminate (en)",
+            "description" : "*It is not possible to determine the progression of the problem or diagnosis. (en)"
+          },
+          "at0107" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0107",
+            "text" : "*Reason for an ongoing episode (en)",
+            "description" : "*Reason for a problem or diagnosis not resolving as expected. (en)",
+            "comment" : "*For example: incomplete or failed treatment. (en)"
+          }
+        },
+        "nb" : {
+          "at0001" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0001",
+            "text" : "Episodisitet",
+            "description" : "Kategorisering av denne episoden av problemet/diagnosen.",
+            "comment" : "For eksempel: \"Ny\" gjør det mulig for klinikere å holde et nytt og akutt tilfelle av mellomørebetennelse som har oppstått raskt etter en tidligere diagnose adskilt fra en pågående kronisk mellomørebetennelse. Behandling av gjentakende, nye og akutte episoder av en tilstand kan være vesentlig forskjellig fra behandling av den samme tilstanden som ikke bedres eller ikke responderer på behandling. I mange situasjoner vil det ikke være mulig for klinikeren å skille dem fra hverandre, og i disse tilfellene vil \"Ubestemmelig\" være relevant."
+          },
+          "at0003" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0003",
+            "text" : "Aktiv/inaktiv?",
+            "description" : "Kategori som støtter inndeling av problemer og diagnoser i lister over aktive og inaktive problemer.",
+            "comment" : "Elementene Aktiv/inaktiv og Nåværende/tidligere har lignende klinisk innflytelse, men representerer noe forskjellig betydning. Begge brukes aktivt i forskjellige kliniske sammenhenger, men som regel ikke sammen. Dersom Nåværende/tidligere er registrert, er dette elementet sannsynligvis overflødig. Et unntak der en tilstand kan være både nåværende og inaktivt, er astma som ikke forårsaker akutte symptomer."
+          },
+          "at0026" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0026",
+            "text" : "Aktiv",
+            "description" : "Problemet eller diagnosen er aktivt og kliniske relevant ved registreringstidspunktet."
+          },
+          "at0027" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0027",
+            "text" : "Inaktiv",
+            "description" : "Problemet eller diagnosen er ikke fullstendig bedret, men er inaktivt eller mindre relevant for den nåværende kliniske sammenhengen."
+          },
+          "at0034" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0034",
+            "text" : "Ny",
+            "description" : "En ny forekomst av enten et nytt eller et eksisterende problem eller diagnose. Et flagg for \"Første forekomst\" kan registreres separat for å skille den første forekomsten fra påfølgende."
+          },
+          "at0035" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0035",
+            "text" : "Pågående",
+            "description" : "Problemet eller diagnosen er pågående, uten at det har forekommet nye episoder."
+          },
+          "at0070" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0070",
+            "text" : "Ubestemmelig",
+            "description" : "Det er ikke mulig å bestemme hvorvidt denne forekomsten av problemet eller diagnosen er ny eller pågående."
+          },
+          "at0089" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0089",
+            "text" : "Remisjonsstatus",
+            "description" : "Remisjonsstatus for en ikke-kurerbar diagnose.",
+            "comment" : "For eksempel status for kreft eller en hematologisk diagnose."
+          },
+          "at0090" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0090",
+            "text" : "I remisjon",
+            "description" : "Ingen pågående sykdomstegn eller symptomer på sykdommen er identifisert."
+          },
+          "at0092" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0092",
+            "text" : "Ikke i remisjon",
+            "description" : "Ingen reduksjon av sykdomstegn eller symptomer er identifisert."
+          },
+          "at0093" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0093",
+            "text" : "Ubestemmelig",
+            "description" : "Det er ikke mulig å bestemme om sykdomstegnene eller symptomene av sykdommen er reduserte."
+          },
+          "at0098" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0098",
+            "text" : "Kontrollnivå",
+            "description" : "Kategorisering av kontrollnivå den nåværende behandlingen har over problemet eller diagnosen."
+          },
+          "at0099" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0099",
+            "text" : "Godt kontrollert",
+            "description" : "Problemet eller diagnosen er godt kontrollert av nåværende behandling."
+          },
+          "at0100" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0100",
+            "text" : "Ubestemmelig",
+            "description" : "Det er ikke mulig å bestemme om nåværende behandling holder problemet eller diagnosen under kontroll."
+          },
+          "at0101" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0101",
+            "text" : "Ikke kontrollert",
+            "description" : "Problemet eller diagnosen er ikke kontrollert av nåværende behandling."
+          },
+          "at0102" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0102",
+            "text" : "Progresjon",
+            "description" : "Kategorisering av progresjonen gjennom forløpet til et kronisk problem eller diagnose."
+          },
+          "at0103" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0103",
+            "text" : "I bedring",
+            "description" : "Problemet eller diagnosen er i bedring.]"
+          },
+          "at0104" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0104",
+            "text" : "Stabil",
+            "description" : "Problemet eller diagnosen er uendret."
+          },
+          "at0105" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0105",
+            "text" : "I forverring",
+            "description" : "Problemet eller diagnosen er i forverring."
+          },
+          "at0106" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0106",
+            "text" : "Ubestemmelig",
+            "description" : "Det er ikke mulig å bestemme problemet eller diagnosens progresjon."
+          },
+          "at0107" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0107",
+            "text" : "Årsak for en pågående episode",
+            "description" : "Årsak for at problemet eller diagnosen ikke bedres som forventet.",
+            "comment" : "For eksempel: ufullstendig eller feilslått behandling."
+          }
+        },
+        "ko" : {
+          "at0001" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0001",
+            "text" : "삽화",
+            "description" : "확인된 문제/진단에 대한 삽화의 범주.",
+            "comment" : "예: '새로운'은 임상의가 치료되지 않았거나 진행 중인 만성중이염 진단과 이전 진단 이후 바로 발생한 것일 수 있는 새로운 급성 중이염 삽화를 구별할 수 있도록 함. 재발이면서 새로이 발생한 급성 상태의 삽화에 대한 치료는 치료가 안됐거나 치료에 반응하지 않는 같은 상태와 상당히 다를 것임. 많은 상황에서, 임상의는 구별할 수 없을 것이며 그래서 결정불능이 적절할 수도 있음."
+          },
+          "at0003" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0003",
+            "text" : "활성/비활성",
+            "description" : "문제와 진단을 활성 또는 비활성 문제 목록으로 구분하는 것을 지원하기 위한 범주.",
+            "comment" : "활성/비활성 그리고 현재/과거 데이터 엘리먼트는 비슷한 임상적 영향을 가지지만 약간 다른 의미를 표현함. 둘 다 상이한 임상 환경에서 활발하게 사용되지만 보통 같이 사용되지는 않음. 현재/과거 한정자가 기록되어 있다면, 이 데이터 엘리먼트는 중복일 가능성이 있음. 상태가 현재일 수는 있지만 비활성인 예외 경우는 급성 증상을 일으키지 않는 천식임."
+          },
+          "at0026" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0026",
+            "text" : "활성",
+            "description" : "현재 활성화되어 있고 임상적으로 관련된 문제 또는 진단"
+          },
+          "at0027" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0027",
+            "text" : "비활성",
+            "description" : "완치된 문제 또는 진단은 아니지만 비활성 상태이거나 현재 임상 상황에 거의 관련성이 없다고 느껴짐."
+          },
+          "at0034" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0034",
+            "text" : "새로운",
+            "description" : "새로 또는 존재하는 문제 또는 진단의 새로운 발생. '처음 발생'을 위한 표시는 다른 발생으로 부터 처음 발생을 구별하기 위해 구분해서 기록될 수 있음."
+          },
+          "at0035" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0035",
+            "text" : "진행중",
+            "description" : "이슈 또는 문제, 진단이 새로운 급성 삽화의 발생없이 진행 중임."
+          },
+          "at0070" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0070",
+            "text" : "결정불능",
+            "description" : "문제 또는 진단의 발생이 새로운 것인지 진행 중인 것인지 구별하는 것이 불가능함."
+          },
+          "at0089" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0089",
+            "text" : "관해 상태",
+            "description" : "불치병 진단의 관해 상태.",
+            "comment" : "예: 암 또는 혈액학적 진단 상태."
+          },
+          "at0090" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0090",
+            "text" : "완전 관해",
+            "description" : "확인되는 진행 중인 질병의 증상이나 징후가 없음."
+          },
+          "at0092" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0092",
+            "text" : "관해 아님",
+            "description" : "질병의 증상이나 증후의 감소가 확인되지 않음."
+          },
+          "at0093" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0093",
+            "text" : "결정불능",
+            "description" : "질병의 증상이나 증후의 감소가 있는지 결정하는 것이 불가능함."
+          },
+          "at0098" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0098",
+            "text" : "*Level of control (en)",
+            "description" : "*Category of the level of control of the problem or diagnosis by the current management. (en)"
+          },
+          "at0099" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0099",
+            "text" : "*Controlled (en)",
+            "description" : "*The problem or diagnosis is controlled by current management. (en)"
+          },
+          "at0100" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0100",
+            "text" : "*Indeterminate (en)",
+            "description" : "*It is not possible to determine if the problem or diagnosis is controlled by current management. (en)"
+          },
+          "at0101" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0101",
+            "text" : "*Not controlled (en)",
+            "description" : "*The problem or diagnosis is not controlled by current management. (en)"
+          },
+          "at0102" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0102",
+            "text" : "*Progression (en)",
+            "description" : "*Category of the progression through the course of a chronic problem or diagnosis. (en)"
+          },
+          "at0103" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0103",
+            "text" : "*Improving (en)",
+            "description" : "*The problem or diagnosis is improving. (en)"
+          },
+          "at0104" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0104",
+            "text" : "*Stable (en)",
+            "description" : "*The problem or diagnosis is unchanged. (en)"
+          },
+          "at0105" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0105",
+            "text" : "*Worsening (en)",
+            "description" : "*The problem or diagnosis is worsening. (en)"
+          },
+          "at0106" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0106",
+            "text" : "*Indeterminate (en)",
+            "description" : "*It is not possible to determine the progression of the problem or diagnosis. (en)"
+          },
+          "at0107" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0107",
+            "text" : "*Reason for an ongoing episode (en)",
+            "description" : "*Reason for a problem or diagnosis not resolving as expected. (en)",
+            "comment" : "*For example: incomplete or failed treatment. (en)"
+          }
+        },
+        "de" : {
+          "at0001" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0001",
+            "text" : "Episode",
+            "description" : "Die Kategorie der Episode für das identifizierte Problem oder die identifizierte Diagnose.",
+            "comment" : "Zum Beispiel: Die Episode \"Neu\" ermöglicht es Klinikern eine neue akute Episode von Otitis media, welche möglicherweise kurz nach einer früheren Otitis media-Diagnose aufgetreten ist, von einer ungelösten oder \"andauernden\" chronischen Diagnose Otitis media zu unterscheiden. Die Behandlung von wiederkehrenden, neuen und akuten Episoden einer Erkrankung kann sich erheblich von der Behandlung der gleichen Erkrankung, welche noch nicht genesen ist, oder keine Reaktion auf eine bestimmte Behandlung gezeigt hat, unterscheiden. In vielen Fällen kann der Kliniker dies nicht sagen und eine Einteilung der Episode als \"Unbestimmt\" könnte angemessen sein."
+          },
+          "at0003" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0003",
+            "text" : "Aktiv / Inaktiv?",
+            "description" : "Eine Kategorie, die die Aufteilung der Problemlisten von Problemen und Diagnosen in aktiv und inaktiv unterstützt.",
+            "comment" : "Die Aktiv/Inaktiv und Aktuell/Vergangen Datenelemente haben einen ähnlichen klinischen Einfluss, repräsentieren aber eine etwas andere Semantik. Beide werden aktiv in verschiedenen klinischen Rahmen benutzt, aber normalerweise nicht zusammen. Wenn ein Aktuell/Vergangen Attribut dokumentiert wird, dann ist dieses Datenelement wahrscheinlich redundant. Eine Ausnahme ist ein Zustand der aktuell, aber inaktiv ist. Ein Beispiel dafür ist Asthma, welches keine akuten Symptome auslöst."
+          },
+          "at0026" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0026",
+            "text" : "Aktiv",
+            "description" : "Das Problem oder die Diagnose ist derzeit aktiv und klinisch relevant."
+          },
+          "at0027" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0027",
+            "text" : "Inaktiv",
+            "description" : "Das Problem oder die Diagnose ist nicht komplett behoben, ist aber inaktiv oder ist weniger relevant in dem gegenwärtigen klinischen Kontext."
+          },
+          "at0034" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0034",
+            "text" : "Neu",
+            "description" : "Ein neues Auftreten eines neuen oder bereits existierenden Problems oder einer Diagnose. Um das erste Auftreten von anderen Vorkommnissen zu unterscheiden, kann eine Kennzeichnung für das \"Erstes Auftreten\" separat dargestellt werden."
+          },
+          "at0035" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0035",
+            "text" : "Andauernd",
+            "description" : "Das Problem oder die Diagnose setzt sich fort, ohne dass neue oder akute Episoden auftreten."
+          },
+          "at0070" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0070",
+            "text" : "Unbestimmt",
+            "description" : "Es ist nicht möglich zu überprüfen, ob die Episode des Problems oder der Diagnose neu oder andauernd ist."
+          },
+          "at0089" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0089",
+            "text" : "Remissionsstatus",
+            "description" : "Der Remissionsstatus einer nicht heilbaren Krankheit.",
+            "comment" : "Zum Beispiel: Der Status von Krebs oder einer hämatologischen Diagnose."
+          },
+          "at0090" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0090",
+            "text" : "In Remission",
+            "description" : "Keine anhaltenden Anzeichen oder Symptome der Krankheit konnten festgestellt werden."
+          },
+          "at0092" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0092",
+            "text" : "Nicht in Remission",
+            "description" : "Keine Minderung der Anzeichen oder der Symptome der Krankheit konnte festgestellt werden."
+          },
+          "at0093" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0093",
+            "text" : "Unbestimmt",
+            "description" : "Es ist nicht möglich zu überprüfen, ob eine Minderung der Anzeichen oder der Symptome der Krankheit festgestellt wurde."
+          },
+          "at0098" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0098",
+            "text" : "Kontrollniveau",
+            "description" : "Kategorie des Kontrollniveaus des Problems oder der Diagnose durch das aktuelle Management."
+          },
+          "at0099" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0099",
+            "text" : "Kontrolliert",
+            "description" : "Das Problem oder die Diagnose wird vom aktuellen Management kontrolliert."
+          },
+          "at0100" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0100",
+            "text" : "Unbestimmt",
+            "description" : "Es ist nicht möglich festzustellen, ob das Problem oder die Diagnose vom derzeitigen Management kontrolliert wird."
+          },
+          "at0101" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0101",
+            "text" : "Nicht kontrolliert",
+            "description" : "Das Problem oder die Diagnose wird nicht vom derzeitigen Management kontrolliert."
+          },
+          "at0102" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0102",
+            "text" : "Progression",
+            "description" : "Kategorie des Verlaufs eines chronischen Problems oder der Diagnose."
+          },
+          "at0103" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0103",
+            "text" : "Verbesserung",
+            "description" : "Das Problem oder die Diagnose verbessert sich."
+          },
+          "at0104" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0104",
+            "text" : "Stabil",
+            "description" : "Das Problem oder die Diagnose ist unverändert."
+          },
+          "at0105" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0105",
+            "text" : "Verschlechterung",
+            "description" : "Das Problem oder die Diagnose verschlechtert sich."
+          },
+          "at0106" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0106",
+            "text" : "Unbestimmt",
+            "description" : "Es ist nicht möglich, den Fortschritt des Problems oder der Diagnose zu bestimmen."
+          },
+          "at0107" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0107",
+            "text" : "Grund für eine andauernde Episode.",
+            "description" : "Grund für ein Problem oder eine Diagnose, die nicht wie erwartet behoben wird.",
+            "comment" : "Zum Beispiel: unvollständige oder erfolglose Behandlung."
+          }
+        },
+        "it" : {
+          "at0001" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0001",
+            "text" : "Episodicità",
+            "description" : "Categoria di questo episodio per il problema/diagnosi identificati. ",
+            "comment" : "Ad esempio: \"Nuovo\" permetterà ai medici di distinguere un nuovo episodio acuto di otite media che può essere sorto subito dopo una diagnosi precedente, per distinguerlo da una diagnosi irrisolta o \"in corso\" di otite media cronica. Il trattamento di episodi ricorrenti, nuovi e acuti di una patologia, può differire significativamente dalla stessa patologia che non si risolve o non risponde al trattamento. In molte situazioni il clinico non sarà in grado di dirlo, e quindi indeterminato può essere appropriato."
+          },
+          "at0003" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0003",
+            "text" : "Attivo/Inattivo?",
+            "description" : "Categoria che supporta la divisione di problemi e diagnosi in elenchi di problemi Attivi o Inattivi.",
+            "comment" : "I dati Attivo/Inattivo e Corrente/Passato hanno un impatto clinico simile, ma rappresentano una semantica leggermente diversa. Entrambi sono utilizzati attivamente in contesti clinici diversi, ma di solito non insieme. Se viene registrato un qualificatore Corrente/Passato, è probabile che questo dato sia ridondante. Un'eccezione in cui una condizione può essere corrente ma inattiva è l'asma che non causa sintomi acuti."
+          },
+          "at0026" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0026",
+            "text" : "Attivo",
+            "description" : "Il problema o la diagnosi sono attualmente attivi e clinicamente rilevanti."
+          },
+          "at0027" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0027",
+            "text" : "Inattivo",
+            "description" : "Il problema o la diagnosi non sono completamente risolti, ma sono inattivi o ritenuti meno rilevanti nel contesto clinico attuale."
+          },
+          "at0034" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0034",
+            "text" : "Nuovo",
+            "description" : "Una nuova insorgenza di un problema o di una diagnosi nuova o già esistente. Un flag per \"Prima occorrenza\" può essere registrato separatamente per distinguere la prima da altre occorrenze."
+          },
+          "at0035" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0035",
+            "text" : "In corso",
+            "description" : "Il fenomeno, il problema o la diagnosi continua, senza che si verifichino nuovi episodi acuti."
+          },
+          "at0070" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0070",
+            "text" : "Indeterminato",
+            "description" : "Non è possibile determinare se il problema o la diagnosi sono nuovi o in corso."
+          },
+          "at0089" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0089",
+            "text" : "Stato di recesso",
+            "description" : "Stato di recesso di una diagnosi incurabile.",
+            "comment" : "Per esempio: lo stato di un cancro o la diagnosi ematologica."
+          },
+          "at0090" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0090",
+            "text" : "In recesso",
+            "description" : "Non sono stati identificati segni o sintomi in corso della malattia."
+          },
+          "at0092" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0092",
+            "text" : "Non in recesso",
+            "description" : "Non è stata identificata alcuna diminuzione dei segni o dei sintomi della malattia."
+          },
+          "at0093" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0093",
+            "text" : "Indeterminato",
+            "description" : "Non è possibile determinare se ci sia stata una diminuzione dei segni o dei sintomi della malattia."
+          },
+          "at0098" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0098",
+            "text" : "*Level of control (en)",
+            "description" : "*Category of the level of control of the problem or diagnosis by the current management. (en)"
+          },
+          "at0099" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0099",
+            "text" : "*Controlled (en)",
+            "description" : "*The problem or diagnosis is controlled by current management. (en)"
+          },
+          "at0100" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0100",
+            "text" : "*Indeterminate (en)",
+            "description" : "*It is not possible to determine if the problem or diagnosis is controlled by current management. (en)"
+          },
+          "at0101" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0101",
+            "text" : "*Not controlled (en)",
+            "description" : "*The problem or diagnosis is not controlled by current management. (en)"
+          },
+          "at0102" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0102",
+            "text" : "*Progression (en)",
+            "description" : "*Category of the progression through the course of a chronic problem or diagnosis. (en)"
+          },
+          "at0103" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0103",
+            "text" : "*Improving (en)",
+            "description" : "*The problem or diagnosis is improving. (en)"
+          },
+          "at0104" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0104",
+            "text" : "*Stable (en)",
+            "description" : "*The problem or diagnosis is unchanged. (en)"
+          },
+          "at0105" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0105",
+            "text" : "*Worsening (en)",
+            "description" : "*The problem or diagnosis is worsening. (en)"
+          },
+          "at0106" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0106",
+            "text" : "*Indeterminate (en)",
+            "description" : "*It is not possible to determine the progression of the problem or diagnosis. (en)"
+          },
+          "at0107" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0107",
+            "text" : "*Reason for an ongoing episode (en)",
+            "description" : "*Reason for a problem or diagnosis not resolving as expected. (en)",
+            "comment" : "*For example: incomplete or failed treatment. (en)"
+          }
+        },
+        "sv" : {
+          "at0001" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0001",
+            "text" : "Episodicitet",
+            "description" : "Kategori av episod för det identifierade problemet/diagnosen.",
+            "comment" : "Till exempel: \"Nytt\" gör det möjligt för kliniker att skilja en ny, akut episod av mediaotit som kan ha uppstått strax efter en tidigare diagnos, att skilja den från en olöst eller \"Pågående\" diagnos av kronisk mediaotit. Behandling av återkommande, nya och akuta episoder av ett tillstånd kan skilja sig avsevärt från samma tillstånd som inte svarar på behandlingen. I många situationer kommer läkaren inte att kunna fastställa något, och obestämd kan vara lämpligt."
+          },
+          "at0003" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0003",
+            "text" : "Aktiv/Inaktiv?",
+            "description" : "Kategori som stöder uppdelning av problem och diagnoser i aktiva eller inaktiva problemlistor.",
+            "comment" : "De aktiva/inaktiva och aktuella/tidigare dataelementen har liknande klinisk påverkan men representerar en något annorlunda semantik. Båda används aktivt i olika kliniska miljöer, men vanligtvis inte tillsammans. Om en nuvarande/tidigare kvalificering registreras är det sannolikt att detta dataelement är överflödigt. Ett undantag där ett tillstånd kan vara aktuellt men inaktivt är astma som inte orsakar akuta symtom."
+          },
+          "at0026" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0026",
+            "text" : "Aktiv",
+            "description" : "Problemet eller diagnosen är för närvarande aktiv och kliniskt relevant."
+          },
+          "at0027" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0027",
+            "text" : "Inaktiv",
+            "description" : "Problemet eller diagnosen har inte helt gått tillbaka men är inaktiv eller känns mindre relevant för det nuvarande kliniska sammanhanget."
+          },
+          "at0034" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0034",
+            "text" : "Ny",
+            "description" : "En ny förekomst av antingen ett nytt eller befintligt problem eller en diagnos. En flagga för \"Första förekomst\" kan spelas in separat för att skilja den första från andra händelser."
+          },
+          "at0035" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0035",
+            "text" : "Pågående",
+            "description" : "Problemet eller diagnosen fortsätter utan att nya, akuta episoder inträffar."
+          },
+          "at0070" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0070",
+            "text" : "Obestämd",
+            "description" : "Det är inte möjligt att avgöra om denna förekomst av problemet eller diagnosen är ny eller pågående."
+          },
+          "at0089" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0089",
+            "text" : "Remission",
+            "description" : "Status för remission av en obotlig diagnos.",
+            "comment" : "Till exempel: status för cancer eller hematologisk diagnos."
+          },
+          "at0090" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0090",
+            "text" : "I remission",
+            "description" : "Inga pågående tecken eller symtom på sjukdomen har identifierats."
+          },
+          "at0092" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0092",
+            "text" : "Inte i remission",
+            "description" : "Ingen minskning av tecken eller symtom på sjukdomen har identifierats."
+          },
+          "at0093" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0093",
+            "text" : "Obestämd",
+            "description" : "Det är inte möjligt att avgöra om det har skett en minskning av tecken eller symtom på sjukdomen."
+          },
+          "at0098" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0098",
+            "text" : "Level of control",
+            "description" : "*Category of the level of control of the problem or diagnosis by the current management. (en)"
+          },
+          "at0099" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0099",
+            "text" : "Controlled",
+            "description" : "*The problem or diagnosis is controlled by current management. (en)"
+          },
+          "at0100" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0100",
+            "text" : "Indeterminate",
+            "description" : "*It is not possible to determine if the problem or diagnosis is controlled by current management. (en)"
+          },
+          "at0101" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0101",
+            "text" : "Not controlled",
+            "description" : "*The problem or diagnosis is not controlled by current management. (en)"
+          },
+          "at0102" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0102",
+            "text" : "Progression",
+            "description" : "*Category of the progression through the course of a chronic problem or diagnosis. (en)"
+          },
+          "at0103" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0103",
+            "text" : "Improving",
+            "description" : "*The problem or diagnosis is improving. (en)"
+          },
+          "at0104" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0104",
+            "text" : "Stable",
+            "description" : "*The problem or diagnosis is unchanged. (en)"
+          },
+          "at0105" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0105",
+            "text" : "Worsening",
+            "description" : "*The problem or diagnosis is worsening. (en)"
+          },
+          "at0106" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0106",
+            "text" : "Indeterminate",
+            "description" : "*It is not possible to determine the progression of the problem or diagnosis. (en)"
+          },
+          "at0107" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0107",
+            "text" : "*Reason for an ongoing episode (en)",
+            "description" : "*Reason for a problem or diagnosis not resolving as expected. (en)",
+            "comment" : "*For example: incomplete or failed treatment. (en)"
+          }
+        },
+        "zh" : {
+          "at0001" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0001",
+            "text" : "*Episodicity(en)",
+            "description" : "*Category of this episode for the identified problem/diagnosis.(en)",
+            "comment" : "*For example: 'New' will enable clinicians to distinguish a new, acute episode of otitis media that may have arisen soon after a previous diagnosis, to distinguish it from an unresolved or 'Ongoing' diagnosis of chronic otitis media. Treatment of recurring, new and acute, episodes of a condition may differ significantly from the same condition that is not resolving or responding to treatment. In many situations the clinician will not be able to tell, and so indeterminate may be appropriate.(en)"
+          },
+          "at0003" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0003",
+            "text" : "*Active/Inactive?(en)",
+            "description" : "*Category that supports division of problems and diagnoses into Active or Inactive problem lists.(en)",
+            "comment" : "*The Active/Inactive and Current/Past data elements have similar clinical impact but represent slightly different semantics. Both are actively used in different clinical settings, but usually not together. If a Current/Past qualifier is recorded, then this data element is likely to be redundant. An exception where a condition can be current but inactive is asthma that is not causing acute symptoms.(en)"
+          },
+          "at0026" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0026",
+            "text" : "*Active(en)",
+            "description" : "*The problem or diagnosis is currently active and clinically relevant.(en)"
+          },
+          "at0027" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0027",
+            "text" : "*Inactive(en)",
+            "description" : "*The problem or diagnosis is not completely resolved but is inactive or felt less relevant to the current clinical context.(en)"
+          },
+          "at0034" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0034",
+            "text" : "*New(en)",
+            "description" : "*A new occurrence of either a new or existing problem or diagnosis. A flag for 'First occurrence' can be recorded separately to distinguish the first from other occurrences.(en)"
+          },
+          "at0035" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0035",
+            "text" : "*Ongoing(en)",
+            "description" : "*The issue, problem or diagnosis continues, without new, acute episodes occurring.(en)"
+          },
+          "at0070" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0070",
+            "text" : "*Indeterminate(en)",
+            "description" : "*It is not possible to determine if this occurrence of the problem or diagnosis is new or ongoing.(en)"
+          },
+          "at0089" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0089",
+            "text" : "缓解阶段",
+            "description" : "不治之症的缓解状况。",
+            "comment" : "比如：肿瘤或血液病的状态。"
+          },
+          "at0090" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0090",
+            "text" : "*In remission(en)",
+            "description" : "*No ongoing signs or symptoms of the disease have been identified.(en)"
+          },
+          "at0092" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0092",
+            "text" : "*Not in remission(en)",
+            "description" : "*No diminution of the signs or symptoms of the disease have been identified.(en)"
+          },
+          "at0093" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0093",
+            "text" : "*Indeterminate(en)",
+            "description" : "*It is not possible to determine if there have been diminution of the signs or symptoms of the disease have been identified.(en)"
+          },
+          "at0098" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0098",
+            "text" : "Level of control",
+            "description" : "*Category of the level of control of the problem or diagnosis by the current management. (en)"
+          },
+          "at0099" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0099",
+            "text" : "Controlled",
+            "description" : "*The problem or diagnosis is controlled by current management. (en)"
+          },
+          "at0100" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0100",
+            "text" : "Indeterminate",
+            "description" : "*It is not possible to determine if the problem or diagnosis is controlled by current management. (en)"
+          },
+          "at0101" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0101",
+            "text" : "Not controlled",
+            "description" : "*The problem or diagnosis is not controlled by current management. (en)"
+          },
+          "at0102" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0102",
+            "text" : "Progression",
+            "description" : "*Category of the progression through the course of a chronic problem or diagnosis. (en)"
+          },
+          "at0103" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0103",
+            "text" : "Improving",
+            "description" : "*The problem or diagnosis is improving. (en)"
+          },
+          "at0104" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0104",
+            "text" : "Stable",
+            "description" : "*The problem or diagnosis is unchanged. (en)"
+          },
+          "at0105" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0105",
+            "text" : "Worsening",
+            "description" : "*The problem or diagnosis is worsening. (en)"
+          },
+          "at0106" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0106",
+            "text" : "Indeterminate",
+            "description" : "*It is not possible to determine the progression of the problem or diagnosis. (en)"
+          },
+          "at0107" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0107",
+            "text" : "*Reason for an ongoing episode (en)",
+            "description" : "*Reason for a problem or diagnosis not resolving as expected. (en)",
+            "comment" : "*For example: incomplete or failed treatment. (en)"
+          }
+        },
+        "zh-cn" : {
+          "at0001" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0001",
+            "text" : "节段特征",
+            "description" : "所确定的问题/诊断的此次发生发展过程（episode，节段/事件）的类别。又可称为“节段特性”、“发生发展特征/特性”或“发作特征/特性”。",
+            "comment" : "例如：“新发”将使得临床医生/临床医务人员能够分清可能在某一既往诊断之后不久已经出现的中耳炎（otitis media）的新的急性发作节段/事件/发生发展过程（acute episode），从而将其与慢性中耳炎的未解决或“持续存在之中”的诊断区别开来。某一疾病的复发性、新发性和急性发作节段的治疗可能与“并未在逐渐解决中”或“并无反应”的相同疾病的治疗有着很大不同。在很多情况下，临床医生/临床医务人员会无法做出确切的判断，因此“不明确”可能会是合适的选项。"
+          },
+          "at0003" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0003",
+            "text" : "现行有效还是无效？",
+            "description" : "支持将问题和诊断划入“现行有效”还是“无效”问题清单的类别。",
+            "comment" : "“当前还是既往”（Current/Past ）和“现行有效还是无效”（Active/Inactive）数据元具有相似的临床影响，但二者所表达的语义略有不同。两者在不同的临床场所环境下都有着活跃的运用，但通常并不会一起使用。如果记录了“当前还是既往”限定词，则当数据元可能就会变得多余。关于同一疾病可以为当前疾病但同时又处于无效状态，作为的特例就是，当前并未引发急性症状的哮喘。"
+          },
+          "at0026" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0026",
+            "text" : "现行有效",
+            "description" : "该问题或诊断现行有效且具有临床相关性/贴切性（clinically relevant）。"
+          },
+          "at0027" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0027",
+            "text" : "无效",
+            "description" : "该问题或诊断尚未获得完全解决，但目前已属无效或者感觉其与当前的临床上下文/语境不太相关/不太贴合。"
+          },
+          "at0034" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0034",
+            "text" : "新发",
+            "description" : "新发或现有问题或诊断的新的一次出现/发生。可以通过单独记录代表“首次出现/发生”的标志，将首次出现/发生与他次的出现/发生区分开来。"
+          },
+          "at0035" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0035",
+            "text" : "持续存在之中",
+            "description" : "事项（issue）、问题或诊断持续存在，但并没有出现新的急性发作节段/发生发展过程（episode）。"
+          },
+          "at0070" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0070",
+            "text" : "不明确",
+            "description" : "无法确定该问题或诊断的出现/发生（occurrence）究竟属于是新发还是在持续存在之中。"
+          },
+          "at0089" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0089",
+            "text" : "缓解状态",
+            "description" : "无法/不可治愈的诊断的缓解状态。",
+            "comment" : "例如：癌症或血液学诊断的状态。"
+          },
+          "at0090" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0090",
+            "text" : "缓解中",
+            "description" : "尚未发现该疾病（问题/诊断）的持续存在的症状或体征。"
+          },
+          "at0092" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0092",
+            "text" : "未缓解",
+            "description" : "尚未发现该疾病（问题/诊断）的症状或体征有任何的减轻。"
+          },
+          "at0093" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0093",
+            "text" : "不明确",
+            "description" : "无法确定该疾病（问题/诊断）的症状或体征是否有所减轻。"
+          },
+          "at0098" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0098",
+            "text" : "控制程度",
+            "description" : "当前的管理措施对该问题或诊断的控制程度的类别。"
+          },
+          "at0099" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0099",
+            "text" : "受到控制",
+            "description" : "该问题或诊断已受到当前管理措施的控制。"
+          },
+          "at0100" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0100",
+            "text" : "不明确",
+            "description" : "无法确定该问题或诊断是否受到当前管理措施的控制。"
+          },
+          "at0101" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0101",
+            "text" : "不受控制",
+            "description" : "该问题或诊断并未受到当前管理措施的控制。"
+          },
+          "at0102" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0102",
+            "text" : "进展",
+            "description" : "在长期/慢性问题或诊断的整个发展进程当中的进展的类别。"
+          },
+          "at0103" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0103",
+            "text" : "正在改善",
+            "description" : "该问题或诊断当前正在改善当中。"
+          },
+          "at0104" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0104",
+            "text" : "稳定",
+            "description" : "该问题或诊断当前没有变化。"
+          },
+          "at0105" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0105",
+            "text" : "正在恶化",
+            "description" : "该问题或诊断当前正在恶化当中。"
+          },
+          "at0106" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0106",
+            "text" : "不明确",
+            "description" : "无法确定该问题或诊断的进展类别/进展情况。"
+          },
+          "at0107" : {
+            "@type" : "ARCHETYPE_TERM",
+            "code" : "at0107",
+            "text" : "持续存在之中节段的原因",
+            "description" : "关于该问题或诊断未按预期获得逐渐解决的原因。",
+            "comment" : "例如：不完整或失败的治疗。"
+          }
+        }
+      },
+      "termBindings" : {
+        "SNOMED-CT" : {
+          "at0001" : "term:SNOMED-CT::288526004"
+        }
+      },
+      "terminologyExtracts" : { },
+      "valueSets" : { }
+    },
+    "adlVersion" : "1.4",
+    "buildUid" : "4ec9fbd6-944e-483d-87af-f6838b692110",
+    "rmName" : "openehr",
+    "rmRelease" : "1.1.0",
+    "generated" : true,
+    "otherMetaData" : { },
+    "originalLanguage" : {
+      "terminologyId" : {
+        "value" : "ISO_639-1"
+      },
+      "codeString" : "en"
+    },
+    "translations" : [ {
+      "@type" : "TRANSLATION_DETAILS",
+      "language" : {
+        "terminologyId" : {
+          "value" : "ISO_639-1"
+        },
+        "codeString" : "de"
+      },
+      "author" : {
+        "name" : "Simon Schumacher, Louisa Bode, Natalia Strauch",
+        "organisation" : "HiGHmed, Medizinische Hochschule Hannover",
+        "email" : "sschuma9@uni-koeln.de, bode.louisa@mh-hannover.de, Strauch.Natalia@mh-hannover.de"
+      },
+      "otherDetails" : { }
+    }, {
+      "@type" : "TRANSLATION_DETAILS",
+      "language" : {
+        "terminologyId" : {
+          "value" : "ISO_639-1"
+        },
+        "codeString" : "sv"
+      },
+      "author" : {
+        "name" : "Therese Lindberg",
+        "organisation" : "Cambio CDS",
+        "email" : "therese.lindberg@cambio.se"
+      },
+      "otherDetails" : { }
+    }, {
+      "@type" : "TRANSLATION_DETAILS",
+      "language" : {
+        "terminologyId" : {
+          "value" : "ISO_639-1"
+        },
+        "codeString" : "nb"
+      },
+      "author" : {
+        "name" : "John Tore Valand, Silje Ljosland Bakke",
+        "organisation" : "Helse Bergen HF, Nasjonal IKT HF, Helse Vest IKT AS",
+        "email" : "silje.ljosland.bakke@helse-vest-ikt.no"
+      },
+      "otherDetails" : { }
+    }, {
+      "@type" : "TRANSLATION_DETAILS",
+      "language" : {
+        "terminologyId" : {
+          "value" : "ISO_639-1"
+        },
+        "codeString" : "ko"
+      },
+      "author" : {
+        "name" : "Seung-Jong Yu",
+        "organisation" : "InfoClinic Co.,Ltd.",
+        "email" : "seungjong.yu@gmail.com"
+      },
+      "accreditation" : "M.D.",
+      "otherDetails" : { }
+    }, {
+      "@type" : "TRANSLATION_DETAILS",
+      "language" : {
+        "terminologyId" : {
+          "value" : "ISO_639-1"
+        },
+        "codeString" : "pt-br"
+      },
+      "author" : {
+        "name" : "Adriana Kitajima, Debora Farage, Fernanda Maia, Ana Andrade e Clovis Puttini",
+        "organisation" : "Core Consulting",
+        "email" : "contato@coreconsulting.com.br"
+      },
+      "accreditation" : "Hospital Alemão Oswaldo Cruz (HAOC)",
+      "otherDetails" : { }
+    }, {
+      "@type" : "TRANSLATION_DETAILS",
+      "language" : {
+        "terminologyId" : {
+          "value" : "ISO_639-1"
+        },
+        "codeString" : "sl"
+      },
+      "author" : {
+        "name" : "mag. Biljana Prinčič",
+        "organisation" : "Marand d.o.o., Ljubljana, Slovenija",
+        "email" : "biljana.princic@marand.si"
+      },
+      "otherDetails" : { }
+    }, {
+      "@type" : "TRANSLATION_DETAILS",
+      "language" : {
+        "terminologyId" : {
+          "value" : "ISO_639-1"
+        },
+        "codeString" : "it"
+      },
+      "author" : {
+        "name" : "Francesca Frexia",
+        "organisation" : "CRS4 - Center for advanced studies, research and development in Sardinia, Pula (Cagliari), Italy",
+        "email" : "francesca.frexia@crs4.it"
+      },
+      "otherDetails" : { }
+    }, {
+      "@type" : "TRANSLATION_DETAILS",
+      "language" : {
+        "terminologyId" : {
+          "value" : "ISO_639-1"
+        },
+        "codeString" : "zh-cn"
+      },
+      "author" : {
+        "name" : "Lin Zhang",
+        "organisation" : "Freelancer",
+        "email" : "linforest@163.com"
+      },
+      "otherDetails" : { }
+    }, {
+      "@type" : "TRANSLATION_DETAILS",
+      "language" : {
+        "terminologyId" : {
+          "value" : "ISO_639-1"
+        },
+        "codeString" : "zh"
+      },
+      "author" : {
+        "name" : "Yexuan Cheng",
+        "organisation" : "浙江大学",
+        "email" : "3160100913@zju.edu.cn"
       },
       "otherDetails" : { }
     } ]
