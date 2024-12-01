@@ -23,24 +23,31 @@ description
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"d6ed2e1cb5118f8b350f53cbdd316f30">
+		["MD5-CAM-1.0.1"] = <"e609e13b059dbfb252596796e248429a">
 		["build_uid"] = <"0c426e36-61a6-3c50-8c22-710470350caf">
 	>
 
 definition
 	CLUSTER[at0000] matches {    -- Orientation during interview
 		items cardinality matches {1..*; unordered} matches {
-			ELEMENT[at0003] occurrences matches {0..1} matches {    -- Oriented:
+			ELEMENT[at0008] occurrences matches {0..1} matches {    -- Person
 				value matches {
-					DV_CODED_TEXT matches {
-						defining_code matches {
-							[local::
-							at0004,    -- Person
-							at0005,    -- Place
-							at0006,    -- Time
-							at0007]    -- Situation
-						}
-					}
+					DV_BOOLEAN matches {*}
+				}
+			}
+			ELEMENT[at0012] occurrences matches {0..1} matches {    -- Place
+				value matches {
+					DV_BOOLEAN matches {*}
+				}
+			}
+			ELEMENT[at0013] occurrences matches {0..1} matches {    -- Time
+				value matches {
+					DV_BOOLEAN matches {*}
+				}
+			}
+			ELEMENT[at0014] occurrences matches {0..1} matches {    -- Situation
+				value matches {
+					DV_BOOLEAN matches {*}
 				}
 			}
 		}
@@ -54,23 +61,19 @@ ontology
 					text = <"Orientation during interview">
 					description = <"MH_Orientation">
 				>
-				["at0003"] = <
-					text = <"Oriented:">
-					description = <"">
-				>
-				["at0004"] = <
+				["at0008"] = <
 					text = <"Person">
 					description = <"">
 				>
-				["at0005"] = <
+				["at0012"] = <
 					text = <"Place">
 					description = <"">
 				>
-				["at0006"] = <
+				["at0013"] = <
 					text = <"Time">
 					description = <"">
 				>
-				["at0007"] = <
+				["at0014"] = <
 					text = <"Situation">
 					description = <"">
 				>
