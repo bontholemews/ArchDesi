@@ -1,0 +1,120 @@
+archetype (adl_version=1.4; uid=748bce04-231a-4fcf-a0dd-96a2a8fddc0f)
+	openEHR-EHR-CLUSTER.mh_self_harm_hx_sxs.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2024-12-01">
+	>
+	lifecycle_state = <"unmanaged">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"afdcbe52891c41ad108135c4fafecb3e">
+		["build_uid"] = <"3500fe53-d65e-379b-83d5-487f7701b05f">
+	>
+
+definition
+	CLUSTER[at0000] matches {    -- MH_Self_Harm_Hx_SXs
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {*}    -- History of Self-Harm, Suicidal Thoughts, or Suicide Attempts
+			ELEMENT[at0002] occurrences matches {0..1} matches {    -- History of Homicidal Thoughts or Aggression
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0003] occurrences matches {0..1} matches {    -- History of cruelty to animals
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0004] occurrences matches {0..1} matches {    -- Current Suicide Assessment
+				value matches {
+					1|[local::at0005],
+					2|[local::at0006],
+					3|[local::at0007],
+					4|[local::at0008],
+					5|[local::at0009]
+				}
+			}
+			ELEMENT[at0010] occurrences matches {0..1} matches {    -- Comment regarding SI
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0012] occurrences matches {0..1} matches {    -- DV_ORDINAL
+				value matches {
+					DV_ORDINAL matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"MH_Self_Harm_Hx_SXs">
+					description = <"MH_Self_Harm_Hx_SXs">
+				>
+				["at0001"] = <
+					text = <"History of Self-Harm, Suicidal Thoughts, or Suicide Attempts">
+					description = <"">
+				>
+				["at0002"] = <
+					text = <"History of Homicidal Thoughts or Aggression">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"History of cruelty to animals">
+					description = <"">
+				>
+				["at0004"] = <
+					text = <"Current Suicide Assessment">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"Denies">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"Passive with plan but without intent">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Passive without plan and intent">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Active with plan but without intent">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Active with plan and intent">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Comment regarding SI">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"DV_ORDINAL">
+					description = <"">
+				>
+			>
+		>
+	>
