@@ -23,14 +23,18 @@ description
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"afdcbe52891c41ad108135c4fafecb3e">
+		["MD5-CAM-1.0.1"] = <"06dcf031f703a06beb9a9175816d6d01">
 		["build_uid"] = <"3500fe53-d65e-379b-83d5-487f7701b05f">
 	>
 
 definition
 	CLUSTER[at0000] matches {    -- MH_Self_Harm_Hx_SXs
 		items cardinality matches {1..*; unordered} matches {
-			ELEMENT[at0001] occurrences matches {0..1} matches {*}    -- History of Self-Harm, Suicidal Thoughts, or Suicide Attempts
+			ELEMENT[at0013] occurrences matches {0..1} matches {    -- History of Self-Harm, Suicidal Thoughts, or Suicide Attempts
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
 			ELEMENT[at0002] occurrences matches {0..1} matches {    -- History of Homicidal Thoughts or Aggression
 				value matches {
 					DV_TEXT matches {*}
@@ -55,9 +59,20 @@ definition
 					DV_TEXT matches {*}
 				}
 			}
-			ELEMENT[at0012] occurrences matches {0..1} matches {    -- DV_ORDINAL
+			ELEMENT[at0012] occurrences matches {0..1} matches {    -- Current Suicide Assessment
 				value matches {
-					DV_ORDINAL matches {*}
+					1|[local::at0014],
+					2|[local::at0015],
+					3|[local::at0016],
+					4|[local::at0017],
+					5|[local::at0018],
+					6|[local::at0019],
+					7|[local::at0020]
+				}
+			}
+			ELEMENT[at0021] occurrences matches {0..1} matches {    -- Comment regarding HI
+				value matches {
+					DV_TEXT matches {*}
 				}
 			}
 		}
@@ -70,10 +85,6 @@ ontology
 				["at0000"] = <
 					text = <"MH_Self_Harm_Hx_SXs">
 					description = <"MH_Self_Harm_Hx_SXs">
-				>
-				["at0001"] = <
-					text = <"History of Self-Harm, Suicidal Thoughts, or Suicide Attempts">
-					description = <"">
 				>
 				["at0002"] = <
 					text = <"History of Homicidal Thoughts or Aggression">
@@ -112,7 +123,43 @@ ontology
 					description = <"">
 				>
 				["at0012"] = <
-					text = <"DV_ORDINAL">
+					text = <"Current Suicide Assessment">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"History of Self-Harm, Suicidal Thoughts, or Suicide Attempts">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"Denies">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"Yes, specific person">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"Yes, non-specific person">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"Yes, passive with plan but without intent">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"Yes, passive without plan and intent">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Yes, active with plan but without intent">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Yes, active with plan and intent">
+					description = <"">
+				>
+				["at0021"] = <
+					text = <"Comment regarding HI">
 					description = <"">
 				>
 			>
