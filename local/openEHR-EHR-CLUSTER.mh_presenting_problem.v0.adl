@@ -23,7 +23,7 @@ description
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"c5a161c855226050e2f8c9d15321bd2d">
+		["MD5-CAM-1.0.1"] = <"9d8f6666520ba864482bd609bfa35721">
 		["build_uid"] = <"807d09ab-9e84-32c3-89ae-73c9c07f7cd0">
 	>
 
@@ -38,6 +38,11 @@ definition
 			ELEMENT[at0002] occurrences matches {0..1} matches {    -- Presenting Problem
 				value matches {
 					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0009] occurrences matches {0..1} matches {    -- Presenting Px
+				value matches {
+					DV_CODED_TEXT matches {*}
 				}
 			}
 			ELEMENT[at0004] occurrences matches {0..1} matches {    -- Self Reported Severity
@@ -89,6 +94,10 @@ ontology
 				>
 				["at0008"] = <
 					text = <"Impact on Daily Functioning">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Presenting Px">
 					description = <"">
 				>
 			>
